@@ -1,6 +1,7 @@
 #include <a_samp.inc>
 #define RUN_TESTS
-#define NO_DIALOG_ASK
+#define YSI_NO_DIALOG_ASK
+#define YSI_NO_ANDROID_CHECK
 
 #include <YSI_Core\y_testing>
 
@@ -15,7 +16,7 @@ public OnGameModeInit()
     return 1;
 }
 
-forward send_test_message();
+forward send_test_message(playerid);
 
 public OnPlayerConnect(playerid)
 {
@@ -74,7 +75,7 @@ PTEST__ setwanted(playerid)
 
 PTEST_CLOSE__ setwanted(playerid)
 {
-	SetPlayerWantedLevel(playerid, 0);
+    SetPlayerWantedLevel(playerid, 0);
 }
 
 PTEST__ setweather(playerid)
@@ -85,7 +86,7 @@ PTEST__ setweather(playerid)
 
 PTEST_CLOSE__ setweather(playerid)
 {
-	SetPlayerWeather(playerid, 0);
+    SetPlayerWeather(playerid, 0);
 }
 
 PTEST__ setskin(playerid)
@@ -188,14 +189,14 @@ PTEST__ vehff(playerid)
 // XXX: Does not work yet
 PTEST__ settimer(playerid)
 {
-    SetTimer("send_test_message", 5000, false);
+    SetTimerEx("send_test_message", 5000, false, "i", playerid);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
 
-public send_test_message()
+public send_test_message(playerid)
 {
-    SendClientMessageToAll(-1, "Timer was processed");
+    SendClientMessage(playerid, -1, "Timer was processed");
 }
 // vim: se ft=cpp:
 
