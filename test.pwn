@@ -1,4 +1,12 @@
 #include "samp-stdlib/a_samp.inc"
+// Arguments: function to call, message format, val tag
+#define CHECK_VAL(%1,%2,%3) \
+    { \
+        new ret[128], %1:val; \
+        val = %3; \
+        format(ret, sizeof(ret), %2, val); \
+        SendClientMessage(playerid, -1, ret); \
+    }
 
 main() {
     print("Loading Cman's test Pawn scripts");
@@ -10,44 +18,54 @@ public OnPlayerConnect(playerid) {
 
 public OnPlayerCommandText(playerid, cmdtext[]) {
     if(!strcmp(cmdtext, "/hello")) {
-        SendClientMessage(playerid, -1, "HELLO, WORLD!");
+        CHECK_VAL(_, "Your val is: %d", SendClientMessage(playerid, -1, "HELLO, WORLD!"))
+        CHECK_VAL(_, "Other val is: %d", SendClientMessage(playerid + 1, -1, "HELLO, WORLD!"))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setcampos")) {
-        SetPlayerCameraPos(playerid, 10, -10, 2);
-        SetPlayerCameraLookAt(playerid, 0, 0, 0);
+        CHECK_VAL(_, "Your campos val is: %d", SetPlayerCameraPos(playerid, 10, -10, 2))
+        CHECK_VAL(_, "Your lookat val is: %d", SetPlayerCameraLookAt(playerid, 0, 0, 0))
+        CHECK_VAL(_, "Other campos val is: %d", SetPlayerCameraPos(playerid + 1, 10, -10, 2))
+        CHECK_VAL(_, "Other lookat val is: %d", SetPlayerCameraLookAt(playerid + 1, 0, 0, 0))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setcambehind")) {
-        SetCameraBehindPlayer(playerid);
+        CHECK_VAL(_, "Your val is: %d", SetCameraBehindPlayer(playerid))
+        CHECK_VAL(_, "Other val is: %d", SetCameraBehindPlayer(playerid + 1))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setdrunk")) {
-        SetPlayerDrunkLevel(playerid, 50000);
+        CHECK_VAL(_, "Your val is: %d", SetPlayerDrunkLevel(playerid, 50000))
+        CHECK_VAL(_, "Other val is: %d", SetPlayerDrunkLevel(playerid + 1, 50000))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setposint")) {
-        SetPlayerInterior(playerid, 17);
-        SetPlayerPos(playerid, -25.7220, -187.8216, 1003.5469);
+        CHECK_VAL(_, "Your setint val is: %d", SetPlayerInterior(playerid, 17))
+        CHECK_VAL(_, "Your setpos val is: %d", SetPlayerPos(playerid, -25.7220, -187.8216, 1003.5469))
+        CHECK_VAL(_, "Other setint val is: %d", SetPlayerInterior(playerid + 1, 17))
+        CHECK_VAL(_, "Other setpos val is: %d", SetPlayerPos(playerid + 1, -25.7220, -187.8216, 1003.5469))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setwanted")) {
-        SetPlayerWantedLevel(playerid, 6);
+        CHECK_VAL(_, "Your val is: %d", SetPlayerWantedLevel(playerid, 6))
+        CHECK_VAL(_, "Other val is: %d", SetPlayerWantedLevel(playerid + 1, 6))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setweather")) {
-        SetPlayerWeather(playerid, 17);
+        CHECK_VAL(_, "Your val is: %d", SetPlayerWeather(playerid, 17))
+        CHECK_VAL(_, "Other val is: %d", SetPlayerWeather(playerid + 1, 17))
         return true;
     }
 
     if(!strcmp(cmdtext, "/setskin")) {
-        SetPlayerSkin(playerid, 1);
+        CHECK_VAL(_, "Your val is: %d", SetPlayerSkin(playerid, 1))
+        CHECK_VAL(_, "Other val is: %d", SetPlayerSkin(playerid + 1, 1))
         return true;
     }
 
@@ -139,6 +157,22 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
         new ret[128], Float:armor;
         GetPlayerArmour(playerid, armor);
         format(ret, sizeof(ret), "Your armor is: %f", armor);
+        SendClientMessage(playerid, -1, ret);
+        return true;
+    }
+
+    if(!strcmp(cmdtext, "/setteam")) {
+        SetPlayerTeam(playerid, 2);
+        return true;
+    }
+
+    if(!strcmp(cmdtext, "/getteam")) {
+        new ret[128], team;
+        team = GetPlayerTeam(playerid);
+        format(ret, sizeof(ret), "Your team is: %d", team);
+        SendClientMessage(playerid, -1, ret);
+        team = GetPlayerTeam(playerid + 1);
+        format(ret, sizeof(ret), "Other team is: %d", team);
         SendClientMessage(playerid, -1, ret);
         return true;
     }
