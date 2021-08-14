@@ -1,4 +1,6 @@
 #include <a_samp.inc>
+#define RUN_TESTS
+
 #include <YSI_Core\y_testing>
 
 main()
@@ -19,63 +21,69 @@ public OnPlayerConnect(playerid)
     SendClientMessage(playerid, 0xFF0000FF, "This is Cman's test open.mp server.");
 }
 
-PTEST__ hello()
+PTEST__ hello(playerid)
 {
 	SendClientMessage(playerid, -1, "HELLO, WORLD!");
 	ASK("Can you see the client message \"HELLO WORLD\"?");
 }
 
-PTEST__ setcampos()
+PTEST__ setcampos(playerid)
 {
 	SetPlayerCameraPos(playerid, 10, -10, 2);
 	SetPlayerCameraLookAt(playerid, 0, 0, 0);
 	ASK("Are you looking at the middle of Blueberry Farm?");
 }
 
-PTEST__ setcamzzbehind() // `zz` so this test comes after `setcampos`.
+PTEST__ setcamzzbehind(playerid) // `zz` so this test comes after `setcampos`.
 {
 	SetCameraBehindPlayer(playerid);
-	ASK("Is the behind you?");
+	ASK("Is the camera behind you?");
 }
 
-PTEST__ setdrunk0()
+PTEST__ setdrunk0(playerid)
 {
 	SetPlayerDrunkLevel(playerid, 50000);
 	ASK("Are you drunk?");
 }
 
-PTEST__ setdrunk1()
+PTEST__ setdrunk1(playerid)
 {
 	SetPlayerDrunkLevel(playerid, 0);
 	ASK("Are you sober?");
 }
 
-PTEST__ setposint()
+PTEST__ setposint(playerid)
 {
 	SetPlayerInterior(playerid, 17);
 	SetPlayerPos(playerid, -25.7220, -187.8216, 1003.5469);
 	ASK("Are you in some shop?");
 }
 
-PTEST__ setwanted()
+PTEST_CLOSE__ setposint(playerid)
+{
+	SetPlayerInterior(playerid, 0);
+	SetPlayerPos(playerid, 1010.0, 1010.0, 50.0);
+}
+
+PTEST__ setwanted(playerid)
 {
 	SetPlayerWantedLevel(playerid, 6);
 	ASK("Do you have a wanted level of 6?");
 }
 
-PTEST__ setweather()
+PTEST__ setweather(playerid)
 {
 	SetPlayerWeather(playerid, 16);
 	ASK("Is the weather rainy?");
 }
 
-PTEST__ setskin()
+PTEST__ setskin(playerid)
 {
 	SetPlayerSkin(playerid, 1);
 	ASK("Did your skin change?");
 }
 
-PTEST__ setshopname()
+PTEST__ setshopname(playerid)
 {
 	SetPlayerInterior(playerid, 5);
 	SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
@@ -84,13 +92,19 @@ PTEST__ setshopname()
 	ASK("Are you buying a pizza?");
 }
 
-PTEST__ gibmoni()
+PTEST_CLOSE__ setposint(playerid)
+{
+	SetPlayerInterior(playerid, 0);
+	SetPlayerPos(playerid, 1010.0, 1010.0, 50.0);
+}
+
+PTEST__ gibmoni(playerid)
 {
 	GivePlayerMoney(playerid, 1000000);
 	ASK("Are you suddenly rich ($1000000)?");
 }
 
-PTEST__ getpos()
+PTEST__ getpos(playerid)
 {
 	new Float:x, Float:y, Float:z, ret[128];
 	GetPlayerPos(playerid, x, y, z);
@@ -99,15 +113,15 @@ PTEST__ getpos()
 	ASK("Does your position in a client message look vaguely correct?");
 }
 
-PTEST__ explode()
+PTEST__ explode(playerid)
 {
 	new Float:x, Float:y, Float:z;
 	GetPlayerPos(playerid, x, y, z);
-	CreateExplosion(x, y, z, 1, 5.0);
-	ASK("Was there an explosion on you?");
+	CreateExplosion(x - 10.0, y - 10.0, z, 1, 5.0);
+	ASK("Was there an explosion near you?");
 }
 
-PTEST__ format()
+PTEST__ format(playerid)
 {
 	new ret[128];
 	format(ret, sizeof(ret), "Test formatting: %s", "blibli");
@@ -115,7 +129,7 @@ PTEST__ format()
 	ASK("Did you see \"Test formatting: blibli\" client message?");
 }
 
-PTEST__ getname()
+PTEST__ getname(playerid)
 {
 	new name[MAX_PLAYER_NAME + 1], ret[128];
 	GetPlayerName(playerid, name, sizeof(name));
@@ -124,26 +138,26 @@ PTEST__ getname()
 	ASK("Did you see your name in a client message?");
 }
 
-PTEST__ deathmsg()
+PTEST__ deathmsg(playerid)
 {
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 10);
 	SendDeathMessage(playerid, playerid + 1, 3);
 	ASK("Do you see two death messages?");
 }
 
-PTEST__ radio()
+PTEST__ radio(playerid)
 {
 	PlayAudioStreamForPlayer(playerid, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true);
 	ASK("Is there a radio station playing?");
 }
 
-PTEST__ sethp()
+PTEST__ sethp(playerid)
 {
 	SetPlayerHealth(playerid, 50.0);
 	ASK("Is your health at half?");
 }
 
-PTEST__ gethp()
+PTEST__ gethp(playerid)
 {
 	new ret[128], Float:hp;
 	GetPlayerHealth(playerid, hp);
@@ -153,15 +167,15 @@ PTEST__ gethp()
 }
 
 // XXX: Does not work yet
-PTEST__ vehff()
+PTEST__ vehff(playerid)
 {
 	EnableVehicleFriendlyFire();
 	SendClientMessage(playerid, -1, "Vehicle friendly fire is enabled");
-	ASK("Is vehicle friendly fire on?  Sorry, I don't know how you can tell...");
+	ASK("Is vehicle friendly fire on?");
 }
 
 // XXX: Does not work yet
-PTEST__ settimer()
+PTEST__ settimer(playerid)
 {
 	SetTimer("send_test_message", 5000, false);
 	SendClientMessage(playerid, -1, "Timer is set");
