@@ -1,0 +1,20 @@
+{
+	"user": "Y-Less",
+	"repo": "pawn-test-scripts",
+	"entry": "test.pwn",
+	"output": "test.amx",
+	"dependencies": [
+		"sampctl/samp-stdlib",
+		"pawn-lang/YSI-Includes"
+	],
+	"local": true,
+	"runtime": {
+		"version": "0.3.7",
+		"mode": "y_testing",
+		"rcon_password": "password",
+		"port": 8192,
+		"hostname": "SA-MP Server",
+		"maxplayers": 50,
+		"language": ""
+	}
+}
