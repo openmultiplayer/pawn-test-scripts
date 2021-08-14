@@ -6,6 +6,12 @@ main()
     print("Loading Cman's test Pawn scripts");
 }
 
+public OnGameModeInit()
+{
+    AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
+	return 1;
+}
+
 forward send_test_message();
 
 public OnPlayerConnect(playerid)
