@@ -27,14 +27,14 @@ PTEST__ hello(playerid)
     ASK("Can you see the client message \"HELLO WORLD\"?");
 }
 
-PTEST__ setcampos(playerid)
+PTEST__ setcampos0(playerid)
 {
     SetPlayerCameraPos(playerid, 10, -10, 2);
     SetPlayerCameraLookAt(playerid, 0, 0, 0);
     ASK("Are you looking at the middle of Blueberry Farm?");
 }
 
-PTEST__ setcamzzbehind(playerid) // `zz` so this test comes after `setcampos`.
+PTEST__ setcampos1(playerid)
 {
     SetCameraBehindPlayer(playerid);
     ASK("Is the camera behind you?");
@@ -71,10 +71,20 @@ PTEST__ setwanted(playerid)
     ASK("Do you have a wanted level of 6?");
 }
 
+PTEST_CLOSE__ setwanted(playerid)
+{
+	SetPlayerWantedLevel(playerid, 0);
+}
+
 PTEST__ setweather(playerid)
 {
     SetPlayerWeather(playerid, 16);
     ASK("Is the weather rainy?");
+}
+
+PTEST_CLOSE__ setweather(playerid)
+{
+	SetPlayerWeather(playerid, 0);
 }
 
 PTEST__ setskin(playerid)
@@ -92,7 +102,7 @@ PTEST__ setshopname(playerid)
     ASK("Are you buying a pizza?");
 }
 
-PTEST_CLOSE__ setposint(playerid)
+PTEST_CLOSE__ setshopname(playerid)
 {
     SetPlayerInterior(playerid, 0);
     SetPlayerPos(playerid, 1010.0, 1010.0, 50.0);
