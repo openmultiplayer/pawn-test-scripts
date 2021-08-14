@@ -1,17 +1,80 @@
 #include <a_samp.inc>
+
+// Run tests.
 #define RUN_TESTS
+
+// Minimal YSI.
 #define YSI_NO_DIALOG_ASK
 #define YSI_NO_ANDROID_CHECK
+#define YSI_NO_GET_IP
+#define FOREACH_NO_BOTS
+#define FOREACH_NO_LOCALS
+#define FOREACH_NO_VEHICLES
+#define FOREACH_NO_ACTORS
+#define FOREACH_NO_STREAMED
+
+#include <YSI_Core\y_utils>
+
+#define SetTimer TMP_SetTimer
+#define SetTimerEx TMP_SetTimerEx
+#define YSI_SetTimerEx TMP_SetTimerEx
 
 #include <YSI_Core\y_testing>
+#include <YSI_Data\y_iterate>
+#include <dynamic_call>
+
+static stock
+	gTimerFire = 0,
+	gTimerFunction = -1,
+	gTimerParam = 0;
+
+TMP_SetTimerEx(const func[], time, bool:repeat, const fmt[], arg)
+{
+	#pragma unused fmt, repeat
+	gTimerFire = tickcount() + time;
+	gTimerFunction = funcidx(func);
+	gTimerParam = arg;
+}
+
+TMP_SetTimer(const func[], time, bool:repeat)
+{
+	TMP_SetTimerEx(func, time, repeat, "", 0);
+}
+
+TMP_SendClientMessageToAll(colour, const msg[])
+{
+	foreach (new i : Player)
+	{
+		SendClientMessage(i, colour, msg);
+	}
+}
+
+#define SendClientMessageToAll TMP_SendClientMessageToAll
+#define SetTimer TMP_SetTimer
+#define SetTimerEx TMP_SetTimerEx
 
 main()
 {
     print("Loading Cman's test Pawn scripts");
+	// open.mp has no `SetTimer` yet (even though it's one of the first natives I wrote...)
+	//for ( ; ; )
+	//{
+	//	if (gTimerFunction != -1)
+	//	{
+	//		if (tickcount() > gTimerFire)
+	//		{
+	//			// Don't even have `CallLocalFunction` yet, another early function...
+	//			// Fortunately we have YSI and amx_assembly.
+	//			CallFunction(GetPublicAddressFromIndex(gTimerFunction), gTimerParam);
+	//			gTimerFunction = -1;
+	//		}
+	//	}
+	//}
 }
 
 public OnGameModeInit()
 {
+    print("OnGameModeInit");
     AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
 	return 1;
 }
@@ -21,6 +84,7 @@ forward SendTestMessage();
 
 public OnPlayerConnect(playerid)
 {
+    print("OnPlayerConnect");
     SendClientMessage(playerid, 0xFF0000FF, "This is Cman's test open.mp server.");
 }
 
