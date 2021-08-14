@@ -101,14 +101,19 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
         return true;
     }
 
-    if(!strcmp(cmdtext, "/deathmsg")) {
-        SendDeathMessage(INVALID_PLAYER_ID, playerid, 10);
-        SendDeathMessage(playerid, playerid + 1, 3);
+    if(!strcmp(cmdtext, "/radio")) {
+        PlayAudioStreamForPlayer(playerid, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true);
         return true;
     }
 
-    if(!strcmp(cmdtext, "/radio")) {
-        PlayAudioStreamForPlayer(playerid, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true);
+    if(!strcmp(cmdtext, "/radiooff")) {
+        StopAudioStreamForPlayer(playerid);
+        return true;
+    }
+
+    if(!strcmp(cmdtext, "/deathmsg")) {
+        SendDeathMessage(INVALID_PLAYER_ID, playerid, 10);
+        SendDeathMessage(playerid, playerid + 1, 3);
         return true;
     }
 
@@ -121,6 +126,19 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
         new ret[128], Float:hp;
         GetPlayerHealth(playerid, hp);
         format(ret, sizeof(ret), "Your hp are: %f", hp);
+        SendClientMessage(playerid, -1, ret);
+        return true;
+    }
+
+    if(!strcmp(cmdtext, "/setarmor")) {
+        SetPlayerArmour(playerid, 50.0);
+        return true;
+    }
+
+    if(!strcmp(cmdtext, "/getarmor")) {
+        new ret[128], Float:armor;
+        GetPlayerArmour(playerid, armor);
+        format(ret, sizeof(ret), "Your armor is: %f", armor);
         SendClientMessage(playerid, -1, ret);
         return true;
     }
