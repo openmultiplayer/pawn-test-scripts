@@ -2,7 +2,7 @@
 	"user": "Y-Less",
 	"repo": "pawn-test-scripts",
 	"entry": "test.pwn",
-	"output": "test.amx",
+	"output": "gamemodes/test.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"pawn-lang/YSI-Includes"
