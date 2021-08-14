@@ -72,6 +72,13 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
         return true;
     }
 
+    if(!strcmp(cmdtext, "/explodeme")) {
+        new Float:x, Float:y, Float:z;
+        GetPlayerPos(playerid, x, y, z);
+        CreateExplosionForPlayer(playerid, x, y, z, 1, 5.0);
+        return true;
+    }
+
     if(!strcmp(cmdtext, "/explode")) {
         new Float:x, Float:y, Float:z;
         GetPlayerPos(playerid, x, y, z);
@@ -127,7 +134,7 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
 
     // XXX: Does not work yet
     if(!strcmp(cmdtext, "/settimer")) {
-        SetTimer("send_test_message", 1000, false);
+        //SetTimer("send_test_message", 1000, false);
         SendClientMessage(playerid, -1, "Timer is set");
         return true;
     }
