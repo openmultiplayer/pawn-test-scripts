@@ -72,13 +72,14 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
     if(!strcmp(cmdtext, "/setshopname")) {
         SetPlayerInterior(playerid, 5);
         SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
-        SetPlayerShopName(playerid, "FDPIZA");
-        SendClientMessage(playerid, 0xFFFFFFFF, "Welcome to Pizza Stack!");
+        CHECK_VAL(_, "Your val is: %d", SetPlayerShopName(playerid, "FDPIZA"))
+        CHECK_VAL(_, "Other val is: %d", SetPlayerShopName(playerid + 1, "FDPIZA"))
         return true;
     }
 
     if(!strcmp(cmdtext, "/gibmoni")) {
-        GivePlayerMoney(playerid, 1000000);
+        CHECK_VAL(_, "Your val is: %d", GivePlayerMoney(playerid, 1000000))
+        CHECK_VAL(_, "Other val is: %d", GivePlayerMoney(playerid + 1, 1000000))
         return true;
     }
 
@@ -197,6 +198,7 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
 
 forward send_test_message();
 public send_test_message() {
-    SendClientMessageToAll(-1, "Timer was processed");
+    // XXX: Does not work yet
+    //SendClientMessageToAll(-1, "Timer was processed");
 }
 // vim: se ft=cpp:
