@@ -1,5 +1,6 @@
 #include <a_samp.inc>
 #define RUN_TESTS
+#define NO_DIALOG_ASK
 
 #include <YSI_Core\y_testing>
 
