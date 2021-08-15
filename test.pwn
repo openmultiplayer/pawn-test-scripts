@@ -1,4 +1,4 @@
-#include <a_samp.inc>
+#include <a_samp>
 
 // Run tests.
 #define RUN_TESTS
@@ -13,68 +13,15 @@
 #define FOREACH_NO_ACTORS
 #define FOREACH_NO_STREAMED
 
-#include <YSI_Core\y_utils>
-
-#define SetTimer TMP_SetTimer
-#define SetTimerEx TMP_SetTimerEx
-#define YSI_SetTimerEx TMP_SetTimerEx
-
 #include <YSI_Core\y_testing>
-#include <YSI_Data\y_iterate>
-#include <dynamic_call>
-
-static stock
-	gTimerFire = 0,
-	gTimerFunction = -1,
-	gTimerParam = 0;
-
-TMP_SetTimerEx(const func[], time, bool:repeat, const fmt[], arg)
-{
-	#pragma unused fmt, repeat
-	gTimerFire = tickcount() + time;
-	gTimerFunction = funcidx(func);
-	gTimerParam = arg;
-}
-
-TMP_SetTimer(const func[], time, bool:repeat)
-{
-	TMP_SetTimerEx(func, time, repeat, "", 0);
-}
-
-TMP_SendClientMessageToAll(colour, const msg[])
-{
-	foreach (new i : Player)
-	{
-		SendClientMessage(i, colour, msg);
-	}
-}
-
-#define SendClientMessageToAll TMP_SendClientMessageToAll
-#define SetTimer TMP_SetTimer
-#define SetTimerEx TMP_SetTimerEx
 
 main()
 {
     print("Loading Cman's test Pawn scripts");
-	// open.mp has no `SetTimer` yet (even though it's one of the first natives I wrote...)
-	//for ( ; ; )
-	//{
-	//	if (gTimerFunction != -1)
-	//	{
-	//		if (tickcount() > gTimerFire)
-	//		{
-	//			// Don't even have `CallLocalFunction` yet, another early function...
-	//			// Fortunately we have YSI and amx_assembly.
-	//			CallFunction(GetPublicAddressFromIndex(gTimerFunction), gTimerParam);
-	//			gTimerFunction = -1;
-	//		}
-	//	}
-	//}
 }
 
 public OnGameModeInit()
 {
-    print("OnGameModeInit");
     AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
     return 1;
 }
@@ -84,7 +31,6 @@ forward SendTestMessage();
 
 public OnPlayerConnect(playerid)
 {
-    print("OnPlayerConnect");
     SendClientMessage(playerid, 0xFF0000FF, "This is Cman's test open.mp server.");
 }
 
@@ -254,7 +200,7 @@ PTEST__ EnableVehicleFriendlyFire(playerid)
 // XXX: Does not work yet
 PTEST__ SetTimer(playerid)
 {
-    SetTimer("SendTestMessage", 5000, false);
+    //SetTimer("SendTestMessage", 5000, false);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
@@ -262,14 +208,14 @@ PTEST__ SetTimer(playerid)
 // XXX: Does not work yet
 PTEST__ SetTimerEx(playerid)
 {
-    SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid);
+    //SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
 
 public SendTestMessage()
 {
-    SendClientMessageToAll(-1, "Timer was processed");
+    //SendClientMessageToAll(-1, "Timer was processed");
 }
 
 public SendTestMessagePID(playerid)

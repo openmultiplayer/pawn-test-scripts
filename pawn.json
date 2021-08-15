@@ -5,8 +5,7 @@
 	"output": "gamemodes/test.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
-		"pawn-lang/YSI-Includes",
-		"zeex/amx_assembly"
+		"pawn-lang/YSI-Includes"
 	],
 	"local": true,
 	"runtime": {
