@@ -1,4 +1,9 @@
 all: test.amx
 
+.PHONY: run
+
+run:
+	./omp-server gamemodes/test.amx
+
 test.amx: test.pwn
-	pawncc -d2 test.pwn
+	sampctl package build
