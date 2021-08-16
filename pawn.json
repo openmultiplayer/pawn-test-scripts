@@ -1,5 +1,5 @@
 {
-	"user": "Y-Less",
+	"user": "openmultiplayer",
 	"repo": "pawn-test-scripts",
 	"entry": "test.pwn",
 	"output": "gamemodes/test.amx",
