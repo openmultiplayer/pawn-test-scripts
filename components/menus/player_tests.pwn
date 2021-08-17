@@ -1,50 +1,82 @@
 // Menus component player test suite
 
-PTEST__ ShowAndHideMenuForPlayer(playerid)
+PTEST_INIT__ M_04_ShowMenuForPlayer(playerid)
 {
     g_iMenu = CreateMenu("Simple menu test", 0, 200.0, 100.0, 150.0, 150.0);
-    ASSERT_EQ(ShowMenuForPlayer(INVALID_MENU, playerid), 0);
-    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
+}
+PTEST__ M_04_ShowMenuForPlayer(playerid)
+{
     ASSERT_EQ(ShowMenuForPlayer(g_iMenu, playerid), 1);
     ASK("Can you see the menu on your screen?");
+    ASSERT_EQ(ShowMenuForPlayer(INVALID_MENU, playerid), 0);
+    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
 }
-PTEST_CLOSE__ ShowAndHideMenuForPlayer(playerid)
+PTEST_CLOSE__ M_04_ShowMenuForPlayer(playerid)
 {
-    ASSERT_EQ(HideMenuForPlayer(INVALID_MENU, playerid), 0);
-    ASSERT_EQ(HideMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
-    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), 1);
     DestroyMenu(g_iMenu);
-    ASK("Is the menu hidden?");
 }
 
-PTEST__ GetPlayerMenu(playerid)
+
+PTEST_INIT__ M_05_HideMenuForPlayer(playerid)
+{
+    g_iMenu = CreateMenu("Simple menu test", 0, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_05_HideMenuForPlayer(playerid)
+{
+    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), 1);
+    ASK("Is the menu hidden?");
+    ASSERT_EQ(HideMenuForPlayer(INVALID_MENU, playerid), 0);
+    ASSERT_EQ(HideMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
+}
+PTEST_CLOSE__ M_05_HideMenuForPlayer(playerid)
+{
+    DestroyMenu(g_iMenu);
+}
+
+
+PTEST_INIT__ M_06_GetPlayerMenu(playerid)
 {
     g_iMenu = CreateMenu("Get menu test", 0, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_06_GetPlayerMenu(playerid)
+{
+    ASSERT_EQ(GetPlayerMenu(INVALID_PLAYER_ID), INVALID_MENU);
     ShowMenuForPlayer(g_iMenu, playerid);
     ASSERT_EQ(GetPlayerMenu(playerid), g_iMenu);
     HideMenuForPlayer(g_iMenu, playerid);
     ASSERT_EQ(GetPlayerMenu(playerid), INVALID_MENU);
+}
+PTEST_CLOSE__ M_06_GetPlayerMenu(playerid)
+{
     DestroyMenu(g_iMenu);
 }
 
-PTEST__ SetMenuColumnHeader(playerid)
+
+PTEST_INIT__ M_07_SetMenuColumnHeader(playerid)
 {
     g_iMenu = CreateMenu("Column headers test", 2, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_07_SetMenuColumnHeader(playerid)
+{
     // TODO: Add open.mp assertions for SetMenuColumnHeader
-    SetMenuColumnHeader(g_iMenu, 0, "Col 0");
-    SetMenuColumnHeader(g_iMenu, 1, "Col 1");
+    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 0, "Col 0"), 1);
+    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 1, "Col 1"), 1);
     ShowMenuForPlayer(g_iMenu, playerid);
     ASK("Can you see the column headers \"Col 0\" and \"Col 1\" in the menu?");
 }
-PTEST_CLOSE__ SetMenuColumnHeader(playerid)
+PTEST_CLOSE__ M_07_SetMenuColumnHeader(playerid)
 {
     HideMenuForPlayer(g_iMenu, playerid);
     DestroyMenu(g_iMenu);
 }
 
-PTEST__ AddMenuItem(playerid)
+
+PTEST_INIT__ M_08_AddMenuItem(playerid)
 {
     g_iMenu = CreateMenu("Menu items test", 2, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_08_AddMenuItem(playerid)
+{
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");
     // FIXME: Return row index from AddMenuItem on success
@@ -57,15 +89,19 @@ PTEST__ AddMenuItem(playerid)
     ShowMenuForPlayer(g_iMenu, playerid);
     ASK("Can you see the menu items in the correct position?");
 }
-PTEST_CLOSE__ AddMenuItem(playerid)
+PTEST_CLOSE__ M_08_AddMenuItem(playerid)
 {
     HideMenuForPlayer(g_iMenu, playerid);
     DestroyMenu(g_iMenu);
 }
 
-PTEST__ DisableMenuRow(playerid)
+
+PTEST_INIT__ M_09_DisableMenuRow(playerid)
 {
     g_iMenu = CreateMenu("Disable rows test", 2, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_09_DisableMenuRow(playerid)
+{
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");
     AddMenuItem(g_iMenu, 0, "Col 0, Row 0");
@@ -80,15 +116,19 @@ PTEST__ DisableMenuRow(playerid)
     ShowMenuForPlayer(g_iMenu, playerid);
     ASK("Are the menu items \"Col 0, Row 2\" and \"Col 1, Row 2\" disabled?");
 }
-PTEST_CLOSE__ DisableMenuRow(playerid)
+PTEST_CLOSE__ M_09_DisableMenuRow(playerid)
 {
     HideMenuForPlayer(g_iMenu, playerid);
     DestroyMenu(g_iMenu);
 }
 
-PTEST__ DisableMenu(playerid)
+
+PTEST_INIT__ M_10_DisableMenu(playerid)
 {
     g_iMenu = CreateMenu("Disable menu test", 2, 200.0, 100.0, 150.0, 150.0);
+}
+PTEST__ M_10_DisableMenu(playerid)
+{
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");
     AddMenuItem(g_iMenu, 0, "Col 0, Row 0");
@@ -102,7 +142,7 @@ PTEST__ DisableMenu(playerid)
     ShowMenuForPlayer(g_iMenu, playerid);
     ASK("Are all the menu items disabled?");
 }
-PTEST_CLOSE__ DisableMenu(playerid)
+PTEST_CLOSE__ M_10_DisableMenu(playerid)
 {
     HideMenuForPlayer(g_iMenu, playerid);
     DestroyMenu(g_iMenu);

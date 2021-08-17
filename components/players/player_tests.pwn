@@ -5,14 +5,16 @@
 forward SendTestMessagePID(playerid);
 forward SendTestMessage();
 
-PTEST__ SendClientMessage(playerid)
+
+PTEST__ P_01_SendClientMessage(playerid)
 {
     ASSERT_EQ(SendClientMessage(playerid, -1, TEST_MESSAGE), 1);
     ASSERT_EQ(SendClientMessage(playerid + 999, -1, TEST_MESSAGE), 0);
     ASK("Can you see the client message " TEST_MESSAGE "?");
 }
 
-PTEST__ SetPlayerCameraPosLookAt(playerid)
+
+PTEST__ P_02_SetPlayerCameraPosLookAt(playerid)
 {
     ASSERT_EQ(SetPlayerCameraPos(playerid, 10, -10, 2), 1);
     ASSERT_EQ(SetPlayerCameraLookAt(playerid, 0, 0, 0), 1);
@@ -20,34 +22,37 @@ PTEST__ SetPlayerCameraPosLookAt(playerid)
     ASSERT_EQ(SetPlayerCameraLookAt(playerid + 999, 0, 0, 0), 0);
     ASK("Are you looking at the middle of Blueberry Farm?");
 }
-
-PTEST_CLOSE__ SetPlayerCameraPosLookAt(playerid)
+PTEST_CLOSE__ P_02_SetPlayerCameraPosLookAt(playerid)
 {
     SetCameraBehindPlayer(playerid);
 }
 
-PTEST__ SetCameraBehindPlayer(playerid)
+
+PTEST__ P_03_SetCameraBehindPlayer(playerid)
 {
     ASSERT_EQ(SetCameraBehindPlayer(playerid), 1);
     ASSERT_EQ(SetCameraBehindPlayer(playerid + 999), 0);
     ASK("Is the camera behind you?");
 }
 
-PTEST__ SetPlayerDrunkLevel(playerid)
+
+PTEST__ P_04_SetPlayerDrunkLevel(playerid)
 {
     ASSERT_EQ(SetPlayerDrunkLevel(playerid, 50000), 1);
     ASSERT_EQ(SetPlayerDrunkLevel(playerid + 999, 50000), 0);
     ASK("Are you drunk?");
 }
 
-PTEST__ SetPlayerDrunkLevelToZero(playerid)
+
+PTEST__ P_05_SetPlayerDrunkLevelToZero(playerid)
 {
     ASSERT_EQ(SetPlayerDrunkLevel(playerid, 0), 1);
     ASSERT_EQ(SetPlayerDrunkLevel(playerid + 999, 0), 0);
     ASK("Are you sober?");
 }
 
-PTEST__ SetPlayerInteriorAndPos(playerid)
+
+PTEST__ P_06_SetPlayerInteriorAndPos(playerid)
 {
     ASSERT_EQ(SetPlayerInterior(playerid, 17), 1);
     ASSERT_EQ(SetPlayerPos(playerid, -25.7220, -187.8216, 1003.5469), 1);
@@ -55,81 +60,80 @@ PTEST__ SetPlayerInteriorAndPos(playerid)
     ASSERT_EQ(SetPlayerPos(playerid + 999, -25.7220, -187.8216, 1003.5469), 0);
     ASK("Are you in some shop?");
 }
-
-PTEST_CLOSE__ SetPlayerInteriorAndPos(playerid)
+PTEST_CLOSE__ P_06_SetPlayerInteriorAndPos(playerid)
 {
     SetPlayerInterior(playerid, 0);
     SetPlayerPos(playerid, 1010.0, 1010.0, 50.0);
 }
 
-PTEST__ SetPlayerWantedLevel(playerid)
+
+PTEST__ P_07_SetPlayerWantedLevel(playerid)
 {
     ASSERT_EQ(SetPlayerWantedLevel(playerid, 6), 1);
     ASSERT_EQ(SetPlayerWantedLevel(playerid + 999, 6), 0);
     ASK("Do you have a wanted level of 6?");
 }
-
-PTEST_CLOSE__ SetPlayerWantedLevel(playerid)
+PTEST_CLOSE__ P_07_SetPlayerWantedLevel(playerid)
 {
     SetPlayerWantedLevel(playerid, 0);
 }
 
-PTEST__ SetPlayerWeather(playerid)
+
+PTEST__ P_08_SetPlayerWeather(playerid)
 {
     ASSERT_EQ(SetPlayerWeather(playerid, 16), 1);
     ASSERT_EQ(SetPlayerWeather(playerid + 999, 16), 0);
     ASK("Is the weather rainy?");
 }
-
-PTEST_CLOSE__ SetPlayerWeather(playerid)
+PTEST_CLOSE__ P_08_SetPlayerWeather(playerid)
 {
     SetPlayerWeather(playerid, 0);
 }
 
-PTEST__ SetPlayerSkin(playerid)
+
+PTEST__ P_09_SetPlayerSkin(playerid)
 {
     ASSERT_EQ(SetPlayerSkin(playerid, 1), 1);
     ASSERT_EQ(SetPlayerSkin(playerid + 999, 1), 0);
     ASK("Did your skin change?");
 }
-
-PTEST_CLOSE__ SetPlayerSkin(playerid)
+PTEST_CLOSE__ P_09_SetPlayerSkin(playerid)
 {
     SetPlayerSkin(playerid, 0);
 }
 
-PTEST_INIT__ SetPlayerShopName(playerid)
+
+PTEST_INIT__ P_10_SetPlayerShopName(playerid)
 {
     SetPlayerInterior(playerid, 5);
     SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
 }
-
-PTEST__ SetPlayerShopName(playerid)
+PTEST__ P_10_SetPlayerShopName(playerid)
 {
     ASSERT_EQ(SetPlayerShopName(playerid, "FDPIZA"), 1);
     ASSERT_EQ(SetPlayerShopName(playerid + 999, "FDPIZA"), 0);
     ASK("Are you buying a pizza?");
 }
-
-PTEST_CLOSE__ SetPlayerShopName(playerid)
+PTEST_CLOSE__ P_10_SetPlayerShopName(playerid)
 {
     SetPlayerInterior(playerid, 0);
     SetPlayerPos(playerid, 1000.0, 1000.0, 50.0);
 }
 
-PTEST__ GivePlayerMoney(playerid)
+
+PTEST__ P_11_GivePlayerMoney(playerid)
 {
     ASSERT_EQ(GivePlayerMoney(playerid, 1000000), 1);
     ASSERT_EQ(GivePlayerMoney(playerid + 999, 1000000), 0);
     ASK("Are you suddenly rich ($1000000)?");
 }
-
-PTEST_CLOSE__ GivePlayerMoney(playerid)
+PTEST_CLOSE__ P_11_GivePlayerMoney(playerid)
 {
     GivePlayerMoney(playerid, -1000000);
 }
 
-PTEST__ GetPlayerPos(playerid)
+
+PTEST__ P_12_GetPlayerPos(playerid)
 {
     new Float:x, Float:y, Float:z, ret[128];
     ASSERT_EQ(GetPlayerPos(playerid, x, y, z), 1);
@@ -139,7 +143,8 @@ PTEST__ GetPlayerPos(playerid)
     ASK("Does your position in a client message look nearly correct? (expected 1000 1000 50)");
 }
 
-PTEST__ CreateExplosion(playerid)
+
+PTEST__ P_13_CreateExplosion(playerid)
 {
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
@@ -148,7 +153,8 @@ PTEST__ CreateExplosion(playerid)
     ASK("Was there an explosion in front of you?");
 }
 
-PTEST__ GetPlayerName(playerid)
+
+PTEST__ P_14_GetPlayerName(playerid)
 {
     new name[MAX_PLAYER_NAME + 1], ret[128];
     ASSERT_EQ(GetPlayerName(playerid, name, sizeof(name)), 1);
@@ -158,38 +164,40 @@ PTEST__ GetPlayerName(playerid)
     ASK("Did you see your name in a client message?");
 }
 
-PTEST__ SendDeathMessage(playerid)
+
+PTEST__ P_15_SendDeathMessage(playerid)
 {
     ASSERT_EQ(SendDeathMessage(INVALID_PLAYER_ID, playerid, 10), 1);
     ASSERT_EQ(SendDeathMessage(playerid, playerid + 999, 5), 0);
     ASK("Do you see one death message?");
 }
 
-PTEST__ PlayAudioStreamForPlayer(playerid)
+
+PTEST__ P_16_PlayAudioStreamForPlayer(playerid)
 {
     ASSERT_EQ(PlayAudioStreamForPlayer(playerid, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true), 1);
     ASSERT_EQ(PlayAudioStreamForPlayer(playerid + 999, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true), 0);
     ASK("Is there a radio station playing?");
 }
-
-PTEST_CLOSE__ PlayAudioStreamForPlayer(playerid)
+PTEST_CLOSE__ P_16_PlayAudioStreamForPlayer(playerid)
 {
     StopAudioStreamForPlayer(playerid);
 }
 
-PTEST__ SetPlayerHealth(playerid)
+
+PTEST__ P_17_SetPlayerHealth(playerid)
 {
     ASSERT_EQ(SetPlayerHealth(playerid, 50.0), 1);
     ASSERT_EQ(SetPlayerHealth(playerid + 999, 50.0), 0);
     ASK("Is your health at half?");
 }
-
-PTEST_CLOSE__ SetPlayerHealth(playerid)
+PTEST_CLOSE__ P_17_SetPlayerHealth(playerid)
 {
     SetPlayerHealth(playerid, 100.0);
 }
 
-PTEST__ GetPlayerHealth(playerid)
+
+PTEST__ P_18_GetPlayerHealth(playerid)
 {
     new ret[128], Float:hp;
     ASSERT_EQ(GetPlayerHealth(playerid, hp), 1);
@@ -199,39 +207,41 @@ PTEST__ GetPlayerHealth(playerid)
     ASK("Do you see your health displayed in a client message?");
 }
 
-PTEST_INIT__ EnableVehicleFriendlyFire(playerid)
+
+PTEST_INIT__ P_19_EnableVehicleFriendlyFire(playerid)
 {
     // TODO: Set players (playerid and +1) team, give them a weapon
 }
-
-// XXX: Does not work yet
-PTEST__ EnableVehicleFriendlyFire(playerid)
+PTEST__ P_19_EnableVehicleFriendlyFire(playerid)
 {
+    // XXX: Does not work yet
     ASSERT_EQ(EnableVehicleFriendlyFire(), 1);
     SendClientMessage(playerid, -1, "Vehicle friendly fire is enabled");
     ASK("Is vehicle friendly fire on?");
 }
-
-PTEST_CLOSE__ EnableVehicleFriendlyFire(playerid)
+PTEST_CLOSE__ P_19_EnableVehicleFriendlyFire(playerid)
 {
     // TODO: Revert state set in PTEST_INIT__
 }
 
-// XXX: Does not work yet
-PTEST__ SetTimer(playerid)
+
+PTEST__ P_20_SetTimer(playerid)
 {
+    // XXX: Does not work yet
     //ASSERT_EQ(SetTimer("SendTestMessage", 5000, false), 1);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
 
-// XXX: Does not work yet
-PTEST__ SetTimerEx(playerid)
+
+PTEST__ P_21_SetTimerEx(playerid)
 {
+    // XXX: Does not work yet
     //ASSERT_EQ(SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid), 1);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
+
 
 public SendTestMessage()
 {

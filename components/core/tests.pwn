@@ -1,6 +1,6 @@
-// Players component test suite
+// Core component test suite
 
-TEST__ format()
+TEST__ C_1_format()
 {
     new ret[128];
     ASSERT_EQ(format(ret, sizeof(ret), "Test formatting: %s", "blibli"), 1);
@@ -14,7 +14,7 @@ TEST__ format()
     ret[0] = '\0';
 }
 
-TEST__ strval()
+TEST__ C_2_strval()
 {
     ASSERT_EQ(strval("0"), 0);
     ASSERT_EQ(strval("5"), 5);
@@ -25,7 +25,7 @@ TEST__ strval()
     ASSERT_EQ(strval("-5.0"), -5);
 }
 
-TEST__ floatstr()
+TEST__ C_3_floatstr()
 {
     // Not implemented (yet) in master
     //ASSERT_EQ(floatstr("5.0"), 5.0);

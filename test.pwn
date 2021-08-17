@@ -18,6 +18,7 @@
 #include <YSI_Core\y_testing>
 
 // Test suites
+#include "components/core/main.pwn"
 #include "components/menus/main.pwn"
 #include "components/players/main.pwn"
 
