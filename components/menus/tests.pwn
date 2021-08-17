@@ -28,10 +28,11 @@ TEST_CLOSE__ IsValidMenu()
 
 TEST__ DestroyMenu()
 {
-    ASSERT_EQ(DestroyMenu(INVALID_MENU), false);
     g_iMenu = CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0);
     ASSERT_EQ(DestroyMenu(g_iMenu), true);
     ASSERT_EQ(DestroyMenu(g_iMenu), false);
+    ASSERT_EQ(DestroyMenu(0), false);
+    ASSERT_EQ(DestroyMenu(INVALID_MENU), false);
 }
 
 // vim: se ft=cpp:
