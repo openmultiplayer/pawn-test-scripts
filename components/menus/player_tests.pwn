@@ -10,8 +10,9 @@ PTEST__ ShowAndHideMenuForPlayer(playerid)
 }
 PTEST_CLOSE__ ShowAndHideMenuForPlayer(playerid)
 {
-    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), 1);
+    ASSERT_EQ(HideMenuForPlayer(INVALID_MENU, playerid), 0);
     ASSERT_EQ(HideMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
+    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), 1);
     DestroyMenu(g_iMenu);
     ASK("Is the menu hidden?");
 }
