@@ -107,3 +107,5 @@ PTEST_CLOSE__ DisableMenu(playerid)
     HideMenuForPlayer(g_iMenu, playerid);
     DestroyMenu(g_iMenu);
 }
+
+// vim: se ft=cpp:

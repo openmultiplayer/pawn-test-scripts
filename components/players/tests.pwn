@@ -1,0 +1,34 @@
+// Players component test suite
+
+TEST__ format()
+{
+    new ret[128];
+    ASSERT_EQ(format(ret, sizeof(ret), "Test formatting: %s", "blibli"), 1);
+    ASSERT_SAME(ret, "Test formatting: blibli");
+    ret[0] = '\0';
+    ASSERT_EQ(format(ret, sizeof(ret), "Failed formatting: %s", "blibli", "blabla"), 0);
+    ASSERT_SAME(ret, "");
+    ret[0] = '\0';
+    ASSERT_EQ(format(ret, sizeof(ret), "Failed formatting: %s %s", "blibli"), 0);
+    ASSERT_SAME(ret, "");
+    ret[0] = '\0';
+}
+
+TEST__ strval()
+{
+    ASSERT_EQ(strval("0"), 0);
+    ASSERT_EQ(strval("5"), 5);
+    ASSERT_EQ(strval("5.0"), 5);
+    ASSERT_EQ(strval(""), 0);
+    ASSERT_EQ(strval("invalid_integer"), 0);
+    ASSERT_EQ(strval("-5"), -5);
+    ASSERT_EQ(strval("-5.0"), -5);
+}
+
+TEST__ floatstr()
+{
+    // Not implemented (yet) in master
+    //ASSERT_EQ(floatstr("5.0"), 5.0);
+}
+
+// vim: se ft=cpp:

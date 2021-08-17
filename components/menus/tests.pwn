@@ -33,3 +33,5 @@ TEST__ DestroyMenu()
     ASSERT_EQ(DestroyMenu(g_iMenu), true);
     ASSERT_EQ(DestroyMenu(g_iMenu), false);
 }
+
+// vim: se ft=cpp:
