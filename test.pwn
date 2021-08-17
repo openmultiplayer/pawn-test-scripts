@@ -17,6 +17,9 @@
 
 #include <YSI_Core\y_testing>
 
+// Test suites
+#include "components/menus/main.pwn"
+
 #define TEST_MESSAGE "HELLO, WORLD!"
 
 forward SendTestMessagePID(playerid);
