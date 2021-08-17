@@ -2,7 +2,7 @@
 
 TEST__ CreateMenu()
 {
-    for (new i; i < _:MAX_MENUS; i++)
+    for (new i = 1; i < _:MAX_MENUS; i++)
         ASSERT_EQ(CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0), Menu:i);
 
     ASSERT_EQ(CreateMenu("This should fail", 2, 200.0, 100.0, 150.0, 150.0), -1); // FIXME: Returns INVALID_MENU instead
