@@ -1,4 +1,7 @@
 #include <a_samp>
+#if USE_FIXES
+	#include <fixes>
+#endif
 
 // Run tests.
 #define RUN_TESTS
