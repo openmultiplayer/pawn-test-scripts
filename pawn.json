@@ -1,8 +1,8 @@
 {
 	"user": "openmultiplayer",
 	"repo": "pawn-test-scripts",
-	"entry": "test.pwn",
-	"output": "gamemodes/test.amx",
+	"entry": "unit-tests.pwn",
+	"output": "gamemodes/unit-tests.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"pawn-lang/YSI-Includes"
