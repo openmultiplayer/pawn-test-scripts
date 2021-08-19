@@ -13,8 +13,16 @@
 		"mode": "y_testing",
 		"rcon_password": "password",
 		"port": 7777,
-		"hostname": "SA-MP Server",
-		"maxplayers": 50,
-		"language": ""
+		"maxplayers": 25,
+		"language": "",
+		"lanmode": true,
+		"mapname": "Tester City",
+		"extra": {
+			"server_name": "OMP Test Server",
+			"lag_compensation": "1",
+			"in_car_rate": "50",
+			"my_custom_var": "Hello World",
+			"try$this-varname": "and%value!!!"
+		}
 	}
 }
