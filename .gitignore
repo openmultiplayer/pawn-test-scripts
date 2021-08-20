@@ -40,6 +40,9 @@ logs/
 server_log.txt
 crashinfo.txt
 
+# Database files
+*.db
+
 # Ban list
 samp.ban
 
