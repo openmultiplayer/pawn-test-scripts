@@ -25,6 +25,7 @@
 #include "components/databases/main.pwn"
 #include "components/menus/main.pwn"
 #include "components/players/main.pwn"
+#include "components/consolevars/main.pwn"
 
 main()
 {
