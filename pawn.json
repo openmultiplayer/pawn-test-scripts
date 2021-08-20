@@ -10,7 +10,7 @@
 	],
 	"build": {
 		"constants": {
-			"USE_FIXES": "1"
+			"USE_FIXES": "0"
 		}
 	},
 	"local": true,
