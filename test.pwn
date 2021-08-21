@@ -6,7 +6,7 @@
 // Run tests.
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-//#define JUST_TEST TestName
+// #define JUST_TEST TestName
 
 // Minimal YSI.
 #define YSI_NO_DIALOG_ASK
@@ -24,6 +24,7 @@
 #include "components/core/main.pwn"
 #include "components/databases/main.pwn"
 #include "components/menus/main.pwn"
+#include "components/actors/main.pwn"
 #include "components/players/main.pwn"
 #include "components/consolevars/main.pwn"
 
