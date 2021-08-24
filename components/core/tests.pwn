@@ -5,13 +5,6 @@ TEST__ C_1_format()
     new ret[128];
     ASSERT_EQ(format(ret, sizeof(ret), "Test formatting: %s", "blibli"), 1);
     ASSERT_SAME(ret, "Test formatting: blibli");
-    ret[0] = '\0';
-    ASSERT_EQ(format(ret, sizeof(ret), "Failed formatting: %s", "blibli", "blabla"), 0);
-    ASSERT_SAME(ret, "");
-    ret[0] = '\0';
-    ASSERT_EQ(format(ret, sizeof(ret), "Failed formatting: %s %s", "blibli"), 0);
-    ASSERT_SAME(ret, "");
-    ret[0] = '\0';
 }
 
 TEST__ C_2_strval()

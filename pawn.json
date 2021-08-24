@@ -1,8 +1,6 @@
 {
 	"user": "openmultiplayer",
 	"repo": "pawn-test-scripts",
-	"entry": "test.pwn",
-	"output": "gamemodes/test.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"pawn-lang/YSI-Includes",
@@ -13,6 +11,23 @@
 			"USE_FIXES": "0"
 		}
 	},
+	"builds": [
+		{
+			"name": "main",
+			"input": "test.pwn",
+			"output": "gamemodes/test.amx"
+		},
+		{
+			"name": "format_1",
+			"input": "single_tests/format_1.pwn",
+			"output": "single_tests/format_1.amx"
+		},
+		{
+			"name": "format_2",
+			"input": "single_tests/format_2.pwn",
+			"output": "single_tests/format_2.amx"
+		}
+	],
 	"local": true,
 	"runtime": {
 		"version": "0.3.7",
@@ -24,7 +39,7 @@
 		"language": "",
 		"mapname": "Tester City",
 		"weburl": "www.sa-mp.com",
-		"gamemodetext": "Unknown",
+		"gamemodetext": "unit-tests",
 		"announce": true,
 		"lanmode": true,
 		"query": true,
