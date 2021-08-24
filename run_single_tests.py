@@ -1,3 +1,4 @@
+import ast
 import json
 import pathlib
 import queue
@@ -126,10 +127,10 @@ def main():
 
     for source_file in sorted(folder.glob('*.pwn')):
         module = source_file.stem
-        json_data_path = folder / f'{module}.json'
+        meta_data_path = folder / f'{module}.py'
 
-        if not json_data_path.exists():
-            print(f'No JSON test data found for {source_file}, skipping...')
+        if not meta_data_path.exists():
+            print(f'No test metadata found for {source_file}, skipping...')
             continue
 
         amx_path = folder / f'{module}.amx'
@@ -150,8 +151,7 @@ def main():
             print(f'File {source_file} failed to build, aborting.')
             return 1
 
-        with json_data_path.open() as json_data_file:
-            expected_data = json.load(json_data_file)
+        expected_data = ast.literal_eval(meta_data_path.read_text())
 
         print(f'Running tests for {module}...')
 
@@ -169,7 +169,9 @@ def main():
                 'stderr',
             ):
                 output = program.get_stream_as_string(stream_name).rstrip('\n')
-                expected_pattern = expected_data[program_name][stream_name]
+                expected_pattern = expected_data[
+                    program_name
+                ][stream_name].strip()
                 expected_output_lines = expected_pattern.count('\n') + 1
                 useful_lines = output.split('\n')[-expected_output_lines:]
                 useful_output = '\n'.join(useful_lines)
