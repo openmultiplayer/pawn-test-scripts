@@ -1,3 +1,10 @@
 {
-    "output": "\\[\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z\\] \\[Error\\] `format` failed - too many arguments given\n\\[\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z\\] \\[Error\\] Native function failed"
+    "omp": {
+        "stderr": "\\[\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z\\] \\[Error\\] `format` failed - too many arguments given\n\\[\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z\\] \\[Error\\] Native function failed",
+        "stdout": "\\[\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z\\] \\[Info\\] \\*\\*\\* Test format_failure start"
+    },
+    "pawncc": {
+        "stderr": "",
+        "stdout": "Pawn compiler 3\\.10\\.10\t \t \tCopyright \\(c\\) 1997-2006, ITB CompuPhase"
+    }
 }
