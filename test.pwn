@@ -27,6 +27,7 @@
 #include "components/actors/main.pwn"
 #include "components/players/main.pwn"
 #include "components/consolevars/main.pwn"
+#include "components/gangzones/main.pwn"
 
 main()
 {
