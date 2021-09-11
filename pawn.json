@@ -14,6 +14,7 @@
 	"builds": [
 		{
 			"name": "main",
+			"includes": ["."],
 			"input": "test.pwn",
 			"output": "gamemodes/test.amx"
 		},
