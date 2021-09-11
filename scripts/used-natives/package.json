@@ -1,0 +1,15 @@
+{
+  "name": "used-natives",
+  "version": "0.1.0",
+  "description": "Lists the used natives",
+  "main": "index.mjs",
+  "author": "pkfln",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "cli-progress": "^3.9.0",
+    "node-amx": "^0.1.1"
+  }
+}

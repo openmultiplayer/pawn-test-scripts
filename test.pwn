@@ -43,6 +43,7 @@ public OnGameModeInit()
 public OnPlayerConnect(playerid)
 {
     SendClientMessage(playerid, 0xFF0000FF, "Welcome to your test open.mp server.");
+    return 1;
 }
 
 // vim: se ft=cpp:
