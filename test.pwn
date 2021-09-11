@@ -3,6 +3,8 @@
 	#include <fixes>
 #endif
 
+#pragma warning disable 200
+
 // Run tests.
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
@@ -27,6 +29,7 @@
 #include "components/actors/main.pwn"
 #include "components/players/main.pwn"
 #include "components/consolevars/main.pwn"
+#include "components/gangzones/main.pwn"
 
 main()
 {
