@@ -11,7 +11,7 @@ try {
   const nativesList = JSON.parse(await fs.readFile('natives.json', 'utf-8'));
   const amx = await AMX.default.fromFile(amxPath);
   const natives = [...new Set(amx.natives.map(v => v.name))];
-  const missingNatives = nativesList.filter(v => !natives.includes(v));
+  const missingNatives = nativesList.filter(v => !natives.map(v => v.toLowerCase()).includes(v.toLowerCase()));
 
   console.log('Coverage:');
   const progress = new cliProgress.SingleBar({
