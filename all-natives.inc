@@ -1,1514 +1,737 @@
-new Float:fvar, ivar, svar[32];
-
-
-native CreateVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
-
-
-native DestroyVehicle(0);
-
-
-native IsVehicleStreamedIn(0, 0);
-
-
-native GetVehiclePos(0, &0.0, &0.0, &0.0);
-
-
-native SetVehiclePos(0, 0.0, 0.0, 0.0);
-
-
-native GetVehicleZAngle(0, &0.0);
-
-
-native GetVehicleRotationQuat(0, &0.0, &0.0, &0.0, &0.0);
-
-
-native GetVehicleDistanceFromPoint(0, 0.0, 0.0, 0.0);
-
-
-native SetVehicleZAngle(0, 0.0);
-
-
-native SetVehicleParamsForPlayer(0, 0, 0, 0);
-
-
-native ManualVehicleEngineAndLights();
-
-
-native SetVehicleParamsEx(0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0);
-
-
-native GetVehicleParamsEx(0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0);
-
-
-native GetVehicleParamsSirenState(0);
-
-
-native SetVehicleParamsCarDoors(0, 0, 0, 0, 0);
-
-
-native GetVehicleParamsCarDoors(0, &0, &0, &0, &0);
-
-
-native SetVehicleParamsCarWindows(0, 0, 0, 0, 0);
-
-
-native GetVehicleParamsCarWindows(0, &0, &0, &0, &0);
-
-
-native SetVehicleToRespawn(0);
-
-
-native LinkVehicleToInterior(0, 0);
-
-
-native AddVehicleComponent(0, 0);
-
-
-native RemoveVehicleComponent(0, 0);
-
-
-native ChangeVehicleColor(0, 0, 0);
-
-
-native ChangeVehiclePaintjob(0, 0);
-
-
-native SetVehicleHealth(0, 0.0);
-
-
-native GetVehicleHealth(0, &0.0);
-
-
-native AttachTrailerToVehicle(0, 0);
-
-
-native DetachTrailerFromVehicle(0);
-
-
-native IsTrailerAttachedToVehicle(0);
-
-
-native GetVehicleTrailer(0);
-
-
-native SetVehicleNumberPlate(0, "");
-
-
-native GetVehicleModel(0);
-
-
-native GetVehicleComponentInSlot(0, CARMODTYPE:0);
-
-
-native CARMODTYPE:GetVehicleComponentType(0);
-
-
-native RepairVehicle(0);
-
-
-native GetVehicleVelocity(0, &0.0, &0.0, &0.0);
-
-
-native SetVehicleVelocity(0, 0.0, 0.0, 0.0);
-
-
-native SetVehicleAngularVelocity(0, 0.0, 0.0, 0.0);
-
-
-native GetVehicleDamageStatus(0, &0, &0, &0, &0);
-
-
-native UpdateVehicleDamageStatus(0, 0, 0, 0, 0);
-
-
-native GetVehicleModelInfo(0, VEHICLE_MODEL_INFO:0, &0.0, &0.0, &0.0);
-
-
-native SetVehicleVirtualWorld(0, 0);
-
-
-native GetVehicleVirtualWorld(0);
-
-
-native IsValidVehicle(0);
-
-
-public OnTrailerUpdate(0, 0) {}
-
-
-public OnVehicleSirenStateChange(0, 0, 0) {}
-
-
-public OnVehicleStreamIn(0, 0) {}
-
-
-public OnVehicleStreamOut(0, 0) {}
-
-
-public OnPlayerEnterVehicle(0, 0, 0) {}
-
-
-public OnPlayerExitVehicle(0, 0) {}
-
-
-public OnVehicleSpawn(0) {}
-
-
-public OnVehicleDeath(0, 0) {}
-
-
-public OnVehicleMod(0, 0, 0) {}
-
-
-public OnEnterExitModShop(0, 0, 0) {}
-
-
-public OnVehiclePaintjob(0, 0, 0) {}
-
-
-public OnVehicleRespray(0, 0, 0, 0) {}
-
-
-public OnVehicleDamageStatusUpdate(0, 0) {}
-
-
-public OnUnoccupiedVehicleUpdate(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
-
-
-
-native DB:DB_Open("");
-
-
-
-
-
-native DB_Close(DB:0);
-
-
-
-
-
-native DBResult:DB_Query(DB:0, "");
-
-
-
-
-
-native DB_FreeResult(DBResult:0);
-
-
-
-
-
-native DB_NumRows(DBResult:0);
-
-
-
-
-
-native DB_NextRow(DBResult:0);
-
-
-
-
-
-native DB_NumFields(DBResult:0);
-
-
-
-
-
-native DB_FieldName(DBResult:0, 0, output[]);
-
-
-
-
-
-native DB_GetField(DBResult:0, 0, output[]);
-
-
-
-
-
-native DB_GetFieldInt(DBResult:0);
-
-
-
-
-
-native DB_GetFieldFloat(DBResult:0);
-
-
-
-
-
-native DB_GetFieldAssoc(DBResult:0, "", output[]);
-
-
-
-
-
-native DB_GetFieldAssocInt(DBResult:0, "");
-
-
-
-
-
-native DB_GetFieldAssocFloat(DBResult:0, "");
-
-
-
-
-
-native DB_GetMemHandle(DB:0);
-
-
-
-
-
-native DB_GetResultMemHandle(DBResult:0);
-
-
-
-
-
-native DB_DebugOpenFiles();
-
-
-
-
-
-native DB_DebugOpenResults();
-
-
-
-
-
-
-native CreateActor(0, 0.0, 0.0, 0.0, 0.0);
-
-
-native DestroyActor(0);
-
-
-native IsActorStreamedIn(0, 0);
-
-
-native SetActorVirtualWorld(0, 0);
-
-
-native GetActorVirtualWorld(0);
-
-
-native ApplyActorAnimation(0, "", "", 0.0, bool:0, bool:0, bool:0, bool:0, 0);
-
-
-native ClearActorAnimations(0);
-
-
-native SetActorPos(0, 0.0, 0.0, 0.0);
-
-
-native GetActorPos(0, &0.0, &0.0, &0.0);
-
-
-native SetActorFacingAngle(0, 0.0);
-
-
-native GetActorFacingAngle(0, &0.0);
-
-
-native SetActorHealth(0, 0.0);
-
-
-native GetActorHealth(0, &0.0);
-
-
-native SetActorInvulnerable(0);
-
-
-native IsActorInvulnerable(0);
-
-
-native IsValidActor(0);
-
-
-public OnPlayerGiveDamageActor(0, 0, 0.0, 0, 0) {}
-
-
-public OnActorStreamIn(0, 0) {}
-
-
-public OnActorStreamOut(0, 0) {}
-
-
-
-native HTTP(0, HTTP_METHOD:0, "", "", "");
-
-
-
-native CreateObject(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native AttachObjectToVehicle(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native AttachObjectToObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native AttachObjectToPlayer(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native SetObjectPos(0, 0.0, 0.0, 0.0);
-
-
-native GetObjectPos(0, &0.0, &0.0, &0.0);
-
-
-native SetObjectRot(0, 0.0, 0.0, 0.0);
-
-
-native GetObjectRot(0, &0.0, &0.0, &0.0);
-
-
-native GetObjectModel(0);
-
-
-native SetObjectNoCameraCol(0);
-
-
-native IsValidObject(0);
-
-
-native DestroyObject(0);
-
-
-native MoveObject(0, 0.0, 0.0, 0.0, 0.0);
-
-
-native StopObject(0);
-
-
-native IsObjectMoving(0);
-
-
-native EditObject(0, 0);
-
-
-native EditPlayerObject(0, 0);
-
-
-native SelectObject(0);
-
-
-native CancelEdit(0);
-
-
-native CreatePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native AttachPlayerObjectToVehicle(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native SetPlayerObjectPos(0, 0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerObjectPos(0, 0, &0.0, &0.0, &0.0);
-
-
-native SetPlayerObjectRot(0, 0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerObjectRot(0, 0, &0.0, &0.0, &0.0);
-
-
-native GetPlayerObjectModel(0, 0);
-
-
-native SetPlayerObjectNoCameraCol(0, 0);
-
-
-native IsValidPlayerObject(0, 0);
-
-
-native DestroyPlayerObject(0, 0);
-
-
-native MovePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0);
-
-
-native StopPlayerObject(0, 0);
-
-
-native IsPlayerObjectMoving(0, 0);
-
-
-native AttachPlayerObjectToPlayer(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native SetObjectMaterial(0, 0, 0, "", "");
-
-
-native SetPlayerObjectMaterial(0, 0, 0, 0, "", "");
-
-
-native SetObjectMaterialText(0, "");
-
-
-native SetPlayerObjectMaterialText(0, 0, "");
-
-
-native SetObjectsDefaultCameraCol(bool:0);
-
-
-public OnPlayerSelectObject(0, SELECT_OBJECT:0, 0, 0, 0.0, 0.0, 0.0) {}
-
-
-public OnPlayerEditObject(0, 0, 0, EDIT_RESPONSE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
-
-
-public OnPlayerEditAttachedObject(0, EDIT_RESPONSE:0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
-
-
-public OnObjectMoved(0) {}
-
-
-public OnPlayerObjectMoved(0, 0) {}
-
-
-native SetSpawnInfo(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-
-
-native SpawnPlayer(0);
-
-
-native SetPlayerPos(0, 0.0, 0.0, 0.0);
-
-
-native SetPlayerPosFindZ(0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerPos(0, &0.0, &0.0, &0.0);
-
-
-native SetPlayerFacingAngle(0, 0.0);
-
-
-native GetPlayerFacingAngle(0, &0.0);
-
-
-native IsPlayerInRangeOfPoint(0, 0.0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerDistanceFromPoint(0, 0.0, 0.0, 0.0);
-
-
-native IsPlayerStreamedIn(0, 0);
-
-
-native SetPlayerInterior(0, 0);
-
-
-native GetPlayerInterior(0);
-
-
-native SetPlayerHealth(0, 0.0);
-
-
-native GetPlayerHealth(0, &0.0);
-
-
-native SetPlayerArmour(0, 0.0);
-
-
-native GetPlayerArmour(0, &0.0);
-
-
-native SetPlayerAmmo(0, WEAPON:0, 0);
-
-
-native GetPlayerAmmo(0);
-
-
-native WEAPONSTATE:GetPlayerWeaponState(0);
-
-
-native GetPlayerTargetPlayer(0);
-
-
-native GetPlayerTargetActor(0);
-
-
-native SetPlayerTeam(0, 0);
-
-
-native GetPlayerTeam(0);
-
-
-native SetPlayerScore(0, 0);
-
-
-native GetPlayerScore(0);
-
-
-native GetPlayerDrunkLevel(0);
-
-
-native SetPlayerDrunkLevel(0, 0);
-
-
-native SetPlayerColor(0, 0);
-
-
-native GetPlayerColor(0);
-
-
-native SetPlayerSkin(0, 0);
-
-
-native GetPlayerSkin(0);
-
-
-native GetPlayerCustomSkin(0);
-
-
-native GivePlayerWeapon(0, WEAPON:0, 0);
-
-
-native ResetPlayerWeapons(0);
-
-
-native SetPlayerArmedWeapon(0, WEAPON:0);
-
-
-native GetPlayerWeaponData(0, 0, &WEAPON:0, &0);
-
-
-native GivePlayerMoney(0, 0);
-
-
-native ResetPlayerMoney(0);
-
-
-native SetPlayerName(0, "");
-
-
-native GetPlayerMoney(0);
-
-
-native PLAYER_STATE:GetPlayerState(0);
-
-
-native GetPlayerIp(0, ip[]);
-
-
-native GetPlayerPing(0);
-
-
-native WEAPON:GetPlayerWeapon(0);
-
-
-native GetPlayerKeys(0, &KEY:0, &KEY:0, &KEY:0);
-
-
-native GetPlayerName(0, name[]);
-
-
-native SetPlayerTime(0, 0, 0);
-
-
-native GetPlayerTime(0, &0, &0);
-
-
-native TogglePlayerClock(0, bool:0);
-
-
-native SetPlayerWeather(0, 0);
-
-
-native ForceClassSelection(0);
-
-
-native SetPlayerWantedLevel(0, 0);
-
-
-native GetPlayerWantedLevel(0);
-
-
-native SetPlayerFightingStyle(0, FIGHT_STYLE:0);
-
-
-native FIGHT_STYLE:GetPlayerFightingStyle(0);
-
-
-native SetPlayerVelocity(0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerVelocity(0, &0.0, &0.0, &0.0);
-
-
-native PlayCrimeReportForPlayer(0, 0, 0);
-
-
-native PlayAudioStreamForPlayer(0, "");
-
-
-native StopAudioStreamForPlayer(0);
-
-
-native SetPlayerShopName(0, "");
-
-
-native SetPlayerSkillLevel(0, WEAPONSKILL:0, 0);
-
-
-native GetPlayerSurfingVehicleID(0);
-
-
-native GetPlayerSurfingObjectID(0);
-
-
-native RemoveBuildingForPlayer(0, 0, 0.0, 0.0, 0.0, 0.0);
-
-
-native GetPlayerLastShotVectors(0, &0.0, &0.0, &0.0, &0.0, &0.0, &0.0);
-
-
-native SetPlayerAttachedObject(0, 0, 0, 0);
-
-
-native RemovePlayerAttachedObject(0, 0);
-
-
-native IsPlayerAttachedObjectSlotUsed(0, 0);
-
-
-native EditAttachedObject(0, 0);
-
-
-native PlayerText:CreatePlayerTextDraw(0, 0.0, 0.0, "");
-
-
-native PlayerTextDrawDestroy(0, PlayerText:0);
-
-
-native PlayerTextDrawLetterSize(0, PlayerText:0, 0.0, 0.0);
-
-
-native PlayerTextDrawTextSize(0, PlayerText:0, 0.0, 0.0);
-
-
-native PlayerTextDrawAlignment(0, PlayerText:0, TEXT_DRAW_ALIGN:0);
-
-
-native PlayerTextDrawColor(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawUseBox(0, PlayerText:0, bool:0);
-
-
-native PlayerTextDrawBoxColor(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawSetShadow(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawSetOutline(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawBackgroundColor(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawFont(0, PlayerText:0, TEXT_DRAW_FONT:0);
-
-
-native PlayerTextDrawSetProportional(0, PlayerText:0, bool:0);
-
-
-native PlayerTextDrawSetSelectable(0, PlayerText:0, bool:0);
-
-
-native PlayerTextDrawShow(0, PlayerText:0);
-
-
-native PlayerTextDrawHide(0, PlayerText:0);
-
-
-native PlayerTextDrawSetString(0, PlayerText:0, "");
-
-
-native PlayerTextDrawSetPreviewModel(0, PlayerText:0, 0);
-
-
-native PlayerTextDrawSetPreviewRot(0, PlayerText:0, 0.0, 0.0, 0.0);
-
-
-native PlayerTextDrawSetPreviewVehCol(0, PlayerText:0, 0, 0);
-
-
-native SetPVarInt(0, "", 0);
-
-
-native GetPVarInt(0, "");
-
-
-native SetPVarString(0, "", "");
-
-
-native GetPVarString(0, "", output[]);
-
-
-native SetPVarFloat(0, "", 0.0);
-
-
-native GetPVarFloat(0, "");
-
-
-native DeletePVar(0, "");
-
-
-native GetPVarsUpperIndex(0);
-
-
-native GetPVarNameAtIndex(0, 0, output[]);
-
-
-native PLAYER_VARTYPE:GetPVarType(0, "");
-
-
-native SetPlayerChatBubble(0, "", 0, 0.0, 0);
-
-
-native PutPlayerInVehicle(0, 0, 0);
-
-
-native GetPlayerVehicleID(0);
-
-
-native GetPlayerVehicleSeat(0);
-
-
-native RemovePlayerFromVehicle(0);
-
-
-native TogglePlayerControllable(0, bool:0);
-
-
-native PlayerPlaySound(0, 0, 0.0, 0.0, 0.0);
-
-
-native ApplyAnimation(0, "", "", 0.0, bool:0, bool:0, bool:0, bool:0, 0);
-
-
-native ClearAnimations(0);
-
-
-native GetPlayerAnimationIndex(0);
-
-
-native GetAnimationName(0, animationLibrary[], animationName[]);
-
-
-native SPECIAL_ACTION:GetPlayerSpecialAction(0);
-
-
-native SetPlayerSpecialAction(0, SPECIAL_ACTION:0);
-
-
-native DisableRemoteVehicleCollisions(0, bool:0);
-
-
-native SetPlayerCheckpoint(0, 0.0, 0.0, 0.0, 0.0);
-
-
-native DisablePlayerCheckpoint(0);
-
-
-native SetPlayerRaceCheckpoint(0, CP_TYPE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-
-native DisablePlayerRaceCheckpoint(0);
-
-
-native SetPlayerWorldBounds(0, 0.0, 0.0, 0.0, 0.0);
-
-
-native SetPlayerMarkerForPlayer(0, 0, 0);
-
-
-native ShowPlayerNameTagForPlayer(0, 0, bool:0);
-
-
-native SetPlayerMapIcon(0, 0, 0.0, 0.0, 0.0, 0, 0);
-
-
-native RemovePlayerMapIcon(0, 0);
-
-
-native SetPlayerCameraPos(0, 0.0, 0.0, 0.0);
-
-
-native SetPlayerCameraLookAt(0, 0.0, 0.0, 0.0);
-
-
-native SetCameraBehindPlayer(0);
-
-
-native GetPlayerCameraPos(0, &0.0, &0.0, &0.0);
-
-
-native GetPlayerCameraFrontVector(0, &0.0, &0.0, &0.0);
-
-
-native CAM_MODE:GetPlayerCameraMode(0);
-
-
-native EnablePlayerCameraTarget(0, bool:0);
-
-
-native GetPlayerCameraTargetObject(0);
-
-
-native GetPlayerCameraTargetVehicle(0);
-
-
-native GetPlayerCameraTargetPlayer(0);
-
-
-native GetPlayerCameraTargetActor(0);
-
-
-native GetPlayerCameraAspectRatio(0);
-
-
-native GetPlayerCameraZoom(0);
-
-
-native AttachCameraToObject(0, 0);
-
-
-native AttachCameraToPlayerObject(0, 0);
-
-
-native InterpolateCameraPos(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
-
-
-native InterpolateCameraLookAt(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
-
-
-native IsPlayerConnected(0);
-
-
-native IsPlayerInVehicle(0, 0);
-
-
-native IsPlayerInAnyVehicle(0);
-
-
-native IsPlayerInCheckpoint(0);
-
-
-native IsPlayerInRaceCheckpoint(0);
-
-
-native SetPlayerVirtualWorld(0, 0);
-
-
-native GetPlayerVirtualWorld(0);
-
-
-native EnableStuntBonusForPlayer(0, bool:0);
-
-
-native EnableStuntBonusForAll(bool:0);
-
-
-native TogglePlayerSpectating(0, bool:0);
-
-
-native PlayerSpectatePlayer(0, 0);
-
-
-native PlayerSpectateVehicle(0, 0);
-
-
-native StartRecordingPlayerData(0, PLAYER_RECORDING_TYPE:0, "");
-
-
-native StopRecordingPlayerData(0);
-
-
-native SelectTextDraw(0, 0);
-
-
-native CancelSelectTextDraw(0);
-
-
-native CreateExplosionForPlayer(0, 0.0, 0.0, 0.0, 0, 0.0);
-
-
-native SendClientCheck(0, 0, 0, 0, 0);
-
-
-native PlayerText3D:CreatePlayer3DTextLabel(0, "", 0, 0.0, 0.0, 0.0, 0.0);
-
-
-native DeletePlayer3DTextLabel(0, PlayerText3D:0);
-
-
-native UpdatePlayer3DTextLabelText(0, PlayerText3D:0, 0, "");
-
-
-public OnPlayerClickPlayerTextDraw(0, PlayerText:0) {}
-
-
-public OnPlayerStreamIn(0, 0) {}
-
-
-public OnPlayerStreamOut(0, 0) {}
-
-
-public OnPlayerTakeDamage(0, 0, 0.0, 0, 0) {}
-
-
-public OnPlayerGiveDamage(0, 0, 0.0, 0, 0) {}
-
-
-public OnPlayerClickPlayer(0, 0, CLICK_SOURCE:0) {}
-
-
-public OnPlayerDeath(0, 0, 0) {}
-
-
-
-native format(output[], "");
-
-
-native SendClientMessage(0, 0, "");
-
-
-native SendClientMessageToAll(0, "");
-
-
-native SendPlayerMessageToPlayer(0, 0, "");
-
-
-native SendPlayerMessageToAll(0, "");
-
-
-native SendDeathMessage(0, 0, 0);
-
-
-native SendDeathMessageToPlayer(0, 0, 0, 0);
-
-
-native GameTextForAll("", 0, 0);
-
-
-native GameTextForPlayer(0, "", 0, 0);
-
-
-native SetTimer("", 0, bool:0);
-
-
-native SetTimerEx("", 0, bool:0);
-
-
-native KillTimer(0);
-
-
-native GetTickCount();
-
-
-native GetMaxPlayers();
-
-
-native CallRemoteFunction("");
-
-
-native CallLocalFunction("");
-
-
-native VectorSize(0.0, 0.0, 0.0);
-
-
-native asin(0.0);
-
-
-native acos(0.0);
-
-
-native atan(0.0);
-
-
-native atan2(0.0, 0.0);
-
-
-native GetPlayerPoolSize();
-
-
-native GetVehiclePoolSize();
-
-
-native GetActorPoolSize();
-
-
-native SetSVarInt("", 0);
-
-
-native GetSVarInt("");
-
-
-native SetSVarString("", "");
-
-
-native GetSVarString("", output[]);
-
-
-native SetSVarFloat("", 0.0);
-
-
-native GetSVarFloat("");
-
-
-native DeleteSVar("");
-
-
-native GetSVarsUpperIndex();
-
-
-native GetSVarNameAtIndex(0, output[]);
-
-
-native SERVER_VARTYPE:GetSVarType("");
-
-
-native SetGameModeText("");
-
-
-native SetTeamCount(0);
-
-
-native AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-
-
-native AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-
-
-native AddStaticVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0);
-
-
-native AddStaticVehicleEx(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
-
-
-native AddStaticPickup(0, 0, 0.0, 0.0, 0.0);
-
-
-native CreatePickup(0, 0, 0.0, 0.0, 0.0);
-
-
-native DestroyPickup(0);
-
-
-native ShowNameTags(bool:0);
-
-
-native ShowPlayerMarkers(PLAYER_MARKERS_MODE:0);
-
-
-native GameModeExit();
-
-
-native SetWorldTime(0);
-
-
-native GetWeaponName(WEAPON:0, weapon[]);
-
-
-
-
-
-native EnableVehicleFriendlyFire();
-
-
-
-
-
-native SetWeather(0);
-
-
-native GetGravity();
-
-
-native SetGravity(0.0);
-
-
-
-
-
-
-
-
-native CreateExplosion(0.0, 0.0, 0.0, 0, 0.0);
-
-
-native EnableZoneNames(bool:0);
-
-
-native UsePlayerPedAnims();
-
-
-native DisableInteriorEnterExits();
-
-
-native SetNameTagDrawDistance(0.0);
-
-
-native DisableNameTagLOS();
-
-
-native LimitGlobalChatRadius(0.0);
-
-
-native LimitPlayerMarkerRadius(0.0);
-
-
-native ConnectNPC("", "");
-
-
-native IsPlayerNPC(0);
-
-
-native AddCharModel(0, 0, "", "");
-
-
-native AddSimpleModel(0, 0, 0, "", "");
-
-
-native AddSimpleModelTimed(0, 0, 0, "", "", 0, 0);
-
-
-native FindModelFileNameFromCRC(0, output[]);
-
-
-native FindTextureFileNameFromCRC(0, output[]);
-
-
-native RedirectDownload(0, "");
-
-
-native IsPlayerAdmin(0);
-
-
-native Kick(0);
-
-
-native Ban(0);
-
-
-native BanEx(0, "");
-
-
-native SendRconCommand("");
-
-
-native GetPlayerNetworkStats(0, output[]);
-
-
-native GetNetworkStats(output[]);
-
-
-native GetPlayerVersion(0, version[]);
-
-
-native BlockIpAddress("", 0);
-
-
-native UnBlockIpAddress("");
-
-
-native GetConsoleVarAsString("", buffer[]);
-
-
-native GetConsoleVarAsInt("");
-
-
-native GetConsoleVarAsBool("");
-
-
-native GetServerTickRate();
-
-
-native NetStats_GetConnectedTime(0);
-
-
-native NetStats_MessagesReceived(0);
-
-
-native NetStats_BytesReceived(0);
-
-
-native NetStats_MessagesSent(0);
-
-
-native NetStats_BytesSent(0);
-
-
-native NetStats_MessagesRecvPerSecond(0);
-
-
-native NetStats_PacketLossPercent(0);
-
-
-native NetStats_ConnectionStatus(0);
-
-
-native NetStats_GetIpPort(0, output[]);
-
-
-native Menu:CreateMenu("", 0, 0.0, 0.0, 0.0);
-
-
-native DestroyMenu(Menu:0);
-
-
-native AddMenuItem(Menu:0, 0, "");
-
-
-native SetMenuColumnHeader(Menu:0, 0, "");
-
-
-native ShowMenuForPlayer(Menu:0, 0);
-
-
-native HideMenuForPlayer(Menu:0, 0);
-
-
-native IsValidMenu(Menu:0);
-
-
-native DisableMenu(Menu:0);
-
-
-native DisableMenuRow(Menu:0, 0);
-
-
-native Menu:GetPlayerMenu(0);
-
-
-native Text:TextDrawCreate(0.0, 0.0, "");
-
-
-native TextDrawDestroy(Text:0);
-
-
-native TextDrawLetterSize(Text:0, 0.0, 0.0);
-
-
-native TextDrawTextSize(Text:0, 0.0, 0.0);
-
-
-native TextDrawAlignment(Text:0, TEXT_DRAW_ALIGN:0);
-
-
-native TextDrawColor(Text:0, 0);
-
-
-native TextDrawUseBox(Text:0, bool:0);
-
-
-native TextDrawBoxColor(Text:0, 0);
-
-
-native TextDrawSetShadow(Text:0, 0);
-
-
-native TextDrawSetOutline(Text:0, 0);
-
-
-native TextDrawBackgroundColor(Text:0, 0);
-
-
-native TextDrawFont(Text:0, TEXT_DRAW_FONT:0);
-
-
-native TextDrawSetProportional(Text:0, bool:0);
-
-
-native TextDrawSetSelectable(Text:0, bool:0);
-
-
-native TextDrawShowForPlayer(0, Text:0);
-
-
-native TextDrawHideForPlayer(0, Text:0);
-
-
-native TextDrawShowForAll(Text:0);
-
-
-native TextDrawHideForAll(Text:0);
-
-
-native TextDrawSetString(Text:0, "");
-
-
-native TextDrawSetPreviewModel(Text:0, 0);
-
-
-native TextDrawSetPreviewRot(Text:0, 0.0, 0.0, 0.0);
-
-
-native TextDrawSetPreviewVehCol(Text:0, 0, 0);
-
-
-native GangZoneCreate(0.0, 0.0, 0.0, 0.0);
-
-
-native GangZoneDestroy(0);
-
-
-native GangZoneShowForPlayer(0, 0, 0);
-
-
-native GangZoneShowForAll(0, 0);
-
-
-native GangZoneHideForPlayer(0, 0);
-
-
-native GangZoneHideForAll(0);
-
-
-native GangZoneFlashForPlayer(0, 0, 0);
-
-
-native GangZoneFlashForAll(0, 0);
-
-
-native GangZoneStopFlashForPlayer(0, 0);
-
-
-native GangZoneStopFlashForAll(0);
-
-
-native Text3D:Create3DTextLabel("", 0, 0.0, 0.0, 0.0, 0.0, 0);
-
-
-native Delete3DTextLabel(Text3D:0);
-
-
-native Attach3DTextLabelToPlayer(Text3D:0, 0, 0.0, 0.0, 0.0);
-
-
-native Attach3DTextLabelToVehicle(Text3D:0, 0, 0.0, 0.0, 0.0);
-
-
-native Update3DTextLabelText(Text3D:0, 0, "");
-
-
-native ShowPlayerDialog(0, 0, DIALOG_STYLE:0, "", "", "", "");
-
-
-
-
-
-native GPCI(0, serial[]);
-
-
-public OnGameModeInit() {}
-
-
-public OnGameModeExit() {}
-
-
-public OnFilterScriptInit() {}
-
-
-public OnFilterScriptExit() {}
-
-
-public OnPlayerConnect(0) {}
-
-
-public OnPlayerDisconnect(0, 0) {}
-
-
-public OnPlayerSpawn(0) {}
-
-
-public OnPlayerText(0, text[]) {}
-
-
-public OnPlayerCommandText(0, cmdtext[]) {}
-
-
-public OnPlayerRequestClass(0, 0) {}
-
-
-public OnPlayerStateChange(0, PLAYER_STATE:0, PLAYER_STATE:0) {}
-
-
-public OnPlayerEnterCheckpoint(0) {}
-
-
-public OnPlayerLeaveCheckpoint(0) {}
-
-
-public OnPlayerEnterRaceCheckpoint(0) {}
-
-
-public OnPlayerLeaveRaceCheckpoint(0) {}
-
-
-public OnRconCommand(cmd[]) {}
-
-
-public OnPlayerRequestSpawn(0) {}
-
-
-public OnPlayerPickUpPickup(0, 0) {}
-
-
-public OnPlayerSelectedMenuRow(0, 0) {}
-
-
-public OnPlayerExitedMenu(0) {}
-
-
-public OnPlayerInteriorChange(0, 0, 0) {}
-
-
-public OnPlayerKeyStateChange(0, KEY:0, KEY:0) {}
-
-
-public OnRconLoginAttempt(ip[], password[], 0) {}
-
-
-public OnPlayerUpdate(0) {}
-
-
-public OnDialogResponse(0, 0, 0, 0, inputtext[]) {}
-
-
-public OnPlayerClickMap(0, 0.0, 0.0, 0.0) {}
-
-
-public OnPlayerClickTextDraw(0, Text:0) {}
-
-
-public OnIncomingConnection(0, ip_address[], 0) {}
-
-
-public OnPlayerFinishedDownloading(0, 0) {}
-public OnPlayerRequestDownload(0, 0, 0) {}
-
-
-public OnPlayerWeaponShot(0, 0, BULLET_HIT_TYPE:0, 0, 0.0, 0.0, 0.0) {}
-
-
-public OnClientCheckResponse(0, 0, 0, 0) {}
-
-
-public OnScriptCash(0, 0, 0) {}
+forward TestAllNatives();
+
+public TestAllNatives()
+{
+	// This just tests that the natives compile and load.  It doesn't test that
+	// they work.
+	new Float:fvar, ivar, svar[32];
+	CreateVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
+	DestroyVehicle(0);
+	IsVehicleStreamedIn(0, 0);
+	GetVehiclePos(0, fvar, fvar, fvar);
+	SetVehiclePos(0, 0.0, 0.0, 0.0);
+	GetVehicleZAngle(0, fvar);
+	GetVehicleRotationQuat(0, fvar, fvar, fvar, fvar);
+	GetVehicleDistanceFromPoint(0, 0.0, 0.0, 0.0);
+	SetVehicleZAngle(0, 0.0);
+	SetVehicleParamsForPlayer(0, 0, 0, 0);
+	ManualVehicleEngineAndLights();
+	SetVehicleParamsEx(0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0);
+	GetVehicleParamsEx(0, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar);
+	GetVehicleParamsSirenState(0);
+	SetVehicleParamsCarDoors(0, 0, 0, 0, 0);
+	GetVehicleParamsCarDoors(0, ivar, ivar, ivar, ivar);
+	SetVehicleParamsCarWindows(0, 0, 0, 0, 0);
+	GetVehicleParamsCarWindows(0, ivar, ivar, ivar, ivar);
+	SetVehicleToRespawn(0);
+	LinkVehicleToInterior(0, 0);
+	AddVehicleComponent(0, 0);
+	RemoveVehicleComponent(0, 0);
+	ChangeVehicleColor(0, 0, 0);
+	ChangeVehiclePaintjob(0, 0);
+	SetVehicleHealth(0, 0.0);
+	GetVehicleHealth(0, fvar);
+	AttachTrailerToVehicle(0, 0);
+	DetachTrailerFromVehicle(0);
+	IsTrailerAttachedToVehicle(0);
+	GetVehicleTrailer(0);
+	SetVehicleNumberPlate(0, "");
+	GetVehicleModel(0);
+	GetVehicleComponentInSlot(0, CARMODTYPE:0);
+	CARMODTYPE:GetVehicleComponentType(0);
+	RepairVehicle(0);
+	GetVehicleVelocity(0, fvar, fvar, fvar);
+	SetVehicleVelocity(0, 0.0, 0.0, 0.0);
+	SetVehicleAngularVelocity(0, 0.0, 0.0, 0.0);
+	GetVehicleDamageStatus(0, ivar, ivar, ivar, ivar);
+	UpdateVehicleDamageStatus(0, 0, 0, 0, 0);
+	GetVehicleModelInfo(0, VEHICLE_MODEL_INFO:0, fvar, fvar, fvar);
+	SetVehicleVirtualWorld(0, 0);
+	GetVehicleVirtualWorld(0);
+	IsValidVehicle(0);
+	DB:DB_Open("");
+	DB_Close(DB:0);
+	DBResult:DB_Query(DB:0, "");
+	DB_FreeResult(DBResult:0);
+	DB_NumRows(DBResult:0);
+	DB_NextRow(DBResult:0);
+	DB_NumFields(DBResult:0);
+	DB_FieldName(DBResult:0, 0, svar);
+	DB_GetField(DBResult:0, 0, svar);
+	DB_GetFieldInt(DBResult:0);
+	DB_GetFieldFloat(DBResult:0);
+	DB_GetFieldAssoc(DBResult:0, "", svar);
+	DB_GetFieldAssocInt(DBResult:0, "");
+	DB_GetFieldAssocFloat(DBResult:0, "");
+	DB_GetMemHandle(DB:0);
+	DB_GetResultMemHandle(DBResult:0);
+	DB_DebugOpenFiles();
+	DB_DebugOpenResults();
+	CreateActor(0, 0.0, 0.0, 0.0, 0.0);
+	DestroyActor(0);
+	IsActorStreamedIn(0, 0);
+	SetActorVirtualWorld(0, 0);
+	GetActorVirtualWorld(0);
+	ApplyActorAnimation(0, "", "", 0.0, false, false, false, false, 0);
+	ClearActorAnimations(0);
+	SetActorPos(0, 0.0, 0.0, 0.0);
+	GetActorPos(0, fvar, fvar, fvar);
+	SetActorFacingAngle(0, 0.0);
+	GetActorFacingAngle(0, fvar);
+	SetActorHealth(0, 0.0);
+	GetActorHealth(0, fvar);
+	SetActorInvulnerable(0);
+	IsActorInvulnerable(0);
+	IsValidActor(0);
+	HTTP(0, HTTP_METHOD:0, "", "", "");
+	CreateObject(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	AttachObjectToVehicle(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	AttachObjectToObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	AttachObjectToPlayer(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	SetObjectPos(0, 0.0, 0.0, 0.0);
+	GetObjectPos(0, fvar, fvar, fvar);
+	SetObjectRot(0, 0.0, 0.0, 0.0);
+	GetObjectRot(0, fvar, fvar, fvar);
+	GetObjectModel(0);
+	SetObjectNoCameraCol(0);
+	IsValidObject(0);
+	DestroyObject(0);
+	MoveObject(0, 0.0, 0.0, 0.0, 0.0);
+	StopObject(0);
+	IsObjectMoving(0);
+	EditObject(0, 0);
+	EditPlayerObject(0, 0);
+	SelectObject(0);
+	CancelEdit(0);
+	CreatePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	AttachPlayerObjectToVehicle(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	SetPlayerObjectPos(0, 0, 0.0, 0.0, 0.0);
+	GetPlayerObjectPos(0, 0, fvar, fvar, fvar);
+	SetPlayerObjectRot(0, 0, 0.0, 0.0, 0.0);
+	GetPlayerObjectRot(0, 0, fvar, fvar, fvar);
+	GetPlayerObjectModel(0, 0);
+	SetPlayerObjectNoCameraCol(0, 0);
+	IsValidPlayerObject(0, 0);
+	DestroyPlayerObject(0, 0);
+	MovePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0);
+	StopPlayerObject(0, 0);
+	IsPlayerObjectMoving(0, 0);
+	AttachPlayerObjectToPlayer(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	SetObjectMaterial(0, 0, 0, "", "");
+	SetPlayerObjectMaterial(0, 0, 0, 0, "", "");
+	SetObjectMaterialText(0, "");
+	SetPlayerObjectMaterialText(0, 0, "");
+	SetObjectsDefaultCameraCol(false);
+	SetSpawnInfo(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	SpawnPlayer(0);
+	SetPlayerPos(0, 0.0, 0.0, 0.0);
+	SetPlayerPosFindZ(0, 0.0, 0.0, 0.0);
+	GetPlayerPos(0, fvar, fvar, fvar);
+	SetPlayerFacingAngle(0, 0.0);
+	GetPlayerFacingAngle(0, fvar);
+	IsPlayerInRangeOfPoint(0, 0.0, 0.0, 0.0, 0.0);
+	GetPlayerDistanceFromPoint(0, 0.0, 0.0, 0.0);
+	IsPlayerStreamedIn(0, 0);
+	SetPlayerInterior(0, 0);
+	GetPlayerInterior(0);
+	SetPlayerHealth(0, 0.0);
+	GetPlayerHealth(0, fvar);
+	SetPlayerArmour(0, 0.0);
+	GetPlayerArmour(0, fvar);
+	SetPlayerAmmo(0, WEAPON:0, 0);
+	GetPlayerAmmo(0);
+	WEAPONSTATE:GetPlayerWeaponState(0);
+	GetPlayerTargetPlayer(0);
+	GetPlayerTargetActor(0);
+	SetPlayerTeam(0, 0);
+	GetPlayerTeam(0);
+	SetPlayerScore(0, 0);
+	GetPlayerScore(0);
+	GetPlayerDrunkLevel(0);
+	SetPlayerDrunkLevel(0, 0);
+	SetPlayerColor(0, 0);
+	GetPlayerColor(0);
+	SetPlayerSkin(0, 0);
+	GetPlayerSkin(0);
+	GetPlayerCustomSkin(0);
+	GivePlayerWeapon(0, WEAPON:0, 0);
+	ResetPlayerWeapons(0);
+	SetPlayerArmedWeapon(0, WEAPON:0);
+	GetPlayerWeaponData(0, 0, WEAPON:ivar, ivar);
+	GivePlayerMoney(0, 0);
+	ResetPlayerMoney(0);
+	SetPlayerName(0, "");
+	GetPlayerMoney(0);
+	PLAYER_STATE:GetPlayerState(0);
+	GetPlayerIp(0, svar);
+	GetPlayerPing(0);
+	WEAPON:GetPlayerWeapon(0);
+	GetPlayerKeys(0, KEY:ivar, KEY:ivar, KEY:ivar);
+	GetPlayerName(0, svar);
+	SetPlayerTime(0, 0, 0);
+	GetPlayerTime(0, ivar, ivar);
+	TogglePlayerClock(0, false);
+	SetPlayerWeather(0, 0);
+	ForceClassSelection(0);
+	SetPlayerWantedLevel(0, 0);
+	GetPlayerWantedLevel(0);
+	SetPlayerFightingStyle(0, FIGHT_STYLE:0);
+	FIGHT_STYLE:GetPlayerFightingStyle(0);
+	SetPlayerVelocity(0, 0.0, 0.0, 0.0);
+	GetPlayerVelocity(0, fvar, fvar, fvar);
+	PlayCrimeReportForPlayer(0, 0, 0);
+	PlayAudioStreamForPlayer(0, "");
+	StopAudioStreamForPlayer(0);
+	SetPlayerShopName(0, "");
+	SetPlayerSkillLevel(0, WEAPONSKILL:0, 0);
+	GetPlayerSurfingVehicleID(0);
+	GetPlayerSurfingObjectID(0);
+	RemoveBuildingForPlayer(0, 0, 0.0, 0.0, 0.0, 0.0);
+	GetPlayerLastShotVectors(0, fvar, fvar, fvar, fvar, fvar, fvar);
+	SetPlayerAttachedObject(0, 0, 0, 0);
+	RemovePlayerAttachedObject(0, 0);
+	IsPlayerAttachedObjectSlotUsed(0, 0);
+	EditAttachedObject(0, 0);
+	PlayerText:CreatePlayerTextDraw(0, 0.0, 0.0, "");
+	PlayerTextDrawDestroy(0, PlayerText:0);
+	PlayerTextDrawLetterSize(0, PlayerText:0, 0.0, 0.0);
+	PlayerTextDrawTextSize(0, PlayerText:0, 0.0, 0.0);
+	PlayerTextDrawAlignment(0, PlayerText:0, TEXT_DRAW_ALIGN:0);
+	PlayerTextDrawColor(0, PlayerText:0, 0);
+	PlayerTextDrawUseBox(0, PlayerText:0, false);
+	PlayerTextDrawBoxColor(0, PlayerText:0, 0);
+	PlayerTextDrawSetShadow(0, PlayerText:0, 0);
+	PlayerTextDrawSetOutline(0, PlayerText:0, 0);
+	PlayerTextDrawBackgroundColor(0, PlayerText:0, 0);
+	PlayerTextDrawFont(0, PlayerText:0, TEXT_DRAW_FONT:0);
+	PlayerTextDrawSetProportional(0, PlayerText:0, false);
+	PlayerTextDrawSetSelectable(0, PlayerText:0, false);
+	PlayerTextDrawShow(0, PlayerText:0);
+	PlayerTextDrawHide(0, PlayerText:0);
+	PlayerTextDrawSetString(0, PlayerText:0, "");
+	PlayerTextDrawSetPreviewModel(0, PlayerText:0, 0);
+	PlayerTextDrawSetPreviewRot(0, PlayerText:0, 0.0, 0.0, 0.0);
+	PlayerTextDrawSetPreviewVehCol(0, PlayerText:0, 0, 0);
+	SetPVarInt(0, "", 0);
+	GetPVarInt(0, "");
+	SetPVarString(0, "", "");
+	GetPVarString(0, "", svar);
+	SetPVarFloat(0, "", 0.0);
+	GetPVarFloat(0, "");
+	DeletePVar(0, "");
+	GetPVarsUpperIndex(0);
+	GetPVarNameAtIndex(0, 0, svar);
+	PLAYER_VARTYPE:GetPVarType(0, "");
+	SetPlayerChatBubble(0, "", 0, 0.0, 0);
+	PutPlayerInVehicle(0, 0, 0);
+	GetPlayerVehicleID(0);
+	GetPlayerVehicleSeat(0);
+	RemovePlayerFromVehicle(0);
+	TogglePlayerControllable(0, false);
+	PlayerPlaySound(0, 0, 0.0, 0.0, 0.0);
+	ApplyAnimation(0, "", "", 0.0, false, false, false, false, 0);
+	ClearAnimations(0);
+	GetPlayerAnimationIndex(0);
+	GetAnimationName(0, svar, svar);
+	SPECIAL_ACTION:GetPlayerSpecialAction(0);
+	SetPlayerSpecialAction(0, SPECIAL_ACTION:0);
+	DisableRemoteVehicleCollisions(0, false);
+	SetPlayerCheckpoint(0, 0.0, 0.0, 0.0, 0.0);
+	DisablePlayerCheckpoint(0);
+	SetPlayerRaceCheckpoint(0, CP_TYPE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	DisablePlayerRaceCheckpoint(0);
+	SetPlayerWorldBounds(0, 0.0, 0.0, 0.0, 0.0);
+	SetPlayerMarkerForPlayer(0, 0, 0);
+	ShowPlayerNameTagForPlayer(0, 0, false);
+	SetPlayerMapIcon(0, 0, 0.0, 0.0, 0.0, 0, 0);
+	RemovePlayerMapIcon(0, 0);
+	SetPlayerCameraPos(0, 0.0, 0.0, 0.0);
+	SetPlayerCameraLookAt(0, 0.0, 0.0, 0.0);
+	SetCameraBehindPlayer(0);
+	GetPlayerCameraPos(0, fvar, fvar, fvar);
+	GetPlayerCameraFrontVector(0, fvar, fvar, fvar);
+	CAM_MODE:GetPlayerCameraMode(0);
+	EnablePlayerCameraTarget(0, false);
+	GetPlayerCameraTargetObject(0);
+	GetPlayerCameraTargetVehicle(0);
+	GetPlayerCameraTargetPlayer(0);
+	GetPlayerCameraTargetActor(0);
+	GetPlayerCameraAspectRatio(0);
+	GetPlayerCameraZoom(0);
+	AttachCameraToObject(0, 0);
+	AttachCameraToPlayerObject(0, 0);
+	InterpolateCameraPos(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
+	InterpolateCameraLookAt(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
+	IsPlayerConnected(0);
+	IsPlayerInVehicle(0, 0);
+	IsPlayerInAnyVehicle(0);
+	IsPlayerInCheckpoint(0);
+	IsPlayerInRaceCheckpoint(0);
+	SetPlayerVirtualWorld(0, 0);
+	GetPlayerVirtualWorld(0);
+	EnableStuntBonusForPlayer(0, false);
+	EnableStuntBonusForAll(false);
+	TogglePlayerSpectating(0, false);
+	PlayerSpectatePlayer(0, 0);
+	PlayerSpectateVehicle(0, 0);
+	StartRecordingPlayerData(0, PLAYER_RECORDING_TYPE:0, "");
+	StopRecordingPlayerData(0);
+	SelectTextDraw(0, 0);
+	CancelSelectTextDraw(0);
+	CreateExplosionForPlayer(0, 0.0, 0.0, 0.0, 0, 0.0);
+	SendClientCheck(0, 0, 0, 0, 0);
+	PlayerText3D:CreatePlayer3DTextLabel(0, "", 0, 0.0, 0.0, 0.0, 0.0);
+	DeletePlayer3DTextLabel(0, PlayerText3D:0);
+	UpdatePlayer3DTextLabelText(0, PlayerText3D:0, 0, "");
+	format(svar, "");
+	SendClientMessage(0, 0, "");
+	SendClientMessageToAll(0, "");
+	SendPlayerMessageToPlayer(0, 0, "");
+	SendPlayerMessageToAll(0, "");
+	SendDeathMessage(0, 0, 0);
+	SendDeathMessageToPlayer(0, 0, 0, 0);
+	GameTextForAll("", 0, 0);
+	GameTextForPlayer(0, "", 0, 0);
+	SetTimer("", 0, false);
+	SetTimerEx("", 0, false);
+	KillTimer(0);
+	GetTickCount();
+	GetMaxPlayers();
+	CallRemoteFunction("");
+	CallLocalFunction("");
+	VectorSize(0.0, 0.0, 0.0);
+	asin(0.0);
+	acos(0.0);
+	atan(0.0);
+	atan2(0.0, 0.0);
+	GetPlayerPoolSize();
+	GetVehiclePoolSize();
+	GetActorPoolSize();
+	SetSVarInt("", 0);
+	GetSVarInt("");
+	SetSVarString("", "");
+	GetSVarString("", svar);
+	SetSVarFloat("", 0.0);
+	GetSVarFloat("");
+	DeleteSVar("");
+	GetSVarsUpperIndex();
+	GetSVarNameAtIndex(0, svar);
+	SERVER_VARTYPE:GetSVarType("");
+	SetGameModeText("");
+	SetTeamCount(0);
+	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	AddStaticVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0);
+	AddStaticVehicleEx(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
+	AddStaticPickup(0, 0, 0.0, 0.0, 0.0);
+	CreatePickup(0, 0, 0.0, 0.0, 0.0);
+	DestroyPickup(0);
+	ShowNameTags(false);
+	ShowPlayerMarkers(PLAYER_MARKERS_MODE:0);
+	GameModeExit();
+	SetWorldTime(0);
+	GetWeaponName(WEAPON:0, svar);
+	EnableVehicleFriendlyFire();
+	SetWeather(0);
+	GetGravity();
+	SetGravity(0.0);
+	CreateExplosion(0.0, 0.0, 0.0, 0, 0.0);
+	EnableZoneNames(false);
+	UsePlayerPedAnims();
+	DisableInteriorEnterExits();
+	SetNameTagDrawDistance(0.0);
+	DisableNameTagLOS();
+	LimitGlobalChatRadius(0.0);
+	LimitPlayerMarkerRadius(0.0);
+	ConnectNPC("", "");
+	IsPlayerNPC(0);
+	AddCharModel(0, 0, "", "");
+	AddSimpleModel(0, 0, 0, "", "");
+	AddSimpleModelTimed(0, 0, 0, "", "", 0, 0);
+	FindModelFileNameFromCRC(0, svar);
+	FindTextureFileNameFromCRC(0, svar);
+	RedirectDownload(0, "");
+	IsPlayerAdmin(0);
+	Kick(0);
+	Ban(0);
+	BanEx(0, "");
+	SendRconCommand("");
+	GetPlayerNetworkStats(0, svar);
+	GetNetworkStats(svar);
+	GetPlayerVersion(0, svar);
+	BlockIpAddress("", 0);
+	UnBlockIpAddress("");
+	GetConsoleVarAsString("", svar);
+	GetConsoleVarAsInt("");
+	GetConsoleVarAsBool("");
+	GetServerTickRate();
+	NetStats_GetConnectedTime(0);
+	NetStats_MessagesReceived(0);
+	NetStats_BytesReceived(0);
+	NetStats_MessagesSent(0);
+	NetStats_BytesSent(0);
+	NetStats_MessagesRecvPerSecond(0);
+	NetStats_PacketLossPercent(0);
+	NetStats_ConnectionStatus(0);
+	NetStats_GetIpPort(0, svar);
+	Menu:CreateMenu("", 0, 0.0, 0.0, 0.0);
+	DestroyMenu(Menu:0);
+	AddMenuItem(Menu:0, 0, "");
+	SetMenuColumnHeader(Menu:0, 0, "");
+	ShowMenuForPlayer(Menu:0, 0);
+	HideMenuForPlayer(Menu:0, 0);
+	IsValidMenu(Menu:0);
+	DisableMenu(Menu:0);
+	DisableMenuRow(Menu:0, 0);
+	Menu:GetPlayerMenu(0);
+	Text:TextDrawCreate(0.0, 0.0, "");
+	TextDrawDestroy(Text:0);
+	TextDrawLetterSize(Text:0, 0.0, 0.0);
+	TextDrawTextSize(Text:0, 0.0, 0.0);
+	TextDrawAlignment(Text:0, TEXT_DRAW_ALIGN:0);
+	TextDrawColor(Text:0, 0);
+	TextDrawUseBox(Text:0, false);
+	TextDrawBoxColor(Text:0, 0);
+	TextDrawSetShadow(Text:0, 0);
+	TextDrawSetOutline(Text:0, 0);
+	TextDrawBackgroundColor(Text:0, 0);
+	TextDrawFont(Text:0, TEXT_DRAW_FONT:0);
+	TextDrawSetProportional(Text:0, false);
+	TextDrawSetSelectable(Text:0, false);
+	TextDrawShowForPlayer(0, Text:0);
+	TextDrawHideForPlayer(0, Text:0);
+	TextDrawShowForAll(Text:0);
+	TextDrawHideForAll(Text:0);
+	TextDrawSetString(Text:0, "");
+	TextDrawSetPreviewModel(Text:0, 0);
+	TextDrawSetPreviewRot(Text:0, 0.0, 0.0, 0.0);
+	TextDrawSetPreviewVehCol(Text:0, 0, 0);
+	GangZoneCreate(0.0, 0.0, 0.0, 0.0);
+	GangZoneDestroy(0);
+	GangZoneShowForPlayer(0, 0, 0);
+	GangZoneShowForAll(0, 0);
+	GangZoneHideForPlayer(0, 0);
+	GangZoneHideForAll(0);
+	GangZoneFlashForPlayer(0, 0, 0);
+	GangZoneFlashForAll(0, 0);
+	GangZoneStopFlashForPlayer(0, 0);
+	GangZoneStopFlashForAll(0);
+	Text3D:Create3DTextLabel("", 0, 0.0, 0.0, 0.0, 0.0, 0);
+	Delete3DTextLabel(Text3D:0);
+	Attach3DTextLabelToPlayer(Text3D:0, 0, 0.0, 0.0, 0.0);
+	Attach3DTextLabelToVehicle(Text3D:0, 0, 0.0, 0.0, 0.0);
+	Update3DTextLabelText(Text3D:0, 0, "");
+	ShowPlayerDialog(0, 0, DIALOG_STYLE:0, "", "", "", "");
+	GPCI(0, svar);
+}
+
+public OnTrailerUpdate(0, 0)
+{
+	return 1;
+}
+
+public OnVehicleSirenStateChange(0, 0, 0)
+{
+	return 1;
+}
+
+public OnVehicleStreamIn(0, 0)
+{
+	return 1;
+}
+
+public OnVehicleStreamOut(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerEnterVehicle(0, 0, 0)
+{
+	return 1;
+}
+
+public OnPlayerExitVehicle(0, 0)
+{
+	return 1;
+}
+
+public OnVehicleSpawn(0)
+{
+	return 1;
+}
+
+public OnVehicleDeath(0, 0)
+{
+	return 1;
+}
+
+public OnVehicleMod(0, 0, 0)
+{
+	return 1;
+}
+
+public OnEnterExitModShop(0, 0, 0)
+{
+	return 1;
+}
+
+public OnVehiclePaintjob(0, 0, 0)
+{
+	return 1;
+}
+
+public OnVehicleRespray(0, 0, 0, 0)
+{
+	return 1;
+}
+
+public OnVehicleDamageStatusUpdate(0, 0)
+{
+	return 1;
+}
+
+public OnUnoccupiedVehicleUpdate(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnPlayerGiveDamageActor(0, 0, 0.0, 0, 0)
+{
+	return 1;
+}
+
+public OnActorStreamIn(0, 0)
+{
+	return 1;
+}
+
+public OnActorStreamOut(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerSelectObject(0, SELECT_OBJECT:0, 0, 0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnPlayerEditObject(0, 0, 0, EDIT_RESPONSE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnPlayerEditAttachedObject(0, EDIT_RESPONSE:0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnObjectMoved(0)
+{
+	return 1;
+}
+
+public OnPlayerObjectMoved(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerClickPlayerTextDraw(0, PlayerText:0)
+{
+	return 1;
+}
+
+public OnPlayerStreamIn(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerStreamOut(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerTakeDamage(0, 0, 0.0, 0, 0)
+{
+	return 1;
+}
+
+public OnPlayerGiveDamage(0, 0, 0.0, 0, 0)
+{
+	return 1;
+}
+
+public OnPlayerClickPlayer(0, 0, CLICK_SOURCE:0)
+{
+	return 1;
+}
+
+public OnPlayerDeath(0, 0, 0)
+{
+	return 1;
+}
+
+public OnGameModeInit()
+{
+	return 1;
+}
+
+public OnGameModeExit()
+{
+	return 1;
+}
+
+public OnFilterScriptInit()
+{
+	return 1;
+}
+
+public OnFilterScriptExit()
+{
+	return 1;
+}
+
+public OnPlayerConnect(0)
+{
+	return 1;
+}
+
+public OnPlayerDisconnect(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerSpawn(0)
+{
+	return 1;
+}
+
+public OnPlayerText(0, svar)
+{
+	return 1;
+}
+
+public OnPlayerCommandText(0, svar)
+{
+	return 1;
+}
+
+public OnPlayerRequestClass(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerStateChange(0, PLAYER_STATE:0, PLAYER_STATE:0)
+{
+	return 1;
+}
+
+public OnPlayerEnterCheckpoint(0)
+{
+	return 1;
+}
+
+public OnPlayerLeaveCheckpoint(0)
+{
+	return 1;
+}
+
+public OnPlayerEnterRaceCheckpoint(0)
+{
+	return 1;
+}
+
+public OnPlayerLeaveRaceCheckpoint(0)
+{
+	return 1;
+}
+
+public OnRconCommand(svar)
+{
+	return 1;
+}
+
+public OnPlayerRequestSpawn(0)
+{
+	return 1;
+}
+
+public OnPlayerPickUpPickup(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerSelectedMenuRow(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerExitedMenu(0)
+{
+	return 1;
+}
+
+public OnPlayerInteriorChange(0, 0, 0)
+{
+	return 1;
+}
+
+public OnPlayerKeyStateChange(0, KEY:0, KEY:0)
+{
+	return 1;
+}
+
+public OnRconLoginAttempt(svar, svar, 0)
+{
+	return 1;
+}
+
+public OnPlayerUpdate(0)
+{
+	return 1;
+}
+
+public OnDialogResponse(0, 0, 0, 0, svar)
+{
+	return 1;
+}
+
+public OnPlayerClickMap(0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnPlayerClickTextDraw(0, Text:0)
+{
+	return 1;
+}
+
+public OnIncomingConnection(0, svar, 0)
+{
+	return 1;
+}
+
+public OnPlayerFinishedDownloading(0, 0)
+{
+	return 1;
+}
+
+public OnPlayerRequestDownload(0, 0, 0)
+{
+	return 1;
+}
+
+public OnPlayerWeaponShot(0, 0, BULLET_HIT_TYPE:0, 0, 0.0, 0.0, 0.0)
+{
+	return 1;
+}
+
+public OnClientCheckResponse(0, 0, 0, 0)
+{
+	return 1;
+}
+
+public OnScriptCash(0, 0, 0)
+{
+	return 1;
+}
 
