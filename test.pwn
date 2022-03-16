@@ -1,4 +1,5 @@
 #pragma warning disable 200
+//#pragma option -l
 
 // Run tests.
 #define RUN_TESTS
@@ -24,7 +25,7 @@ main()
 public OnGameModeInit()
 {
     AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
-    CreateVehicle(562, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0);
+    CreateVehicle(562, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, false);
     return 1;
 }
 

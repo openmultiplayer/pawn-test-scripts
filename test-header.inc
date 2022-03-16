@@ -44,5 +44,7 @@
 #define FOREACH_NO_ACTORS
 #define FOREACH_NO_STREAMED
 
+#define CUSTOM_TAG_TYPES DB,Menu,DBResult
+
 #include <YSI_Core\y_testing>
 

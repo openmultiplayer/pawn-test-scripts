@@ -6,10 +6,10 @@ PTEST_INIT__ M_04_ShowMenuForPlayer(playerid)
 }
 PTEST__ M_04_ShowMenuForPlayer(playerid)
 {
-    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, playerid), 1);
+    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, playerid), true);
     ASK("Can you see the menu on your screen?");
-    ASSERT_EQ(ShowMenuForPlayer(INVALID_MENU, playerid), 0);
-    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
+    ASSERT_EQ(ShowMenuForPlayer(INVALID_MENU, playerid), false);
+    ASSERT_EQ(ShowMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), false);
 }
 PTEST_CLOSE__ M_04_ShowMenuForPlayer(playerid)
 {
@@ -23,10 +23,10 @@ PTEST_INIT__ M_05_HideMenuForPlayer(playerid)
 }
 PTEST__ M_05_HideMenuForPlayer(playerid)
 {
-    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), 1);
+    ASSERT_EQ(HideMenuForPlayer(g_iMenu, playerid), true);
     ASK("Is the menu hidden?");
-    ASSERT_EQ(HideMenuForPlayer(INVALID_MENU, playerid), 0);
-    ASSERT_EQ(HideMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), 0);
+    ASSERT_EQ(HideMenuForPlayer(INVALID_MENU, playerid), false);
+    ASSERT_EQ(HideMenuForPlayer(g_iMenu, INVALID_PLAYER_ID), false);
 }
 PTEST_CLOSE__ M_05_HideMenuForPlayer(playerid)
 {
@@ -59,8 +59,8 @@ PTEST_INIT__ M_07_SetMenuColumnHeader(playerid)
 PTEST__ M_07_SetMenuColumnHeader(playerid)
 {
     // TODO: Add open.mp assertions for SetMenuColumnHeader
-    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 0, "Col 0"), 1);
-    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 1, "Col 1"), 1);
+    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 0, "Col 0"), true);
+    ASSERT_EQ(SetMenuColumnHeader(g_iMenu, 1, "Col 1"), true);
     ShowMenuForPlayer(g_iMenu, playerid);
     ASK("Can you see the column headers \"Col 0\" and \"Col 1\" in the menu?");
 }
