@@ -12,20 +12,22 @@
 // `YSI_OPEN.MP` and `fixes.inc` are mutually exclusive.
 #if !defined USE_FIXES
 	#define YSI_OPEN.MP
-#if NO_VALUE(USE_FIXES)
-	#tryinclude <sa-mp-fixes\fixes>
-	#tryinclude <fixes>
-	#if !defined _INC_SAMP_Community_fixes
-		#error Could not include <fixes>
-	#endif
-#elseif USE_FIXES == 1
-	#tryinclude <sa-mp-fixes\fixes>
-	#tryinclude <fixes>
-	#if !defined _INC_SAMP_Community_fixes
-		#error Could not include <fixes>
-	#endif
 #else
-	#define YSI_OPEN.MP
+	#if NO_VALUE(USE_FIXES)
+		#tryinclude <sa-mp-fixes\fixes>
+		#tryinclude <fixes>
+		#if !defined _INC_SAMP_Community_fixes
+			#error Could not include <fixes>
+		#endif
+	#elseif USE_FIXES == 1
+		#tryinclude <sa-mp-fixes\fixes>
+		#tryinclude <fixes>
+		#if !defined _INC_SAMP_Community_fixes
+			#error Could not include <fixes>
+		#endif
+	#else
+		#define YSI_OPEN.MP
+	#endif
 #endif
 
 //#pragma warning disable 200
