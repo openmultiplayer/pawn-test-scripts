@@ -18,19 +18,21 @@
 #include "components/consolevars/main.pwn"
 #include "components/gangzones/main.pwn"
 
+#include <YSI_Coding\y_hooks>
+
 main()
 {
     print("Loading test Pawn scripts");
 }
 
-public OnGameModeInit()
+hook OnGameModeInit()
 {
     AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
     CreateVehicle(562, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, false);
     return 1;
 }
 
-public OnPlayerConnect(playerid)
+hook OnPlayerConnect(playerid)
 {
     SendClientMessage(playerid, 0xFF0000FF, "Welcome to your test open.mp server.");
     return 1;
