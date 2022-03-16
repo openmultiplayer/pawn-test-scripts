@@ -1,182 +1,178 @@
+new Float:fvar, ivar, svar[32];
 
 
-// Vehicle
+native CreateVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
 
 
-native CreateVehicle(modelid, Float:x, Float:y, Float:z, Float:rotation, colour1, colour2, respawnDelay);
+native DestroyVehicle(0);
 
 
-native DestroyVehicle(vehicleid);
+native IsVehicleStreamedIn(0, 0);
 
 
-native bool:IsVehicleStreamedIn(vehicleid, playerid);
+native GetVehiclePos(0, &0.0, &0.0, &0.0);
 
 
-native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
+native SetVehiclePos(0, 0.0, 0.0, 0.0);
 
 
-native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
+native GetVehicleZAngle(0, &0.0);
 
 
-native GetVehicleZAngle(vehicleid, &Float:angle);
+native GetVehicleRotationQuat(0, &0.0, &0.0, &0.0, &0.0);
 
 
-native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
+native GetVehicleDistanceFromPoint(0, 0.0, 0.0, 0.0);
 
 
-native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
+native SetVehicleZAngle(0, 0.0);
 
 
-native SetVehicleZAngle(vehicleid, Float:angle);
-
-
-native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
+native SetVehicleParamsForPlayer(0, 0, 0, 0);
 
 
 native ManualVehicleEngineAndLights();
 
 
-native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:lights, VEHICLE_PARAMS:alarm, VEHICLE_PARAMS:doors, VEHICLE_PARAMS:bonnet, VEHICLE_PARAMS:boot, VEHICLE_PARAMS:objective);
+native SetVehicleParamsEx(0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0);
 
 
-native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lights, &VEHICLE_PARAMS:alarm, &VEHICLE_PARAMS:doors, &VEHICLE_PARAMS:bonnet, &VEHICLE_PARAMS:boot, &VEHICLE_PARAMS:objective);
+native GetVehicleParamsEx(0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0, &VEHICLE_PARAMS:0);
 
 
-native GetVehicleParamsSirenState(vehicleid);
+native GetVehicleParamsSirenState(0);
 
 
-native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
+native SetVehicleParamsCarDoors(0, 0, 0, 0, 0);
 
 
-native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
+native GetVehicleParamsCarDoors(0, &0, &0, &0, &0);
 
 
-native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
+native SetVehicleParamsCarWindows(0, 0, 0, 0, 0);
 
 
-native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
+native GetVehicleParamsCarWindows(0, &0, &0, &0, &0);
 
 
-native SetVehicleToRespawn(vehicleid);
+native SetVehicleToRespawn(0);
 
 
-native LinkVehicleToInterior(vehicleid, interiorid);
+native LinkVehicleToInterior(0, 0);
 
 
-native AddVehicleComponent(vehicleid, componentid);
+native AddVehicleComponent(0, 0);
 
 
-native RemoveVehicleComponent(vehicleid, componentid);
+native RemoveVehicleComponent(0, 0);
 
 
-native ChangeVehicleColor(vehicleid, colour1, colour2);
+native ChangeVehicleColor(0, 0, 0);
 
 
-native ChangeVehiclePaintjob(vehicleid, paintjobid);
+native ChangeVehiclePaintjob(0, 0);
 
 
-native SetVehicleHealth(vehicleid, Float:health);
+native SetVehicleHealth(0, 0.0);
 
 
-native GetVehicleHealth(vehicleid, &Float:health);
+native GetVehicleHealth(0, &0.0);
 
 
-native AttachTrailerToVehicle(trailerid, vehicleid);
+native AttachTrailerToVehicle(0, 0);
 
 
-native DetachTrailerFromVehicle(vehicleid);
+native DetachTrailerFromVehicle(0);
 
 
-native bool:IsTrailerAttachedToVehicle(vehicleid);
+native IsTrailerAttachedToVehicle(0);
 
 
-native GetVehicleTrailer(vehicleid);
+native GetVehicleTrailer(0);
 
 
-native SetVehicleNumberPlate(vehicleid, "");
+native SetVehicleNumberPlate(0, "");
 
 
-native GetVehicleModel(vehicleid);
+native GetVehicleModel(0);
 
 
-native GetVehicleComponentInSlot(vehicleid, CARMODTYPE:slot); // There is 1 slot for each CARMODTYPE_*
+native GetVehicleComponentInSlot(0, CARMODTYPE:0);
 
 
-native CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
+native CARMODTYPE:GetVehicleComponentType(0);
 
 
-native RepairVehicle(vehicleid); // Repairs the damage model and resets the health
+native RepairVehicle(0);
 
 
-native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
+native GetVehicleVelocity(0, &0.0, &0.0, &0.0);
 
 
-native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
+native SetVehicleVelocity(0, 0.0, 0.0, 0.0);
 
 
-native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
+native SetVehicleAngularVelocity(0, 0.0, 0.0, 0.0);
 
 
-native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
+native GetVehicleDamageStatus(0, &0, &0, &0, &0);
 
 
-native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
+native UpdateVehicleDamageStatus(0, 0, 0, 0, 0);
 
 
-native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
+native GetVehicleModelInfo(0, VEHICLE_MODEL_INFO:0, &0.0, &0.0, &0.0);
 
-// Virtual Worlds
 
+native SetVehicleVirtualWorld(0, 0);
 
-native SetVehicleVirtualWorld(vehicleid, virtualWorld);
 
+native GetVehicleVirtualWorld(0);
 
-native GetVehicleVirtualWorld(vehicleid);
 
+native IsValidVehicle(0);
 
-native bool:IsValidVehicle(vehicleid);
 
+public OnTrailerUpdate(0, 0) {}
 
-public OnTrailerUpdate(playerid, vehicleid) {}
 
+public OnVehicleSirenStateChange(0, 0, 0) {}
 
-public OnVehicleSirenStateChange(playerid, vehicleid, newstate) {}
 
+public OnVehicleStreamIn(0, 0) {}
 
-public OnVehicleStreamIn(vehicleid, forplayerid) {}
 
+public OnVehicleStreamOut(0, 0) {}
 
-public OnVehicleStreamOut(vehicleid, forplayerid) {}
 
+public OnPlayerEnterVehicle(0, 0, 0) {}
 
-public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {}
 
+public OnPlayerExitVehicle(0, 0) {}
 
-public OnPlayerExitVehicle(playerid, vehicleid) {}
 
+public OnVehicleSpawn(0) {}
 
-public OnVehicleSpawn(vehicleid) {}
 
+public OnVehicleDeath(0, 0) {}
 
-public OnVehicleDeath(vehicleid, killerid) {}
 
+public OnVehicleMod(0, 0, 0) {}
 
-public OnVehicleMod(playerid, vehicleid, componentid) {}
 
+public OnEnterExitModShop(0, 0, 0) {}
 
-public OnEnterExitModShop(playerid, enterexit, interiorid) {}
 
+public OnVehiclePaintjob(0, 0, 0) {}
 
-public OnVehiclePaintjob(playerid, vehicleid, paintjobid) {}
 
+public OnVehicleRespray(0, 0, 0, 0) {}
 
-public OnVehicleRespray(playerid, vehicleid, color1, color2) {}
 
+public OnVehicleDamageStatusUpdate(0, 0) {}
 
-public OnVehicleDamageStatusUpdate(vehicleid, playerid) {}
 
-
-public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z) {}
+public OnUnoccupiedVehicleUpdate(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
 
 
 
@@ -186,91 +182,91 @@ native DB:DB_Open("");
 
 
 
-native bool:DB_Close(DB:db);
+native DB_Close(DB:0);
 
 
 
 
 
-native DBResult:DB_Query(DB:db, "");
+native DBResult:DB_Query(DB:0, "");
 
 
 
 
 
-native bool:DB_FreeResult(DBResult:result);
+native DB_FreeResult(DBResult:0);
 
 
 
 
 
-native DB_NumRows(DBResult:result);
+native DB_NumRows(DBResult:0);
 
 
 
 
 
-native bool:DB_NextRow(DBResult:result);
+native DB_NextRow(DBResult:0);
 
 
 
 
 
-native DB_NumFields(DBResult:result);
+native DB_NumFields(DBResult:0);
 
 
 
 
 
-native bool:DB_FieldName(DBResult:result, field, output[]);
+native DB_FieldName(DBResult:0, 0, output[]);
 
 
 
 
 
-native bool:DB_GetField(DBResult:result, field, output[]);
+native DB_GetField(DBResult:0, 0, output[]);
 
 
 
 
 
-native DB_GetFieldInt(DBResult:result);
+native DB_GetFieldInt(DBResult:0);
 
 
 
 
 
-native Float:DB_GetFieldFloat(DBResult:result);
+native DB_GetFieldFloat(DBResult:0);
 
 
 
 
 
-native bool:DB_GetFieldAssoc(DBResult:result, "", output[]);
+native DB_GetFieldAssoc(DBResult:0, "", output[]);
 
 
 
 
 
-native DB_GetFieldAssocInt(DBResult:result, "");
+native DB_GetFieldAssocInt(DBResult:0, "");
 
 
 
 
 
-native Float:DB_GetFieldAssocFloat(DBResult:result, "");
+native DB_GetFieldAssocFloat(DBResult:0, "");
 
 
 
 
 
-native DB_GetMemHandle(DB:db);
+native DB_GetMemHandle(DB:0);
 
 
 
 
 
-native DB_GetResultMemHandle(DBResult:result);
+native DB_GetResultMemHandle(DBResult:0);
 
 
 
@@ -289,762 +285,736 @@ native DB_DebugOpenResults();
 
 
 
-native CreateActor(modelid, Float:x, Float:y, Float:z, Float:angle);
+native CreateActor(0, 0.0, 0.0, 0.0, 0.0);
 
 
-native bool:DestroyActor(actorid);
+native DestroyActor(0);
 
 
-native bool:IsActorStreamedIn(actorid, playerid);
+native IsActorStreamedIn(0, 0);
 
 
-native bool:SetActorVirtualWorld(actorid, virtualWorld);
+native SetActorVirtualWorld(0, 0);
 
 
-native GetActorVirtualWorld(actorid);
+native GetActorVirtualWorld(0);
 
 
-native bool:ApplyActorAnimation(actorid, "", "", Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
+native ApplyActorAnimation(0, "", "", 0.0, bool:0, bool:0, bool:0, bool:0, 0);
 
 
-native bool:ClearActorAnimations(actorid);
+native ClearActorAnimations(0);
 
 
-native bool:SetActorPos(actorid, Float:x, Float:y, Float:z);
+native SetActorPos(0, 0.0, 0.0, 0.0);
 
 
-native bool:GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
+native GetActorPos(0, &0.0, &0.0, &0.0);
 
 
-native bool:SetActorFacingAngle(actorid, Float:angle);
+native SetActorFacingAngle(0, 0.0);
 
 
-native bool:GetActorFacingAngle(actorid, &Float:angle);
+native GetActorFacingAngle(0, &0.0);
 
 
-native bool:SetActorHealth(actorid, Float:health);
+native SetActorHealth(0, 0.0);
 
 
-native bool:GetActorHealth(actorid, &Float:health);
+native GetActorHealth(0, &0.0);
 
 
-native bool:SetActorInvulnerable(actorid);
+native SetActorInvulnerable(0);
 
 
-native bool:IsActorInvulnerable(actorid);
+native IsActorInvulnerable(0);
 
 
-native bool:IsValidActor(actorid);
+native IsValidActor(0);
 
 
-public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart) {}
+public OnPlayerGiveDamageActor(0, 0, 0.0, 0, 0) {}
 
 
-public OnActorStreamIn(actorid, forplayerid) {}
+public OnActorStreamIn(0, 0) {}
 
 
-public OnActorStreamOut(actorid, forplayerid) {}
+public OnActorStreamOut(0, 0) {}
 
 
 
-native HTTP(index, HTTP_METHOD:method, "", "", "");
+native HTTP(0, HTTP_METHOD:0, "", "", "");
 
 
 
-native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ);
+native CreateObject(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachObjectToVehicle(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachObjectToObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachObjectToPlayer(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native SetObjectPos(objectid, Float:x, Float:y, Float:z);
+native SetObjectPos(0, 0.0, 0.0, 0.0);
 
 
-native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
+native GetObjectPos(0, &0.0, &0.0, &0.0);
 
 
-native SetObjectRot(objectid, Float:rotX, Float:rotY, Float:rotZ);
+native SetObjectRot(0, 0.0, 0.0, 0.0);
 
 
-native GetObjectRot(objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
+native GetObjectRot(0, &0.0, &0.0, &0.0);
 
 
-native GetObjectModel(objectid);
+native GetObjectModel(0);
 
 
-native SetObjectNoCameraCol(objectid);
+native SetObjectNoCameraCol(0);
 
 
-native bool:IsValidObject(objectid);
+native IsValidObject(0);
 
 
-native DestroyObject(objectid);
+native DestroyObject(0);
 
 
-native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed);
+native MoveObject(0, 0.0, 0.0, 0.0, 0.0);
 
 
-native StopObject(objectid);
+native StopObject(0);
 
 
-native bool:IsObjectMoving(objectid);
+native IsObjectMoving(0);
 
 
-native EditObject(playerid, objectid);
+native EditObject(0, 0);
 
 
-native EditPlayerObject(playerid, objectid);
+native EditPlayerObject(0, 0);
 
 
-native SelectObject(playerid);
+native SelectObject(0);
 
 
-native CancelEdit(playerid);
+native CancelEdit(0);
 
 
-native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ);
+native CreatePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachPlayerObjectToVehicle(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
+native SetPlayerObjectPos(0, 0, 0.0, 0.0, 0.0);
 
 
-native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
+native GetPlayerObjectPos(0, 0, &0.0, &0.0, &0.0);
 
 
-native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ);
+native SetPlayerObjectRot(0, 0, 0.0, 0.0, 0.0);
 
 
-native GetPlayerObjectRot(playerid, objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
+native GetPlayerObjectRot(0, 0, &0.0, &0.0, &0.0);
 
 
-native GetPlayerObjectModel(playerid, objectid);
+native GetPlayerObjectModel(0, 0);
 
 
-native SetPlayerObjectNoCameraCol(playerid, objectid);
+native SetPlayerObjectNoCameraCol(0, 0);
 
 
-native bool:IsValidPlayerObject(playerid, objectid);
+native IsValidPlayerObject(0, 0);
 
 
-native DestroyPlayerObject(playerid, objectid);
+native DestroyPlayerObject(0, 0);
 
 
-native MovePlayerObject(playerid, objectid, Float:x, Float:y, Float:z, Float:speed);
+native MovePlayerObject(0, 0, 0.0, 0.0, 0.0, 0.0);
 
 
-native StopPlayerObject(playerid, objectid);
+native StopPlayerObject(0, 0);
 
 
-native bool:IsPlayerObjectMoving(playerid, objectid);
+native IsPlayerObjectMoving(0, 0);
 
 
-native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachPlayerObjectToPlayer(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
-native SetObjectMaterial(objectid, materialIndex, modelid, "", "");
+native SetObjectMaterial(0, 0, 0, "", "");
 
 
-native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, "", "");
+native SetPlayerObjectMaterial(0, 0, 0, 0, "", "");
 
 
-native SetObjectMaterialText(objectid, "");
+native SetObjectMaterialText(0, "");
 
 
-native SetPlayerObjectMaterialText(playerid, objectid, "");
+native SetPlayerObjectMaterialText(0, 0, "");
 
 
-native SetObjectsDefaultCameraCol(bool:disable);
+native SetObjectsDefaultCameraCol(bool:0);
 
 
-public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ) {}
+public OnPlayerSelectObject(0, SELECT_OBJECT:0, 0, 0, 0.0, 0.0, 0.0) {}
 
 
-public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ) {}
+public OnPlayerEditObject(0, 0, 0, EDIT_RESPONSE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
 
 
-public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ) {}
+public OnPlayerEditAttachedObject(0, EDIT_RESPONSE:0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) {}
 
 
-public OnObjectMoved(objectid) {}
+public OnObjectMoved(0) {}
 
 
-public OnPlayerObjectMoved(playerid, objectid) {}
+public OnPlayerObjectMoved(0, 0) {}
 
 
-// Player
+native SetSpawnInfo(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 
 
-native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native SpawnPlayer(0);
 
 
-native SpawnPlayer(playerid);
+native SetPlayerPos(0, 0.0, 0.0, 0.0);
 
-// Player info
 
+native SetPlayerPosFindZ(0, 0.0, 0.0, 0.0);
 
-native SetPlayerPos(playerid, Float:x, Float:y, Float:z);
 
+native GetPlayerPos(0, &0.0, &0.0, &0.0);
 
-native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
 
+native SetPlayerFacingAngle(0, 0.0);
 
-native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 
+native GetPlayerFacingAngle(0, &0.0);
 
-native SetPlayerFacingAngle(playerid, Float:ang);
 
+native IsPlayerInRangeOfPoint(0, 0.0, 0.0, 0.0, 0.0);
 
-native GetPlayerFacingAngle(playerid, &Float:ang);
 
+native GetPlayerDistanceFromPoint(0, 0.0, 0.0, 0.0);
 
-native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
+native IsPlayerStreamedIn(0, 0);
 
-native Float:GetPlayerDistanceFromPoint(playerid, Float:x, Float:y, Float:z);
 
+native SetPlayerInterior(0, 0);
 
-native bool:IsPlayerStreamedIn(targetid, playerid);
 
+native GetPlayerInterior(0);
 
-native SetPlayerInterior(playerid, interiorid);
 
+native SetPlayerHealth(0, 0.0);
 
-native GetPlayerInterior(playerid);
 
+native GetPlayerHealth(0, &0.0);
 
-native SetPlayerHealth(playerid, Float:health);
 
+native SetPlayerArmour(0, 0.0);
 
-native GetPlayerHealth(playerid, &Float:health);
 
+native GetPlayerArmour(0, &0.0);
 
-native SetPlayerArmour(playerid, Float:armour);
 
+native SetPlayerAmmo(0, WEAPON:0, 0);
 
-native GetPlayerArmour(playerid, &Float:armour);
 
+native GetPlayerAmmo(0);
 
-native SetPlayerAmmo(playerid, WEAPON:weaponid, ammo);
 
+native WEAPONSTATE:GetPlayerWeaponState(0);
 
-native GetPlayerAmmo(playerid);
 
+native GetPlayerTargetPlayer(0);
 
-native WEAPONSTATE:GetPlayerWeaponState(playerid);
 
+native GetPlayerTargetActor(0);
 
-native GetPlayerTargetPlayer(playerid);
 
+native SetPlayerTeam(0, 0);
 
-native GetPlayerTargetActor(playerid);
 
+native GetPlayerTeam(0);
 
-native SetPlayerTeam(playerid, teamid);
 
+native SetPlayerScore(0, 0);
 
-native GetPlayerTeam(playerid);
 
+native GetPlayerScore(0);
 
-native SetPlayerScore(playerid, score);
 
+native GetPlayerDrunkLevel(0);
 
-native GetPlayerScore(playerid);
 
+native SetPlayerDrunkLevel(0, 0);
 
-native GetPlayerDrunkLevel(playerid);
 
+native SetPlayerColor(0, 0);
 
-native SetPlayerDrunkLevel(playerid, level);
 
+native GetPlayerColor(0);
 
-native SetPlayerColor(playerid, colour);
 
+native SetPlayerSkin(0, 0);
 
-native GetPlayerColor(playerid);
 
+native GetPlayerSkin(0);
 
-native SetPlayerSkin(playerid, skinid);
 
+native GetPlayerCustomSkin(0);
 
-native GetPlayerSkin(playerid);
 
+native GivePlayerWeapon(0, WEAPON:0, 0);
 
-native GetPlayerCustomSkin(playerid);
 
+native ResetPlayerWeapons(0);
 
-native GivePlayerWeapon(playerid, WEAPON:weaponid, ammo);
 
+native SetPlayerArmedWeapon(0, WEAPON:0);
 
-native ResetPlayerWeapons(playerid);
 
+native GetPlayerWeaponData(0, 0, &WEAPON:0, &0);
 
-native SetPlayerArmedWeapon(playerid, WEAPON:weaponid);
 
+native GivePlayerMoney(0, 0);
 
-native GetPlayerWeaponData(playerid, slot, &WEAPON:weapons, &ammo);
 
+native ResetPlayerMoney(0);
 
-native GivePlayerMoney(playerid, money);
 
+native SetPlayerName(0, "");
 
-native ResetPlayerMoney(playerid);
 
+native GetPlayerMoney(0);
 
-native SetPlayerName(playerid, "");
 
+native PLAYER_STATE:GetPlayerState(0);
 
-native GetPlayerMoney(playerid);
 
+native GetPlayerIp(0, ip[]);
 
-native PLAYER_STATE:GetPlayerState(playerid);
 
+native GetPlayerPing(0);
 
-native GetPlayerIp(playerid, ip[]);
 
+native WEAPON:GetPlayerWeapon(0);
 
-native GetPlayerPing(playerid);
 
+native GetPlayerKeys(0, &KEY:0, &KEY:0, &KEY:0);
 
-native WEAPON:GetPlayerWeapon(playerid);
 
+native GetPlayerName(0, name[]);
 
-native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
 
+native SetPlayerTime(0, 0, 0);
 
-native GetPlayerName(playerid, name[]);
 
+native GetPlayerTime(0, &0, &0);
 
-native SetPlayerTime(playerid, hour, minute);
 
+native TogglePlayerClock(0, bool:0);
 
-native GetPlayerTime(playerid, &hour, &minute);
 
+native SetPlayerWeather(0, 0);
 
-native TogglePlayerClock(playerid, bool:toggle);
 
+native ForceClassSelection(0);
 
-native SetPlayerWeather(playerid, weather);
 
+native SetPlayerWantedLevel(0, 0);
 
-native ForceClassSelection(playerid);
 
+native GetPlayerWantedLevel(0);
 
-native SetPlayerWantedLevel(playerid, level);
 
+native SetPlayerFightingStyle(0, FIGHT_STYLE:0);
 
-native GetPlayerWantedLevel(playerid);
 
+native FIGHT_STYLE:GetPlayerFightingStyle(0);
 
-native SetPlayerFightingStyle(playerid, FIGHT_STYLE:style);
 
+native SetPlayerVelocity(0, 0.0, 0.0, 0.0);
 
-native FIGHT_STYLE:GetPlayerFightingStyle(playerid);
 
+native GetPlayerVelocity(0, &0.0, &0.0, &0.0);
 
-native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
 
+native PlayCrimeReportForPlayer(0, 0, 0);
 
-native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
 
+native PlayAudioStreamForPlayer(0, "");
 
-native PlayCrimeReportForPlayer(playerid, suspectid, crime);
 
+native StopAudioStreamForPlayer(0);
 
-native PlayAudioStreamForPlayer(playerid, "");
 
+native SetPlayerShopName(0, "");
 
-native StopAudioStreamForPlayer(playerid);
 
+native SetPlayerSkillLevel(0, WEAPONSKILL:0, 0);
 
-native SetPlayerShopName(playerid, "");
 
+native GetPlayerSurfingVehicleID(0);
 
-native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
 
+native GetPlayerSurfingObjectID(0);
 
-native GetPlayerSurfingVehicleID(playerid);
 
+native RemoveBuildingForPlayer(0, 0, 0.0, 0.0, 0.0, 0.0);
 
-native GetPlayerSurfingObjectID(playerid);
 
+native GetPlayerLastShotVectors(0, &0.0, &0.0, &0.0, &0.0, &0.0, &0.0);
 
-native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
 
+native SetPlayerAttachedObject(0, 0, 0, 0);
 
-native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
 
+native RemovePlayerAttachedObject(0, 0);
 
-native SetPlayerAttachedObject(playerid, index, modelid, bone);
 
+native IsPlayerAttachedObjectSlotUsed(0, 0);
 
-native RemovePlayerAttachedObject(playerid, index);
 
+native EditAttachedObject(0, 0);
 
-native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
 
+native PlayerText:CreatePlayerTextDraw(0, 0.0, 0.0, "");
 
-native EditAttachedObject(playerid, index);
 
-// Per-player TextDraws
+native PlayerTextDrawDestroy(0, PlayerText:0);
 
 
-native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, "");
+native PlayerTextDrawLetterSize(0, PlayerText:0, 0.0, 0.0);
 
 
-native PlayerTextDrawDestroy(playerid, PlayerText:text);
+native PlayerTextDrawTextSize(0, PlayerText:0, 0.0, 0.0);
 
 
-native PlayerTextDrawLetterSize(playerid, PlayerText:text, Float:width, Float:height);
+native PlayerTextDrawAlignment(0, PlayerText:0, TEXT_DRAW_ALIGN:0);
 
 
-native PlayerTextDrawTextSize(playerid, PlayerText:text, Float:width, Float:height);
+native PlayerTextDrawColor(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawAlignment(playerid, PlayerText:text, TEXT_DRAW_ALIGN:alignment);
+native PlayerTextDrawUseBox(0, PlayerText:0, bool:0);
 
 
-native PlayerTextDrawColor(playerid, PlayerText:text, colour);
+native PlayerTextDrawBoxColor(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawUseBox(playerid, PlayerText:text, bool:use);
+native PlayerTextDrawSetShadow(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawBoxColor(playerid, PlayerText:text, colour);
+native PlayerTextDrawSetOutline(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawSetShadow(playerid, PlayerText:text, size);
+native PlayerTextDrawBackgroundColor(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawSetOutline(playerid, PlayerText:text, size);
+native PlayerTextDrawFont(0, PlayerText:0, TEXT_DRAW_FONT:0);
 
 
-native PlayerTextDrawBackgroundColor(playerid, PlayerText:text, colour);
+native PlayerTextDrawSetProportional(0, PlayerText:0, bool:0);
 
 
-native PlayerTextDrawFont(playerid, PlayerText:text, TEXT_DRAW_FONT:font);
+native PlayerTextDrawSetSelectable(0, PlayerText:0, bool:0);
 
 
-native PlayerTextDrawSetProportional(playerid, PlayerText:text, bool:set);
+native PlayerTextDrawShow(0, PlayerText:0);
 
 
-native PlayerTextDrawSetSelectable(playerid, PlayerText:text, bool:set);
+native PlayerTextDrawHide(0, PlayerText:0);
 
 
-native PlayerTextDrawShow(playerid, PlayerText:text);
+native PlayerTextDrawSetString(0, PlayerText:0, "");
 
 
-native PlayerTextDrawHide(playerid, PlayerText:text);
+native PlayerTextDrawSetPreviewModel(0, PlayerText:0, 0);
 
 
-native PlayerTextDrawSetString(playerid, PlayerText:text, "");
+native PlayerTextDrawSetPreviewRot(0, PlayerText:0, 0.0, 0.0, 0.0);
 
 
-native PlayerTextDrawSetPreviewModel(playerid, PlayerText:text, modelIndex);
+native PlayerTextDrawSetPreviewVehCol(0, PlayerText:0, 0, 0);
 
 
-native PlayerTextDrawSetPreviewRot(playerid, PlayerText:text, Float:rotX, Float:rotY, Float:rotZ);
+native SetPVarInt(0, "", 0);
 
 
-native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:text, colour1, colour2);
+native GetPVarInt(0, "");
 
-// Per-player variable system (PVars)
 
+native SetPVarString(0, "", "");
 
-native SetPVarInt(playerid, "", value);
 
+native GetPVarString(0, "", output[]);
 
-native GetPVarInt(playerid, "");
 
+native SetPVarFloat(0, "", 0.0);
 
-native SetPVarString(playerid, "", "");
 
+native GetPVarFloat(0, "");
 
-native GetPVarString(playerid, "", output[]);
 
+native DeletePVar(0, "");
 
-native SetPVarFloat(playerid, "", Float:value);
 
+native GetPVarsUpperIndex(0);
 
-native Float:GetPVarFloat(playerid, "");
 
+native GetPVarNameAtIndex(0, 0, output[]);
 
-native DeletePVar(playerid, "");
 
+native PLAYER_VARTYPE:GetPVarType(0, "");
 
-native GetPVarsUpperIndex(playerid);
 
+native SetPlayerChatBubble(0, "", 0, 0.0, 0);
 
-native GetPVarNameAtIndex(playerid, index, output[]);
 
+native PutPlayerInVehicle(0, 0, 0);
 
-native PLAYER_VARTYPE:GetPVarType(playerid, "");
 
+native GetPlayerVehicleID(0);
 
-native SetPlayerChatBubble(playerid, "", colour, Float:drawDistance, expireTime);
 
-// Player control
+native GetPlayerVehicleSeat(0);
 
 
-native PutPlayerInVehicle(playerid, vehicleid, seatid);
+native RemovePlayerFromVehicle(0);
 
 
-native GetPlayerVehicleID(playerid);
+native TogglePlayerControllable(0, bool:0);
 
 
-native GetPlayerVehicleSeat(playerid);
+native PlayerPlaySound(0, 0, 0.0, 0.0, 0.0);
 
 
-native RemovePlayerFromVehicle(playerid);
+native ApplyAnimation(0, "", "", 0.0, bool:0, bool:0, bool:0, bool:0, 0);
 
 
-native TogglePlayerControllable(playerid, bool:toggle);
+native ClearAnimations(0);
 
 
-native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
+native GetPlayerAnimationIndex(0);
 
 
-native ApplyAnimation(playerid, "", "", Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
+native GetAnimationName(0, animationLibrary[], animationName[]);
 
 
-native ClearAnimations(playerid);
+native SPECIAL_ACTION:GetPlayerSpecialAction(0);
 
 
-native GetPlayerAnimationIndex(playerid); // return the index of any running applied animations (0 if none are running)
+native SetPlayerSpecialAction(0, SPECIAL_ACTION:0);
 
 
-native GetAnimationName(index, animationLibrary[], animationName[]); // get the animation lib/name for the index
+native DisableRemoteVehicleCollisions(0, bool:0);
 
 
-native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
+native SetPlayerCheckpoint(0, 0.0, 0.0, 0.0, 0.0);
 
 
-native SetPlayerSpecialAction(playerid, SPECIAL_ACTION:actionid);
+native DisablePlayerCheckpoint(0);
 
 
-native DisableRemoteVehicleCollisions(playerid, bool:disable);
+native SetPlayerRaceCheckpoint(0, CP_TYPE:0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
-// Player world/map related
 
+native DisablePlayerRaceCheckpoint(0);
 
-native SetPlayerCheckpoint(playerid, Float:x, Float:y, Float:z, Float:size);
 
+native SetPlayerWorldBounds(0, 0.0, 0.0, 0.0, 0.0);
 
-native DisablePlayerCheckpoint(playerid);
 
+native SetPlayerMarkerForPlayer(0, 0, 0);
 
-native SetPlayerRaceCheckpoint(playerid, CP_TYPE:type, Float:centerX, Float:centerY, Float:centerZ, Float:nextX, Float:nextY, Float:nextZ, Float:size);
 
+native ShowPlayerNameTagForPlayer(0, 0, bool:0);
 
-native DisablePlayerRaceCheckpoint(playerid);
 
+native SetPlayerMapIcon(0, 0, 0.0, 0.0, 0.0, 0, 0);
 
-native SetPlayerWorldBounds(playerid, Float:maxX, Float:minX, Float:maxY, Float:minY);
 
+native RemovePlayerMapIcon(0, 0);
 
-native SetPlayerMarkerForPlayer(playerid, targetid, colour);
 
+native SetPlayerCameraPos(0, 0.0, 0.0, 0.0);
 
-native ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
 
+native SetPlayerCameraLookAt(0, 0.0, 0.0, 0.0);
 
-native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour);
 
+native SetCameraBehindPlayer(0);
 
-native RemovePlayerMapIcon(playerid, iconid);
 
+native GetPlayerCameraPos(0, &0.0, &0.0, &0.0);
 
 
+native GetPlayerCameraFrontVector(0, &0.0, &0.0, &0.0);
 
-// Player camera
 
+native CAM_MODE:GetPlayerCameraMode(0);
 
-native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
+native EnablePlayerCameraTarget(0, bool:0);
 
-native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z);
 
+native GetPlayerCameraTargetObject(0);
 
-native SetCameraBehindPlayer(playerid);
 
+native GetPlayerCameraTargetVehicle(0);
 
-native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
 
+native GetPlayerCameraTargetPlayer(0);
 
-native GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
 
+native GetPlayerCameraTargetActor(0);
 
-native CAM_MODE:GetPlayerCameraMode(playerid);
 
+native GetPlayerCameraAspectRatio(0);
 
-native EnablePlayerCameraTarget(playerid, bool:enable);
 
+native GetPlayerCameraZoom(0);
 
-native GetPlayerCameraTargetObject(playerid);
 
+native AttachCameraToObject(0, 0);
 
-native GetPlayerCameraTargetVehicle(playerid);
 
+native AttachCameraToPlayerObject(0, 0);
 
-native GetPlayerCameraTargetPlayer(playerid);
 
+native InterpolateCameraPos(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
 
-native GetPlayerCameraTargetActor(playerid);
 
+native InterpolateCameraLookAt(0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0);
 
-native Float:GetPlayerCameraAspectRatio(playerid);
 
+native IsPlayerConnected(0);
 
-native Float:GetPlayerCameraZoom(playerid);
 
+native IsPlayerInVehicle(0, 0);
 
-native AttachCameraToObject(playerid, objectid);
 
+native IsPlayerInAnyVehicle(0);
 
-native AttachCameraToPlayerObject(playerid, objectid);
 
+native IsPlayerInCheckpoint(0);
 
-native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time);
 
+native IsPlayerInRaceCheckpoint(0);
 
-native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time);
 
-// Player conditionals
+native SetPlayerVirtualWorld(0, 0);
 
 
-native bool:IsPlayerConnected(playerid);
+native GetPlayerVirtualWorld(0);
 
 
-native bool:IsPlayerInVehicle(playerid, vehicleid);
+native EnableStuntBonusForPlayer(0, bool:0);
 
 
-native bool:IsPlayerInAnyVehicle(playerid);
+native EnableStuntBonusForAll(bool:0);
 
 
-native bool:IsPlayerInCheckpoint(playerid);
+native TogglePlayerSpectating(0, bool:0);
 
 
-native bool:IsPlayerInRaceCheckpoint(playerid);
+native PlayerSpectatePlayer(0, 0);
 
-// Virtual Worlds
 
+native PlayerSpectateVehicle(0, 0);
 
-native SetPlayerVirtualWorld(playerid, virtualWorld);
 
+native StartRecordingPlayerData(0, PLAYER_RECORDING_TYPE:0, "");
 
-native GetPlayerVirtualWorld(playerid);
 
-// Insane Stunts
+native StopRecordingPlayerData(0);
 
 
-native EnableStuntBonusForPlayer(playerid, bool:enable);
+native SelectTextDraw(0, 0);
 
 
-native EnableStuntBonusForAll(bool:enable);
+native CancelSelectTextDraw(0);
 
 
-native TogglePlayerSpectating(playerid, bool:toggle);
+native CreateExplosionForPlayer(0, 0.0, 0.0, 0.0, 0, 0.0);
 
 
-native PlayerSpectatePlayer(playerid, targetid);
+native SendClientCheck(0, 0, 0, 0, 0);
 
 
-native PlayerSpectateVehicle(playerid, targetid);
+native PlayerText3D:CreatePlayer3DTextLabel(0, "", 0, 0.0, 0.0, 0.0, 0.0);
 
 
-native StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, "");
+native DeletePlayer3DTextLabel(0, PlayerText3D:0);
 
 
-native StopRecordingPlayerData(playerid);
+native UpdatePlayer3DTextLabelText(0, PlayerText3D:0, 0, "");
 
 
-native SelectTextDraw(playerid, hoverColour); // enables the mouse so the player can select a textdraw
+public OnPlayerClickPlayerTextDraw(0, PlayerText:0) {}
 
 
-native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mouse
+public OnPlayerStreamIn(0, 0) {}
 
-// Explosion
 
+public OnPlayerStreamOut(0, 0) {}
 
-native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float:radius);
 
+public OnPlayerTakeDamage(0, 0, 0.0, 0, 0) {}
 
-native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
 
+public OnPlayerGiveDamage(0, 0, 0.0, 0, 0) {}
 
-native PlayerText3D:CreatePlayer3DTextLabel(playerid, "", colour, Float:x, Float:y, Float:z, Float:drawDistance);
 
+public OnPlayerClickPlayer(0, 0, CLICK_SOURCE:0) {}
 
-native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 
-
-native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, "");
-
-
-public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {}
-
-
-public OnPlayerStreamIn(playerid, forplayerid) {}
-
-
-public OnPlayerStreamOut(playerid, forplayerid) {}
-
-
-public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart) {}
-
-
-public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart) {}
-
-
-public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source) {}
-
-
-public OnPlayerDeath(playerid, killerid, reason) {}
+public OnPlayerDeath(0, 0, 0) {}
 
 
 
 native format(output[], "");
 
 
-native SendClientMessage(playerid, colour, "");
+native SendClientMessage(0, 0, "");
 
 
-native SendClientMessageToAll(colour, "");
+native SendClientMessageToAll(0, "");
 
 
-native SendPlayerMessageToPlayer(playerid, senderid, "");
+native SendPlayerMessageToPlayer(0, 0, "");
 
 
-native SendPlayerMessageToAll(senderid, "");
+native SendPlayerMessageToAll(0, "");
 
 
-native SendDeathMessage(killer, killee, weapon);
+native SendDeathMessage(0, 0, 0);
 
 
-native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
+native SendDeathMessageToPlayer(0, 0, 0, 0);
 
 
-native GameTextForAll("", time, style);
+native GameTextForAll("", 0, 0);
 
 
-native GameTextForPlayer(playerid, "", time, style);
+native GameTextForPlayer(0, "", 0, 0);
 
 
-native SetTimer("", interval, bool:repeating);
+native SetTimer("", 0, bool:0);
 
 
-native SetTimerEx("", interval, bool:repeating);
+native SetTimerEx("", 0, bool:0);
 
 
-native KillTimer(timerid);
+native KillTimer(0);
 
 
 native GetTickCount();
@@ -1059,19 +1029,19 @@ native CallRemoteFunction("");
 native CallLocalFunction("");
 
 
-native Float:VectorSize(Float:x, Float:y, Float:z);
+native VectorSize(0.0, 0.0, 0.0);
 
 
-native Float:asin(Float:value);
+native asin(0.0);
 
 
-native Float:acos(Float:value);
+native acos(0.0);
 
 
-native Float:atan(Float:value);
+native atan(0.0);
 
 
-native Float:atan2(Float:y, Float:x);
+native atan2(0.0, 0.0);
 
 
 native GetPlayerPoolSize();
@@ -1082,15 +1052,8 @@ native GetVehiclePoolSize();
 
 native GetActorPoolSize();
 
-// Hash
 
-
-
-
-// Server wide persistent variable system (SVars)
-
-
-native SetSVarInt("", value);
+native SetSVarInt("", 0);
 
 
 native GetSVarInt("");
@@ -1102,10 +1065,10 @@ native SetSVarString("", "");
 native GetSVarString("", output[]);
 
 
-native SetSVarFloat("", Float:value);
+native SetSVarFloat("", 0.0);
 
 
-native Float:GetSVarFloat("");
+native GetSVarFloat("");
 
 
 native DeleteSVar("");
@@ -1114,54 +1077,52 @@ native DeleteSVar("");
 native GetSVarsUpperIndex();
 
 
-native GetSVarNameAtIndex(index, output[]);
+native GetSVarNameAtIndex(0, output[]);
 
 
 native SERVER_VARTYPE:GetSVarType("");
-
-// Game
 
 
 native SetGameModeText("");
 
 
-native SetTeamCount(count);
+native SetTeamCount(0);
 
 
-native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 
 
-native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 
 
-native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
+native AddStaticVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0);
 
 
-native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay);
+native AddStaticVehicleEx(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
 
 
-native AddStaticPickup(model, type, Float:x, Float:y, Float:z);
+native AddStaticPickup(0, 0, 0.0, 0.0, 0.0);
 
 
-native CreatePickup(model, type, Float:x, Float:y, Float:z);
+native CreatePickup(0, 0, 0.0, 0.0, 0.0);
 
 
-native DestroyPickup(pickup);
+native DestroyPickup(0);
 
 
-native ShowNameTags(bool:show);
+native ShowNameTags(bool:0);
 
 
-native ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
+native ShowPlayerMarkers(PLAYER_MARKERS_MODE:0);
 
 
 native GameModeExit();
 
 
-native SetWorldTime(hour);
+native SetWorldTime(0);
 
 
-native GetWeaponName(WEAPON:weaponid, weapon[]);
+native GetWeaponName(WEAPON:0, weapon[]);
 
 
 
@@ -1173,110 +1134,97 @@ native EnableVehicleFriendlyFire();
 
 
 
-native SetWeather(weatherid);
+native SetWeather(0);
 
 
-native Float:GetGravity();
+native GetGravity();
 
 
-native SetGravity(Float:gravity);
-
-
-
+native SetGravity(0.0);
 
 
 
 
 
-native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 
 
-native EnableZoneNames(bool:enable);
+
+native CreateExplosion(0.0, 0.0, 0.0, 0, 0.0);
 
 
-native UsePlayerPedAnims(); // Will cause the players to use CJ running/walking animations
+native EnableZoneNames(bool:0);
 
 
-native DisableInteriorEnterExits();  // will disable all interior enter/exits in the game.
+native UsePlayerPedAnims();
 
 
-native SetNameTagDrawDistance(Float:distance); // Distance at which nametags will start rendering on the client.
+native DisableInteriorEnterExits();
 
 
-native DisableNameTagLOS(); // Disables the nametag Line-Of-Sight checking
+native SetNameTagDrawDistance(0.0);
 
 
-native LimitGlobalChatRadius(Float:chatRadius);
+native DisableNameTagLOS();
 
 
-native LimitPlayerMarkerRadius(Float:markerRadius);
+native LimitGlobalChatRadius(0.0);
 
-// Npc
+
+native LimitPlayerMarkerRadius(0.0);
 
 
 native ConnectNPC("", "");
 
 
-native bool:IsPlayerNPC(playerid);
+native IsPlayerNPC(0);
 
 
-native AddCharModel(baseid, newid, "", "");
+native AddCharModel(0, 0, "", "");
 
 
-native AddSimpleModel(virtualWorld, baseid, newid, "", "");
+native AddSimpleModel(0, 0, 0, "", "");
 
 
-native AddSimpleModelTimed(virtualWorld, baseid, newid, "", "", timeOn, timeOff);
+native AddSimpleModelTimed(0, 0, 0, "", "", 0, 0);
 
 
-native FindModelFileNameFromCRC(crc, output[]);
+native FindModelFileNameFromCRC(0, output[]);
 
 
-native FindTextureFileNameFromCRC(crc, output[]);
+native FindTextureFileNameFromCRC(0, output[]);
 
 
-native RedirectDownload(playerid, "");
-
-// Admin
+native RedirectDownload(0, "");
 
 
-native bool:IsPlayerAdmin(playerid);
+native IsPlayerAdmin(0);
 
 
-native Kick(playerid);
+native Kick(0);
 
 
-native Ban(playerid);
+native Ban(0);
 
 
-native BanEx(playerid, "");
+native BanEx(0, "");
 
 
 native SendRconCommand("");
 
 
-native GetPlayerNetworkStats(playerid, output[]);
+native GetPlayerNetworkStats(0, output[]);
 
 
 native GetNetworkStats(output[]);
 
 
-native GetPlayerVersion(playerid, version[]); // Returns the SA-MP client revision as reported by the player
+native GetPlayerVersion(0, version[]);
 
 
-native BlockIpAddress("", timeMS);
+native BlockIpAddress("", 0);
 
 
 native UnBlockIpAddress("");
-
-
-
-
-
-
-
-
-// These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
 
 
 native GetConsoleVarAsString("", buffer[]);
@@ -1285,199 +1233,187 @@ native GetConsoleVarAsString("", buffer[]);
 native GetConsoleVarAsInt("");
 
 
-native bool:GetConsoleVarAsBool("");
-
-// Extended admin network stats
+native GetConsoleVarAsBool("");
 
 
 native GetServerTickRate();
 
 
-native NetStats_GetConnectedTime(playerid);
+native NetStats_GetConnectedTime(0);
 
 
-native NetStats_MessagesReceived(playerid);
+native NetStats_MessagesReceived(0);
 
 
-native NetStats_BytesReceived(playerid);
+native NetStats_BytesReceived(0);
 
 
-native NetStats_MessagesSent(playerid);
+native NetStats_MessagesSent(0);
 
 
-native NetStats_BytesSent(playerid);
+native NetStats_BytesSent(0);
 
 
-native NetStats_MessagesRecvPerSecond(playerid);
+native NetStats_MessagesRecvPerSecond(0);
 
 
-native Float:NetStats_PacketLossPercent(playerid);
+native NetStats_PacketLossPercent(0);
 
 
-native NetStats_ConnectionStatus(playerid);
+native NetStats_ConnectionStatus(0);
 
 
-native NetStats_GetIpPort(playerid, output[]);
+native NetStats_GetIpPort(0, output[]);
 
-// Menu
 
+native Menu:CreateMenu("", 0, 0.0, 0.0, 0.0);
 
-native Menu:CreateMenu("", columns, Float:x, Float:y, Float:col1width);
 
+native DestroyMenu(Menu:0);
 
-native bool:DestroyMenu(Menu:menuid);
 
+native AddMenuItem(Menu:0, 0, "");
 
-native AddMenuItem(Menu:menuid, column, "");
 
+native SetMenuColumnHeader(Menu:0, 0, "");
 
-native bool:SetMenuColumnHeader(Menu:menuid, column, "");
 
+native ShowMenuForPlayer(Menu:0, 0);
 
-native bool:ShowMenuForPlayer(Menu:menuid, playerid);
 
+native HideMenuForPlayer(Menu:0, 0);
 
-native bool:HideMenuForPlayer(Menu:menuid, playerid);
 
+native IsValidMenu(Menu:0);
 
-native bool:IsValidMenu(Menu:menuid);
 
+native DisableMenu(Menu:0);
 
-native bool:DisableMenu(Menu:menuid);
 
+native DisableMenuRow(Menu:0, 0);
 
-native bool:DisableMenuRow(Menu:menuid, row);
 
+native Menu:GetPlayerMenu(0);
 
-native Menu:GetPlayerMenu(playerid);
 
+native Text:TextDrawCreate(0.0, 0.0, "");
 
-native Text:TextDrawCreate(Float:x, Float:y, "");
 
+native TextDrawDestroy(Text:0);
 
-native TextDrawDestroy(Text:text);
 
+native TextDrawLetterSize(Text:0, 0.0, 0.0);
 
-native TextDrawLetterSize(Text:text, Float:width, Float:height);
 
+native TextDrawTextSize(Text:0, 0.0, 0.0);
 
-native TextDrawTextSize(Text:text, Float:width, Float:height);
 
+native TextDrawAlignment(Text:0, TEXT_DRAW_ALIGN:0);
 
-native TextDrawAlignment(Text:text, TEXT_DRAW_ALIGN:alignment);
 
+native TextDrawColor(Text:0, 0);
 
-native TextDrawColor(Text:text, colour);
 
+native TextDrawUseBox(Text:0, bool:0);
 
-native TextDrawUseBox(Text:text, bool:use);
 
+native TextDrawBoxColor(Text:0, 0);
 
-native TextDrawBoxColor(Text:text, colour);
 
+native TextDrawSetShadow(Text:0, 0);
 
-native TextDrawSetShadow(Text:text, size);
 
+native TextDrawSetOutline(Text:0, 0);
 
-native TextDrawSetOutline(Text:text, size);
 
+native TextDrawBackgroundColor(Text:0, 0);
 
-native TextDrawBackgroundColor(Text:text, colour);
 
+native TextDrawFont(Text:0, TEXT_DRAW_FONT:0);
 
-native TextDrawFont(Text:text, TEXT_DRAW_FONT:font);
 
+native TextDrawSetProportional(Text:0, bool:0);
 
-native TextDrawSetProportional(Text:text, bool:set);
 
+native TextDrawSetSelectable(Text:0, bool:0);
 
-native TextDrawSetSelectable(Text:text, bool:set);
 
+native TextDrawShowForPlayer(0, Text:0);
 
-native TextDrawShowForPlayer(playerid, Text:text);
 
+native TextDrawHideForPlayer(0, Text:0);
 
-native TextDrawHideForPlayer(playerid, Text:text);
 
+native TextDrawShowForAll(Text:0);
 
-native TextDrawShowForAll(Text:text);
 
+native TextDrawHideForAll(Text:0);
 
-native TextDrawHideForAll(Text:text);
 
+native TextDrawSetString(Text:0, "");
 
-native TextDrawSetString(Text:text, "");
 
+native TextDrawSetPreviewModel(Text:0, 0);
 
-native TextDrawSetPreviewModel(Text:text, modelIndex);
 
+native TextDrawSetPreviewRot(Text:0, 0.0, 0.0, 0.0);
 
-native TextDrawSetPreviewRot(Text:text, Float:rotX, Float:rotY, Float:rotZ);
 
+native TextDrawSetPreviewVehCol(Text:0, 0, 0);
 
-native TextDrawSetPreviewVehCol(Text:text, colour1, colour2);
 
-// Gang Zones
+native GangZoneCreate(0.0, 0.0, 0.0, 0.0);
 
 
-native GangZoneCreate(Float:minX, Float:minY, Float:maxX, Float:maxY);
+native GangZoneDestroy(0);
 
 
-native GangZoneDestroy(zone);
+native GangZoneShowForPlayer(0, 0, 0);
 
 
-native GangZoneShowForPlayer(playerid, zone, colour);
+native GangZoneShowForAll(0, 0);
 
 
-native GangZoneShowForAll(zone, colour);
+native GangZoneHideForPlayer(0, 0);
 
 
-native GangZoneHideForPlayer(playerid, zone);
+native GangZoneHideForAll(0);
 
 
-native GangZoneHideForAll(zone);
+native GangZoneFlashForPlayer(0, 0, 0);
 
 
-native GangZoneFlashForPlayer(playerid, zone, flashColour);
+native GangZoneFlashForAll(0, 0);
 
 
-native GangZoneFlashForAll(zone, flashColour);
+native GangZoneStopFlashForPlayer(0, 0);
 
 
-native GangZoneStopFlashForPlayer(playerid, zone);
+native GangZoneStopFlashForAll(0);
 
 
-native GangZoneStopFlashForAll(zone);
+native Text3D:Create3DTextLabel("", 0, 0.0, 0.0, 0.0, 0.0, 0);
 
-// Global 3D Text Labels
 
+native Delete3DTextLabel(Text3D:0);
 
-native Text3D:Create3DTextLabel("", colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld);
 
+native Attach3DTextLabelToPlayer(Text3D:0, 0, 0.0, 0.0, 0.0);
 
-native Delete3DTextLabel(Text3D:textid);
 
+native Attach3DTextLabelToVehicle(Text3D:0, 0, 0.0, 0.0, 0.0);
 
-native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
+native Update3DTextLabelText(Text3D:0, 0, "");
 
-native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
+native ShowPlayerDialog(0, 0, DIALOG_STYLE:0, "", "", "", "");
 
-native Update3DTextLabelText(Text3D:textid, colour, "");
 
 
-native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, "", "", "", "");
 
 
-
-
-
-native GPCI(playerid, serial[]);
-
-// --------------------------------------------------
-// Forwards (Callback declarations)
-// --------------------------------------------------
+native GPCI(0, serial[]);
 
 
 public OnGameModeInit() {}
@@ -1492,87 +1428,87 @@ public OnFilterScriptInit() {}
 public OnFilterScriptExit() {}
 
 
-public OnPlayerConnect(playerid) {}
+public OnPlayerConnect(0) {}
 
 
-public OnPlayerDisconnect(playerid, reason) {}
+public OnPlayerDisconnect(0, 0) {}
 
 
-public OnPlayerSpawn(playerid) {}
+public OnPlayerSpawn(0) {}
 
 
-public OnPlayerText(playerid, text[]) {}
+public OnPlayerText(0, text[]) {}
 
 
-public OnPlayerCommandText(playerid, cmdtext[]) {}
+public OnPlayerCommandText(0, cmdtext[]) {}
 
 
-public OnPlayerRequestClass(playerid, classid) {}
+public OnPlayerRequestClass(0, 0) {}
 
 
-public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate) {}
+public OnPlayerStateChange(0, PLAYER_STATE:0, PLAYER_STATE:0) {}
 
 
-public OnPlayerEnterCheckpoint(playerid) {}
+public OnPlayerEnterCheckpoint(0) {}
 
 
-public OnPlayerLeaveCheckpoint(playerid) {}
+public OnPlayerLeaveCheckpoint(0) {}
 
 
-public OnPlayerEnterRaceCheckpoint(playerid) {}
+public OnPlayerEnterRaceCheckpoint(0) {}
 
 
-public OnPlayerLeaveRaceCheckpoint(playerid) {}
+public OnPlayerLeaveRaceCheckpoint(0) {}
 
 
 public OnRconCommand(cmd[]) {}
 
 
-public OnPlayerRequestSpawn(playerid) {}
+public OnPlayerRequestSpawn(0) {}
 
 
-public OnPlayerPickUpPickup(playerid, pickupid) {}
+public OnPlayerPickUpPickup(0, 0) {}
 
 
-public OnPlayerSelectedMenuRow(playerid, row) {}
+public OnPlayerSelectedMenuRow(0, 0) {}
 
 
-public OnPlayerExitedMenu(playerid) {}
+public OnPlayerExitedMenu(0) {}
 
 
-public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid) {}
+public OnPlayerInteriorChange(0, 0, 0) {}
 
 
-public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {}
+public OnPlayerKeyStateChange(0, KEY:0, KEY:0) {}
 
 
-public OnRconLoginAttempt(ip[], password[], success) {}
+public OnRconLoginAttempt(ip[], password[], 0) {}
 
 
-public OnPlayerUpdate(playerid) {}
+public OnPlayerUpdate(0) {}
 
 
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {}
+public OnDialogResponse(0, 0, 0, 0, inputtext[]) {}
 
 
-public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ) {}
+public OnPlayerClickMap(0, 0.0, 0.0, 0.0) {}
 
 
-public OnPlayerClickTextDraw(playerid, Text:clickedid) {}
+public OnPlayerClickTextDraw(0, Text:0) {}
 
 
-public OnIncomingConnection(playerid, ip_address[], port) {}
+public OnIncomingConnection(0, ip_address[], 0) {}
 
 
-public OnPlayerFinishedDownloading(playerid, virtualworld) {}
-public OnPlayerRequestDownload(playerid, type, crc) {}
+public OnPlayerFinishedDownloading(0, 0) {}
+public OnPlayerRequestDownload(0, 0, 0) {}
 
 
-public OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ) {}
+public OnPlayerWeaponShot(0, 0, BULLET_HIT_TYPE:0, 0, 0.0, 0.0, 0.0) {}
 
 
-public OnClientCheckResponse(playerid, actionid, memaddr, retndata) {}
+public OnClientCheckResponse(0, 0, 0, 0) {}
 
 
-public OnScriptCash(playerid, amount, source) {}
+public OnScriptCash(0, 0, 0) {}
 
