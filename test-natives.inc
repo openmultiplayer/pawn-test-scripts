@@ -38,8 +38,8 @@ public TestAllNatives()
 	SetVehicleNumberPlate(0, "");
 	GetVehicleModel(0);
 	GetVehicleComponentInSlot(0, CARMODTYPE:0);
-	new CARMODTYPE:CARMODTYPE_ = GetVehicleComponentType(0);
-	#pragma unused CARMODTYPE_
+	new CARMODTYPE:carmodtype = GetVehicleComponentType(0);
+	#pragma unused carmodtype
 	RepairVehicle(0);
 	GetVehicleVelocity(0, fvar, fvar, fvar);
 	SetVehicleVelocity(0, 0.0, 0.0, 0.0);
@@ -50,11 +50,11 @@ public TestAllNatives()
 	SetVehicleVirtualWorld(0, 0);
 	GetVehicleVirtualWorld(0);
 	IsValidVehicle(0);
-	new DB:DB_ = DB_Open("");
-	#pragma unused DB_
+	new DB:db = DB_Open("");
+	#pragma unused db
 	DB_Close(DB:0);
-	new DBResult:DBResult_ = DB_Query(DB:0, "");
-	#pragma unused DBResult_
+	new DBResult:dbresult = DB_Query(DB:0, "");
+	#pragma unused dbresult
 	DB_FreeResult(DBResult:0);
 	DB_NumRows(DBResult:0);
 	DB_NextRow(DBResult:0);
@@ -143,8 +143,8 @@ public TestAllNatives()
 	GetPlayerArmour(0, fvar);
 	SetPlayerAmmo(0, WEAPON:0, 0);
 	GetPlayerAmmo(0);
-	new WEAPONSTATE:WEAPONSTATE_ = GetPlayerWeaponState(0);
-	#pragma unused WEAPONSTATE_
+	new WEAPONSTATE:weaponstate = GetPlayerWeaponState(0);
+	#pragma unused weaponstate
 	GetPlayerTargetPlayer(0);
 	GetPlayerTargetActor(0);
 	SetPlayerTeam(0, 0);
@@ -166,12 +166,12 @@ public TestAllNatives()
 	ResetPlayerMoney(0);
 	SetPlayerName(0, "");
 	GetPlayerMoney(0);
-	new PLAYER_STATE:PLAYER_STATE_ = GetPlayerState(0);
-	#pragma unused PLAYER_STATE_
+	new PLAYER_STATE:player_state = GetPlayerState(0);
+	#pragma unused player_state
 	GetPlayerIp(0, svar);
 	GetPlayerPing(0);
-	new WEAPON:WEAPON_ = GetPlayerWeapon(0);
-	#pragma unused WEAPON_
+	new WEAPON:weapon = GetPlayerWeapon(0);
+	#pragma unused weapon
 	GetPlayerKeys(0, KEY:ivar, KEY:ivar, KEY:ivar);
 	GetPlayerName(0, svar);
 	SetPlayerTime(0, 0, 0);
@@ -182,8 +182,8 @@ public TestAllNatives()
 	SetPlayerWantedLevel(0, 0);
 	GetPlayerWantedLevel(0);
 	SetPlayerFightingStyle(0, FIGHT_STYLE:0);
-	new FIGHT_STYLE:FIGHT_STYLE_ = GetPlayerFightingStyle(0);
-	#pragma unused FIGHT_STYLE_
+	new FIGHT_STYLE:fight_style = GetPlayerFightingStyle(0);
+	#pragma unused fight_style
 	SetPlayerVelocity(0, 0.0, 0.0, 0.0);
 	GetPlayerVelocity(0, fvar, fvar, fvar);
 	PlayCrimeReportForPlayer(0, 0, 0);
@@ -199,8 +199,8 @@ public TestAllNatives()
 	RemovePlayerAttachedObject(0, 0);
 	IsPlayerAttachedObjectSlotUsed(0, 0);
 	EditAttachedObject(0, 0);
-	new PlayerText:PlayerText_ = CreatePlayerTextDraw(0, 0.0, 0.0, "");
-	#pragma unused PlayerText_
+	new PlayerText:playertext = CreatePlayerTextDraw(0, 0.0, 0.0, "");
+	#pragma unused playertext
 	PlayerTextDrawDestroy(0, PlayerText:0);
 	PlayerTextDrawLetterSize(0, PlayerText:0, 0.0, 0.0);
 	PlayerTextDrawTextSize(0, PlayerText:0, 0.0, 0.0);
@@ -229,8 +229,8 @@ public TestAllNatives()
 	DeletePVar(0, "");
 	GetPVarsUpperIndex(0);
 	GetPVarNameAtIndex(0, 0, svar);
-	new PLAYER_VARTYPE:PLAYER_VARTYPE_ = GetPVarType(0, "");
-	#pragma unused PLAYER_VARTYPE_
+	new PLAYER_VARTYPE:player_vartype = GetPVarType(0, "");
+	#pragma unused player_vartype
 	SetPlayerChatBubble(0, "", 0, 0.0, 0);
 	PutPlayerInVehicle(0, 0, 0);
 	GetPlayerVehicleID(0);
@@ -241,9 +241,9 @@ public TestAllNatives()
 	ApplyAnimation(0, "", "", 0.0, false, false, false, false, 0);
 	ClearAnimations(0);
 	GetPlayerAnimationIndex(0);
-	GetAnimationName(0, svar, svar);
-	new SPECIAL_ACTION:SPECIAL_ACTION_ = GetPlayerSpecialAction(0);
-	#pragma unused SPECIAL_ACTION_
+	GetAnimationName(0, svar, _, svar);
+	new SPECIAL_ACTION:special_action = GetPlayerSpecialAction(0);
+	#pragma unused special_action
 	SetPlayerSpecialAction(0, SPECIAL_ACTION:0);
 	DisableRemoteVehicleCollisions(0, false);
 	SetPlayerCheckpoint(0, 0.0, 0.0, 0.0, 0.0);
@@ -260,8 +260,8 @@ public TestAllNatives()
 	SetCameraBehindPlayer(0);
 	GetPlayerCameraPos(0, fvar, fvar, fvar);
 	GetPlayerCameraFrontVector(0, fvar, fvar, fvar);
-	new CAM_MODE:CAM_MODE_ = GetPlayerCameraMode(0);
-	#pragma unused CAM_MODE_
+	new CAM_MODE:cam_mode = GetPlayerCameraMode(0);
+	#pragma unused cam_mode
 	EnablePlayerCameraTarget(0, false);
 	GetPlayerCameraTargetObject(0);
 	GetPlayerCameraTargetVehicle(0);
@@ -291,11 +291,11 @@ public TestAllNatives()
 	CancelSelectTextDraw(0);
 	CreateExplosionForPlayer(0, 0.0, 0.0, 0.0, 0, 0.0);
 	SendClientCheck(0, 0, 0, 0, 0);
-	new PlayerText3D:PlayerText3D_ = CreatePlayer3DTextLabel(0, "", 0, 0.0, 0.0, 0.0, 0.0);
-	#pragma unused PlayerText3D_
+	new PlayerText3D:playertext3d = CreatePlayer3DTextLabel(0, "", 0, 0.0, 0.0, 0.0, 0.0);
+	#pragma unused playertext3d
 	DeletePlayer3DTextLabel(0, PlayerText3D:0);
 	UpdatePlayer3DTextLabelText(0, PlayerText3D:0, 0, "");
-	format(svar, "");
+	format(svar, _, "");
 	SendClientMessage(0, 0, "");
 	SendClientMessageToAll(0, "");
 	SendPlayerMessageToPlayer(0, 0, "");
@@ -328,8 +328,8 @@ public TestAllNatives()
 	DeleteSVar("");
 	GetSVarsUpperIndex();
 	GetSVarNameAtIndex(0, svar);
-	new SERVER_VARTYPE:SERVER_VARTYPE_ = GetSVarType("");
-	#pragma unused SERVER_VARTYPE_
+	new SERVER_VARTYPE:server_vartype = GetSVarType("");
+	#pragma unused server_vartype
 	SetGameModeText("");
 	SetTeamCount(0);
 	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
@@ -387,8 +387,8 @@ public TestAllNatives()
 	NetStats_PacketLossPercent(0);
 	NetStats_ConnectionStatus(0);
 	NetStats_GetIpPort(0, svar);
-	new Menu:Menu_ = CreateMenu("", 0, 0.0, 0.0, 0.0);
-	#pragma unused Menu_
+	new Menu:menu = CreateMenu("", 0, 0.0, 0.0, 0.0);
+	#pragma unused menu
 	DestroyMenu(Menu:0);
 	AddMenuItem(Menu:0, 0, "");
 	SetMenuColumnHeader(Menu:0, 0, "");
@@ -397,10 +397,10 @@ public TestAllNatives()
 	IsValidMenu(Menu:0);
 	DisableMenu(Menu:0);
 	DisableMenuRow(Menu:0, 0);
-	new Menu:Menu_ = GetPlayerMenu(0);
-	#pragma unused Menu_
-	new Text:Text_ = TextDrawCreate(0.0, 0.0, "");
-	#pragma unused Text_
+	new Menu:menu2 = GetPlayerMenu(0);
+	#pragma unused menu2
+	new Text:text = TextDrawCreate(0.0, 0.0, "");
+	#pragma unused text
 	TextDrawDestroy(Text:0);
 	TextDrawLetterSize(Text:0, 0.0, 0.0);
 	TextDrawTextSize(Text:0, 0.0, 0.0);
@@ -432,8 +432,8 @@ public TestAllNatives()
 	GangZoneFlashForAll(0, 0);
 	GangZoneStopFlashForPlayer(0, 0);
 	GangZoneStopFlashForAll(0);
-	new Text3D:Text3D_ = Create3DTextLabel("", 0, 0.0, 0.0, 0.0, 0.0, 0);
-	#pragma unused Text3D_
+	new Text3D:text3d = Create3DTextLabel("", 0, 0.0, 0.0, 0.0, 0.0, 0);
+	#pragma unused text3d
 	Delete3DTextLabel(Text3D:0);
 	Attach3DTextLabelToPlayer(Text3D:0, 0, 0.0, 0.0, 0.0);
 	Attach3DTextLabelToVehicle(Text3D:0, 0, 0.0, 0.0, 0.0);
