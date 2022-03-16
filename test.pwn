@@ -7,6 +7,7 @@
 // #define JUST_TEST TestName
 
 #include "test-header"
+#include "test-natives"
 
 // Test suites
 #include "components/core/main.pwn"
