@@ -1,8 +1,3 @@
-#include <a_samp>
-#if USE_FIXES
-	#include <fixes>
-#endif
-
 #pragma warning disable 200
 
 // Run tests.
@@ -10,17 +5,7 @@
 // Uncomment (and edit) to run a single test case
 // #define JUST_TEST TestName
 
-// Minimal YSI.
-#define YSI_NO_DIALOG_ASK
-#define YSI_NO_ANDROID_CHECK
-#define YSI_NO_GET_IP
-#define FOREACH_NO_BOTS
-#define FOREACH_NO_LOCALS
-#define FOREACH_NO_VEHICLES
-#define FOREACH_NO_ACTORS
-#define FOREACH_NO_STREAMED
-
-#include <YSI_Core\y_testing>
+#include "test-header"
 
 // Test suites
 #include "components/core/main.pwn"
