@@ -21,7 +21,7 @@ TEST__ CV02_StringOld()
 	new buffer[32] = "init";
 	printf("Running GetConsoleVarAsString(\"version\", buffer);");
 	GetConsoleVarAsString("version", buffer);
-	ASSERT_SAME(buffer, "0.3.7");
+	ASSERT_SAME(buffer, "open.mp 0.0.0");
 }
 
 // Test for new (open.mp) script vars.
