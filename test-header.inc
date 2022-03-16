@@ -1,4 +1,9 @@
-#include <a_samp>
+#tryinclude <samp-stdlib\a_samp>
+#tryinclude <a_samp>
+
+#if !defined _samp_included
+	#error Could not include <a_samp>
+#endif
 
 #define NO_VALUE(%0) ((2*%0-1)==2*(%0-1))
 
@@ -6,14 +11,22 @@
 #if !defined USE_FIXES
 	#define YSI_OPEN.MP
 #if NO_VALUE(USE_FIXES)
-	#include <fixes>
+	#tryinclude <sa-mp-fixes\fixes>
+	#tryinclude <fixes>
+	#if !defined _INC_SAMP_Community_fixes
+		#error Could not include <fixes>
+	#endif
 #elseif USE_FIXES == 1
-	#include <fixes>
+	#tryinclude <sa-mp-fixes\fixes>
+	#tryinclude <fixes>
+	#if !defined _INC_SAMP_Community_fixes
+		#error Could not include <fixes>
+	#endif
 #else
 	#define YSI_OPEN.MP
 #endif
 
-#pragma warning disable 200
+//#pragma warning disable 200
 
 // Minimal YSI.
 #define RUN_TESTS
