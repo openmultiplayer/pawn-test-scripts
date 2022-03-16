@@ -7,6 +7,7 @@
 // #define JUST_TEST TestName
 
 #include "test-header"
+#include <YSI_Coding\y_hooks>
 #include "test-natives"
 
 // Test suites
@@ -18,7 +19,6 @@
 #include "components/consolevars/main.pwn"
 #include "components/gangzones/main.pwn"
 
-#include <YSI_Coding\y_hooks>
 
 main()
 {
