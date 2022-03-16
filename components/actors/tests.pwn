@@ -114,10 +114,10 @@ TEST__ A_07_GetAndSetActorFacingA()
     ASSERT_EQ(SetActorFacingAngle(INVALID_ACTOR_ID, 69.0), 0);
 
     ASSERT_EQ(GetActorFacingAngle(g_iActor, angle), 1);
-    ASSERT_EQ(angle, 30.0);
+    ASSERT(angle == 30.0); // `ASSERT_EQ` doesn't work well on floats.
     ASSERT_EQ(SetActorFacingAngle(g_iActor, 69.0), 1);
     ASSERT_EQ(GetActorFacingAngle(g_iActor, angle), 1);
-    ASSERT_EQ(angle, 69.0);
+    ASSERT(angle == 69.0); // `ASSERT_EQ` doesn't work well on floats.
 }
 TEST_CLOSE__ A_07_GetAndSetActorFacingA()
 {
