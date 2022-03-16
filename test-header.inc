@@ -2,12 +2,15 @@
 
 #define NO_VALUE(%0) ((2*%0-1)==2*(%0-1))
 
-#if defined USE_FIXES
-	#if NO_VALUE(USE_FIXES)
-		#include <fixes>
-	#elseif USE_FIXES == 1
-		#include <fixes>
-	#endif
+// `YSI_OPEN.MP` and `fixes.inc` are mutually exclusive.
+#if !defined USE_FIXES
+	#define YSI_OPEN.MP
+#if NO_VALUE(USE_FIXES)
+	#include <fixes>
+#elseif USE_FIXES == 1
+	#include <fixes>
+#else
+	#define YSI_OPEN.MP
 #endif
 
 #pragma warning disable 200
