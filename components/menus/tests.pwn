@@ -17,22 +17,22 @@ TEST_CLOSE__ M_01_CreateMenu()
 TEST__ M_02_IsValidMenu()
 {
     new Menu:menu;
-    ASSERT_EQ(IsValidMenu(menu), false);
+    ASSERT(!IsValidMenu(menu));
     menu = CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0);
-    ASSERT_EQ(IsValidMenu(menu), true);
+    ASSERT(IsValidMenu(menu));
     DestroyMenu(menu);
-    ASSERT_EQ(IsValidMenu(menu), false);
-    ASSERT_EQ(IsValidMenu(Menu:0), false);
-    ASSERT_EQ(IsValidMenu(INVALID_MENU), false);
+    ASSERT(!IsValidMenu(menu));
+    ASSERT(!IsValidMenu(Menu:0));
+    ASSERT(!IsValidMenu(INVALID_MENU));
 }
 
 TEST__ M_03_DestroyMenu()
 {
     new Menu:menu = CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0);
-    ASSERT_EQ(DestroyMenu(menu), true);
-    ASSERT_EQ(DestroyMenu(menu), false);
-    ASSERT_EQ(DestroyMenu(Menu:0), false);
-    ASSERT_EQ(DestroyMenu(INVALID_MENU), false);
+    ASSERT(DestroyMenu(menu));
+    ASSERT(!DestroyMenu(menu));
+    ASSERT(!DestroyMenu(Menu:0));
+    ASSERT(!DestroyMenu(INVALID_MENU));
 }
 
 // vim: se ft=cpp:

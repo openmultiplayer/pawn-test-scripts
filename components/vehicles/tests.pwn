@@ -16,7 +16,7 @@ TEST_INIT__ V__DestroyVehicle()
 }
 TEST__ V__DestroyVehicle()
 {
-	ASSERT_EQ(DestroyVehicle(g_iVehicle), true);
+	ASSERT(DestroyVehicle(g_iVehicle));
 }
 TEST_CLOSE__ V__DestroyVehicle()
 {
@@ -31,7 +31,7 @@ TEST_INIT__ V__IsVehicleStreamedIn()
 }
 TEST__ V__IsVehicleStreamedIn()
 {
-	ASSERT_EQ(IsVehicleStreamedIn(g_iVehicle, 0), true);
+	ASSERT(IsVehicleStreamedIn(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__IsVehicleStreamedIn()
 {
@@ -47,7 +47,7 @@ TEST_INIT__ V__GetVehiclePos()
 TEST__ V__GetVehiclePos()
 {
 	new Float:x, Float:y, Float:z;
-	ASSERT_EQ(GetVehiclePos(g_iVehicle, x, y, z), true);
+	ASSERT(GetVehiclePos(g_iVehicle, x, y, z));
 }
 TEST_CLOSE__ V__GetVehiclePos()
 {
@@ -62,7 +62,7 @@ TEST_INIT__ V__SetVehiclePos()
 }
 TEST__ V__SetVehiclePos()
 {
-	ASSERT_EQ(SetVehiclePos(g_iVehicle, 0.0, 0.0, 0.0), true);
+	ASSERT(SetVehiclePos(g_iVehicle, 0.0, 0.0, 0.0));
 }
 TEST_CLOSE__ V__SetVehiclePos()
 {
@@ -78,7 +78,7 @@ TEST_INIT__ V__GetVehicleZAngle()
 TEST__ V__GetVehicleZAngle()
 {
 	new Float:a;
-	ASSERT_EQ(GetVehicleZAngle(g_iVehicle, a), true);
+	ASSERT(GetVehicleZAngle(g_iVehicle, a));
 }
 TEST_CLOSE__ V__GetVehicleZAngle()
 {
@@ -94,7 +94,7 @@ TEST_INIT__ V__GetVehicleRotationQuat()
 TEST__ V__GetVehicleRotationQuat()
 {
 	new Float:x, Float:y, Float:z, Float:w;
-	ASSERT_EQ(GetVehicleRotationQuat(g_iVehicle, x, y, z, w), true);
+	ASSERT(GetVehicleRotationQuat(g_iVehicle, x, y, z, w));
 }
 TEST_CLOSE__ V__GetVehicleRotationQuat()
 {
@@ -124,7 +124,7 @@ TEST_INIT__ V__SetVehicleZAngle()
 }
 TEST__ V__SetVehicleZAngle()
 {
-	ASSERT_EQ(SetVehicleZAngle(g_iVehicle, 0.0), true);
+	ASSERT(SetVehicleZAngle(g_iVehicle, 0.0));
 }
 TEST_CLOSE__ V__SetVehicleZAngle()
 {
@@ -139,7 +139,7 @@ TEST_INIT__ V__SetVehicleParamsForPlayer()
 }
 TEST__ V__SetVehicleParamsForPlayer()
 {
-	ASSERT_EQ(SetVehicleParamsForPlayer(g_iVehicle, 0, 0, 0), true);
+	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, 0, 0, 0));
 }
 TEST_CLOSE__ V__SetVehicleParamsForPlayer()
 {
@@ -169,7 +169,7 @@ TEST_INIT__ V__SetVehicleParamsEx()
 }
 TEST__ V__SetVehicleParamsEx()
 {
-	ASSERT_EQ(SetVehicleParamsEx(g_iVehicle, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0), true);
+	ASSERT(SetVehicleParamsEx(g_iVehicle, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0));
 }
 TEST_CLOSE__ V__SetVehicleParamsEx()
 {
@@ -185,7 +185,7 @@ TEST_INIT__ V__GetVehicleParamsEx()
 TEST__ V__GetVehicleParamsEx()
 {
 	new VEHICLE_PARAMS:a, VEHICLE_PARAMS:b, VEHICLE_PARAMS:c, VEHICLE_PARAMS:d, VEHICLE_PARAMS:e, VEHICLE_PARAMS:f, VEHICLE_PARAMS:g;
-	ASSERT_EQ(GetVehicleParamsEx(g_iVehicle, a, b, c, d, e, f, g), true);
+	ASSERT(GetVehicleParamsEx(g_iVehicle, a, b, c, d, e, f, g));
 }
 TEST_CLOSE__ V__GetVehicleParamsEx()
 {
@@ -215,7 +215,7 @@ TEST_INIT__ V__SetVehicleParamsCarDoors()
 }
 TEST__ V__SetVehicleParamsCarDoors()
 {
-	ASSERT_EQ(SetVehicleParamsCarDoors(g_iVehicle, 0, 0, 0, 0), true);
+	ASSERT(SetVehicleParamsCarDoors(g_iVehicle, 0, 0, 0, 0));
 }
 TEST_CLOSE__ V__SetVehicleParamsCarDoors()
 {
@@ -231,7 +231,7 @@ TEST_INIT__ V__GetVehicleParamsCarDoors()
 TEST__ V__GetVehicleParamsCarDoors()
 {
 	new a = 0, b = 0, c = 0, d = 0;
-	ASSERT_EQ(GetVehicleParamsCarDoors(g_iVehicle, a, b, c, d), true);
+	ASSERT(GetVehicleParamsCarDoors(g_iVehicle, a, b, c, d));
 	ASSERT_EQ(a, -1);
 	ASSERT_EQ(b, -1);
 	ASSERT_EQ(c, -1);
@@ -250,7 +250,7 @@ TEST_INIT__ V__SetVehicleParamsCarWindows()
 }
 TEST__ V__SetVehicleParamsCarWindows()
 {
-	ASSERT_EQ(SetVehicleParamsCarWindows(g_iVehicle, 0, 0, 0, 0), true);
+	ASSERT(SetVehicleParamsCarWindows(g_iVehicle, 0, 0, 0, 0));
 }
 TEST_CLOSE__ V__SetVehicleParamsCarWindows()
 {
@@ -266,7 +266,7 @@ TEST_INIT__ V__GetVehicleParamsCarWindows()
 TEST__ V__GetVehicleParamsCarWindows()
 {
 	new a = 0, b = 0, c = 0, d = 0;
-	ASSERT_EQ(GetVehicleParamsCarWindows(g_iVehicle, a, b, c, d), true);
+	ASSERT(GetVehicleParamsCarWindows(g_iVehicle, a, b, c, d));
 	ASSERT_EQ(a, -1);
 	ASSERT_EQ(b, -1);
 	ASSERT_EQ(c, -1);
@@ -285,7 +285,7 @@ TEST_INIT__ V__SetVehicleToRespawn()
 }
 TEST__ V__SetVehicleToRespawn()
 {
-	ASSERT_EQ(SetVehicleToRespawn(g_iVehicle), true);
+	ASSERT(SetVehicleToRespawn(g_iVehicle));
 }
 TEST_CLOSE__ V__SetVehicleToRespawn()
 {
@@ -300,7 +300,7 @@ TEST_INIT__ V__LinkVehicleToInterior()
 }
 TEST__ V__LinkVehicleToInterior()
 {
-	ASSERT_EQ(LinkVehicleToInterior(g_iVehicle, 0), true);
+	ASSERT(LinkVehicleToInterior(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__LinkVehicleToInterior()
 {
@@ -315,7 +315,7 @@ TEST_INIT__ V__AddVehicleComponent()
 }
 TEST__ V__AddVehicleComponent()
 {
-	ASSERT_EQ(AddVehicleComponent(g_iVehicle, 0), true);
+	ASSERT(AddVehicleComponent(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__AddVehicleComponent()
 {
@@ -330,7 +330,7 @@ TEST_INIT__ V__RemoveVehicleComponent()
 }
 TEST__ V__RemoveVehicleComponent()
 {
-	ASSERT_EQ(RemoveVehicleComponent(g_iVehicle, 0), true);
+	ASSERT(RemoveVehicleComponent(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__RemoveVehicleComponent()
 {
@@ -345,7 +345,7 @@ TEST_INIT__ V__ChangeVehicleColor()
 }
 TEST__ V__ChangeVehicleColor()
 {
-	ASSERT_EQ(ChangeVehicleColor(g_iVehicle, 0, 0), true);
+	ASSERT(ChangeVehicleColor(g_iVehicle, 0, 0));
 }
 TEST_CLOSE__ V__ChangeVehicleColor()
 {
@@ -360,7 +360,7 @@ TEST_INIT__ V__ChangeVehiclePaintjob()
 }
 TEST__ V__ChangeVehiclePaintjob()
 {
-	ASSERT_EQ(ChangeVehiclePaintjob(g_iVehicle, 0), true);
+	ASSERT(ChangeVehiclePaintjob(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__ChangeVehiclePaintjob()
 {
@@ -375,7 +375,7 @@ TEST_INIT__ V__SetVehicleHealth()
 }
 TEST__ V__SetVehicleHealth()
 {
-	ASSERT_EQ(SetVehicleHealth(g_iVehicle, 0.0), true);
+	ASSERT(SetVehicleHealth(g_iVehicle, 0.0));
 }
 TEST_CLOSE__ V__SetVehicleHealth()
 {
@@ -391,7 +391,7 @@ TEST_INIT__ V__GetVehicleHealth()
 TEST__ V__GetVehicleHealth()
 {
 	new Float:h;
-	ASSERT_EQ(GetVehicleHealth(g_iVehicle, h), true);
+	ASSERT(GetVehicleHealth(g_iVehicle, h));
 	ASSERT_EQ(h, 1000.0);
 }
 TEST_CLOSE__ V__GetVehicleHealth()
@@ -408,7 +408,7 @@ TEST_INIT__ V__AttachTrailerToVehicle()
 TEST__ V__AttachTrailerToVehicle()
 {
 	new trailer = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
-	ASSERT_EQ(AttachTrailerToVehicle(g_iVehicle, trailer), false);
+	ASSERT(!AttachTrailerToVehicle(g_iVehicle, trailer));
 	DestroyVehicle(trailer);
 }
 TEST_CLOSE__ V__AttachTrailerToVehicle()
@@ -424,7 +424,7 @@ TEST_INIT__ V__DetachTrailerFromVehicle()
 }
 TEST__ V__DetachTrailerFromVehicle()
 {
-	ASSERT_EQ(DetachTrailerFromVehicle(g_iVehicle), true);
+	ASSERT(DetachTrailerFromVehicle(g_iVehicle));
 }
 TEST_CLOSE__ V__DetachTrailerFromVehicle()
 {
@@ -439,7 +439,7 @@ TEST_INIT__ V__IsTrailerAttachedToVehicle()
 }
 TEST__ V__IsTrailerAttachedToVehicle()
 {
-	ASSERT_EQ(IsTrailerAttachedToVehicle(g_iVehicle), false);
+	ASSERT(!IsTrailerAttachedToVehicle(g_iVehicle));
 }
 TEST_CLOSE__ V__IsTrailerAttachedToVehicle()
 {
@@ -469,7 +469,7 @@ TEST_INIT__ V__SetVehicleNumberPlate()
 }
 TEST__ V__SetVehicleNumberPlate()
 {
-	ASSERT_EQ(SetVehicleNumberPlate(g_iVehicle, ""), true);
+	ASSERT(SetVehicleNumberPlate(g_iVehicle, ""));
 }
 TEST_CLOSE__ V__SetVehicleNumberPlate()
 {
@@ -531,7 +531,7 @@ TEST_INIT__ V__RepairVehicle()
 }
 TEST__ V__RepairVehicle()
 {
-	ASSERT_EQ(RepairVehicle(g_iVehicle), true);
+	ASSERT(RepairVehicle(g_iVehicle));
 }
 TEST_CLOSE__ V__RepairVehicle()
 {
@@ -547,7 +547,7 @@ TEST_INIT__ V__GetVehicleVelocity()
 TEST__ V__GetVehicleVelocity()
 {
 	new Float:x, Float:y, Float:z;
-	ASSERT_EQ(GetVehicleVelocity(g_iVehicle, x, y, z), true);
+	ASSERT(GetVehicleVelocity(g_iVehicle, x, y, z));
 }
 TEST_CLOSE__ V__GetVehicleVelocity()
 {
@@ -562,7 +562,7 @@ TEST_INIT__ V__SetVehicleVelocity()
 }
 TEST__ V__SetVehicleVelocity()
 {
-	ASSERT_EQ(SetVehicleVelocity(g_iVehicle, 0.0, 0.0, 0.0), true);
+	ASSERT(SetVehicleVelocity(g_iVehicle, 0.0, 0.0, 0.0));
 }
 TEST_CLOSE__ V__SetVehicleVelocity()
 {
@@ -577,7 +577,7 @@ TEST_INIT__ V__SetVehicleAngularVelocity()
 }
 TEST__ V__SetVehicleAngularVelocity()
 {
-	ASSERT_EQ(SetVehicleAngularVelocity(g_iVehicle, 0.0, 0.0, 0.0), true);
+	ASSERT(SetVehicleAngularVelocity(g_iVehicle, 0.0, 0.0, 0.0));
 }
 TEST_CLOSE__ V__SetVehicleAngularVelocity()
 {
@@ -593,7 +593,7 @@ TEST_INIT__ V__GetVehicleDamageStatus()
 TEST__ V__GetVehicleDamageStatus()
 {
 	new a = -1, b = -1, c = -1, d = -1;
-	ASSERT_EQ(GetVehicleDamageStatus(g_iVehicle, a, b, c, d), true);
+	ASSERT(GetVehicleDamageStatus(g_iVehicle, a, b, c, d));
 	ASSERT_EQ(a, 0);
 	ASSERT_EQ(b, 0);
 	ASSERT_EQ(c, 0);
@@ -612,7 +612,7 @@ TEST_INIT__ V__UpdateVehicleDamageStatus()
 }
 TEST__ V__UpdateVehicleDamageStatus()
 {
-	ASSERT_EQ(UpdateVehicleDamageStatus(g_iVehicle, 0, 0, 0, 0), true);
+	ASSERT(UpdateVehicleDamageStatus(g_iVehicle, 0, 0, 0, 0));
 }
 TEST_CLOSE__ V__UpdateVehicleDamageStatus()
 {
@@ -628,8 +628,8 @@ TEST_INIT__ V__GetVehicleModelInfo()
 TEST__ V__GetVehicleModelInfo()
 {
 	new Float:x, Float:y, Float:z;
-	ASSERT_EQ(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_SIZE, x, y, z), true);
-	ASSERT_EQ(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_WHEELSFRONT, x, y, z), true);
+	ASSERT(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_SIZE, x, y, z));
+	ASSERT(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_WHEELSFRONT, x, y, z));
 	ASSERT_EQ(x,  0.879999);
 	ASSERT_EQ(y, -1.379999);
 	ASSERT_EQ(z, -0.610000);
@@ -647,7 +647,7 @@ TEST_INIT__ V__SetVehicleVirtualWorld()
 }
 TEST__ V__SetVehicleVirtualWorld()
 {
-	ASSERT_EQ(SetVehicleVirtualWorld(g_iVehicle, 0), true);
+	ASSERT(SetVehicleVirtualWorld(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__SetVehicleVirtualWorld()
 {
@@ -677,8 +677,8 @@ TEST_INIT__ V__IsValidVehicle()
 }
 TEST__ V__IsValidVehicle()
 {
-	ASSERT_EQ(IsValidVehicle(g_iVehicle), true);
-	ASSERT_EQ(IsValidVehicle(1000), false);
+	ASSERT(IsValidVehicle(g_iVehicle));
+	ASSERT(!IsValidVehicle(1000));
 }
 TEST_CLOSE__ V__IsValidVehicle()
 {

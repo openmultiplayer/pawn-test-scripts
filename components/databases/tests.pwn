@@ -53,8 +53,8 @@ TEST_INIT__ D_02_db_close()
 
 TEST__ D_02_db_close()
 {
-    ASSERT_EQ(db_close(g_iDatabaseConnection), true);
-    ASSERT_EQ(db_close(g_iDatabaseConnection), false);
+    ASSERT(db_close(g_iDatabaseConnection));
+    ASSERT(!db_close(g_iDatabaseConnection));
 }
 
 TEST_INIT__ D_03_db_query()
@@ -82,8 +82,8 @@ TEST_INIT__ D_04_db_free_result()
 
 TEST__ D_04_db_free_result()
 {
-    ASSERT_EQ(db_free_result(g_iFirstResultSet), true);
-    ASSERT_EQ(db_free_result(g_iFirstResultSet), false);
+    ASSERT(db_free_result(g_iFirstResultSet));
+    ASSERT(!db_free_result(g_iFirstResultSet));
 }
 
 TEST_CLOSE__ D_04_db_free_result()
@@ -113,8 +113,8 @@ TEST_INIT__ D_06_db_next_row()
 
 TEST__ D_06_db_next_row()
 {
-    ASSERT_EQ(db_next_row(g_iFirstResultSet), true);
-    ASSERT_EQ(db_next_row(g_iFirstResultSet), false);
+    ASSERT(db_next_row(g_iFirstResultSet));
+    ASSERT(!db_next_row(g_iFirstResultSet));
 }
 
 TEST_CLOSE__ D_06_db_next_row()
@@ -145,9 +145,9 @@ TEST_INIT__ D_08_db_field_name()
 TEST__ D_08_db_field_name()
 {
     new field_name[64];
-    ASSERT_EQ(db_field_name(g_iFirstResultSet, -1, field_name), false);
-    ASSERT_EQ(db_field_name(g_iFirstResultSet, 4, field_name), false);
-    ASSERT_EQ(db_field_name(g_iFirstResultSet, 0, field_name), true);
+    ASSERT(!db_field_name(g_iFirstResultSet, -1, field_name));
+    ASSERT(!db_field_name(g_iFirstResultSet, 4, field_name));
+    ASSERT(db_field_name(g_iFirstResultSet, 0, field_name));
     ASSERT_SAME(field_name, "test_string");
 }
 
@@ -166,14 +166,14 @@ TEST__ D_09_db_get_field()
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
     new field_string[64];
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, -1, field_string), false);
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, 4, field_string), false);
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, 0, field_string), true);
+    ASSERT(!db_get_field(g_iFirstResultSet, -1, field_string));
+    ASSERT(!db_get_field(g_iFirstResultSet, 4, field_string));
+    ASSERT(db_get_field(g_iFirstResultSet, 0, field_string));
     ASSERT_SAME(field_string, hello_world);
     db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, -1, field_string), false);
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, 4, field_string), false);
-    ASSERT_EQ(db_get_field(g_iFirstResultSet, 0, field_string), true);
+    ASSERT(!db_get_field(g_iFirstResultSet, -1, field_string));
+    ASSERT(!db_get_field(g_iFirstResultSet, 4, field_string));
+    ASSERT(db_get_field(g_iFirstResultSet, 0, field_string));
     ASSERT_SAME(field_string, another_test);
 }
 
@@ -192,12 +192,12 @@ TEST__ D_10_db_get_field_assoc()
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
     new field_string[64];
-    ASSERT_EQ(db_get_field_assoc(g_iFirstResultSet, "missing", field_string), false);
-    ASSERT_EQ(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string), true);
+    ASSERT(!db_get_field_assoc(g_iFirstResultSet, "missing", field_string));
+    ASSERT(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string));
     ASSERT_SAME(field_string, hello_world);
     db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field_assoc(g_iFirstResultSet, "missing", field_string), false);
-    ASSERT_EQ(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string), true);
+    ASSERT(!db_get_field_assoc(g_iFirstResultSet, "missing", field_string));
+    ASSERT(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string));
     ASSERT_SAME(field_string, another_test);
 }
 

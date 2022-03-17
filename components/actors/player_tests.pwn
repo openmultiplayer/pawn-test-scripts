@@ -14,7 +14,7 @@ PTEST_CLOSE__ A_10_CreateActor(playerid)
 PTEST__ A_11_SetActorPos(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
-    ASSERT_EQ(SetActorPos(g_iActor, 1003.0, 1005.0, 50.0), true);
+    ASSERT(SetActorPos(g_iActor, 1003.0, 1005.0, 50.0));
     ASK("Can you see the actor on your right? (X: 1003.0, Y: 1005.0, Z: 50.0)");
 }
 PTEST_CLOSE__ A_11_SetActorPos(playerid)
@@ -25,7 +25,7 @@ PTEST_CLOSE__ A_11_SetActorPos(playerid)
 PTEST__ A_12_SetActorVirtualWorld(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
-    ASSERT_EQ(SetActorVirtualWorld(g_iActor, 69), true);
+    ASSERT(SetActorVirtualWorld(g_iActor, 69));
     SetPlayerVirtualWorld(playerid, 69);
     ASK("Can you still see the actor?");
 }
@@ -38,7 +38,7 @@ PTEST_CLOSE__ A_12_SetActorVirtualWorld(playerid)
 PTEST__ A_13_SetActorInvulnerable(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
-    ASSERT_EQ(SetActorInvulnerable(g_iActor, false), true);
+    ASSERT(SetActorInvulnerable(g_iActor, false));
     ASK("Are you able to hit the actor?");
 }
 PTEST_CLOSE__ A_13_SetActorInvulnerable(playerid)
@@ -49,7 +49,7 @@ PTEST_CLOSE__ A_13_SetActorInvulnerable(playerid)
 PTEST__ A_14_SetActorFacingAngle(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
-    ASSERT_EQ(SetActorFacingAngle(g_iActor, 0.0), true);
+    ASSERT(SetActorFacingAngle(g_iActor, 0.0));
     ASK("Is the actor facing north?");
 }
 PTEST_CLOSE__ A_14_SetActorFacingAngle(playerid)
@@ -60,8 +60,8 @@ PTEST_CLOSE__ A_14_SetActorFacingAngle(playerid)
 PTEST__ A_15_ApplyActorAnimation(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
-    ASSERT_EQ(ApplyActorAnimation(INVALID_ACTOR_ID, "DEALER", "shop_pay", 4.1, true, false, false, false, 0), false);
-    ASSERT_EQ(ApplyActorAnimation(g_iActor, "DEALER", "shop_pay", 4.1, true, false, false, false, 0), true);
+    ASSERT(!ApplyActorAnimation(INVALID_ACTOR_ID, "DEALER", "shop_pay", 4.1, true, false, false, false, 0));
+    ASSERT(ApplyActorAnimation(g_iActor, "DEALER", "shop_pay", 4.1, true, false, false, false, 0));
     ASK("Is the actor acting like he's paying in a shop?");
 }
 PTEST_CLOSE__ A_15_ApplyActorAnimation(playerid)
@@ -73,8 +73,8 @@ PTEST__ A_16_ClearActorAnimations(playerid)
 {
     g_iActor = CreateActor(0, 1000.0, 1005.0, 50.0, 180.0);
     ApplyActorAnimation(g_iActor, "DEALER", "shop_pay", 4.1, true, false, false, false, 0);
-    ASSERT_EQ(ClearActorAnimations(INVALID_ACTOR_ID), false);
-    ASSERT_EQ(ClearActorAnimations(g_iActor), true);
+    ASSERT(!ClearActorAnimations(INVALID_ACTOR_ID));
+    ASSERT(ClearActorAnimations(g_iActor));
     ASK("Has the actor stopped animating?");
 }
 PTEST_CLOSE__ A_16_ClearActorAnimations(playerid)
@@ -128,16 +128,16 @@ PTEST__ A_20_IsActorStreamedIn(playerid)
 {
     // TODO: Improve test - it takes a while to stream in the actor
     g_iActor = CreateActor(0, 0.0, 0.0, 3.0, 0.0);
-    ASSERT_EQ(IsActorStreamedIn(g_iActor, playerid), false);
-    ASSERT_EQ(IsActorStreamedIn(g_iActor, INVALID_PLAYER_ID), false);
-    ASSERT_EQ(IsActorStreamedIn(INVALID_ACTOR_ID, playerid), false);
+    ASSERT(!IsActorStreamedIn(g_iActor, playerid));
+    ASSERT(!IsActorStreamedIn(g_iActor, INVALID_PLAYER_ID));
+    ASSERT(!IsActorStreamedIn(INVALID_ACTOR_ID, playerid));
 
     SetPlayerPos(playerid, 3.0, 3.0, 3.0);
     ASK("Did you spawn at 3.0 3.0 3.0?");
 }
 PTEST_CLOSE__ A_20_IsActorStreamedIn(playerid)
 {
-    ASSERT_EQ(IsActorStreamedIn(g_iActor, playerid), true);
+    ASSERT(IsActorStreamedIn(g_iActor, playerid));
     SpawnPlayer(playerid);
     DestroyActor(g_iActor);
 }
