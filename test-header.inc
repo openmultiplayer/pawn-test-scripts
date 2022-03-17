@@ -44,7 +44,7 @@
 #define FOREACH_NO_ACTORS
 #define FOREACH_NO_STREAMED
 
-#define CUSTOM_TAG_TYPES DB,Menu,DBResult
+#define CUSTOM_TAG_TYPES DB,Menu,DBResult,E_CARMODTYPE,E_VEHICLE_PARAMS
 
 #include <YSI_Core\y_testing>
 
