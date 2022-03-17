@@ -15,337 +15,337 @@ COMMIT;";
 
 OpenDatabase()
 {
-    g_iDatabaseConnection = db_open(databaseFilePath);
-    db_free_result(db_query(g_iDatabaseConnection, initializeDatabaseSQL));
+    g_iDatabaseConnection = DB_Open(databaseFilePath);
+    DB_FreeResult(DB_Query(g_iDatabaseConnection, initializeDatabaseSQL));
 }
 
 OpenAndSelectDatabase()
 {
     OpenDatabase();
-    g_iFirstResultSet = db_query(g_iDatabaseConnection, "SELECT * FROM `test`;");
+    g_iFirstResultSet = DB_Query(g_iDatabaseConnection, "SELECT * FROM `test`;");
 }
 
 CloseDatabase()
 {
-    db_free_result(g_iFirstResultSet);
+    DB_FreeResult(g_iFirstResultSet);
     g_iFirstResultSet = DBResult:0;
-    db_free_result(g_iSecondResultSet);
+    DB_FreeResult(g_iSecondResultSet);
     g_iSecondResultSet = DBResult:0;
-    db_close(g_iDatabaseConnection);
+    DB_Close(g_iDatabaseConnection);
     g_iDatabaseConnection = DB:0;
 }
 
-TEST__ D_01_db_open()
+TEST__ D_01_DB_Open()
 {
-    g_iDatabaseConnection = db_open(databaseFilePath);
+    g_iDatabaseConnection = DB_Open(databaseFilePath);
     ASSERT_EQ(g_iDatabaseConnection, DB:1);
 }
 
-TEST_CLOSE__ D_01_db_open()
+TEST_CLOSE__ D_01_DB_Open()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_02_db_close()
+TEST_INIT__ D_02_DB_Close()
 {
     OpenDatabase();
 }
 
-TEST__ D_02_db_close()
+TEST__ D_02_DB_Close()
 {
-    ASSERT(db_close(g_iDatabaseConnection));
-    ASSERT(!db_close(g_iDatabaseConnection));
+    ASSERT(DB_Close(g_iDatabaseConnection));
+    ASSERT(!DB_Close(g_iDatabaseConnection));
 }
 
-TEST_INIT__ D_03_db_query()
+TEST_INIT__ D_03_DB_Query()
 {
     OpenDatabase();
 }
 
-TEST__ D_03_db_query()
+TEST__ D_03_DB_Query()
 {
-    g_iFirstResultSet = db_query(g_iDatabaseConnection, "SELECT * FROM `test`;");
+    g_iFirstResultSet = DB_Query(g_iDatabaseConnection, "SELECT * FROM `test`;");
     ASSERT_EQ(g_iFirstResultSet, DBResult:1);
-    g_iSecondResultSet = db_query(g_iDatabaseConnection, "SELECT * FROM `test` WHERE `test_string` = \"Hello world!\";");
+    g_iSecondResultSet = DB_Query(g_iDatabaseConnection, "SELECT * FROM `test` WHERE `test_string` = \"Hello world!\";");
     ASSERT_EQ(g_iSecondResultSet, DBResult:2);
 }
 
-TEST_CLOSE__ D_03_db_query()
+TEST_CLOSE__ D_03_DB_Query()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_04_db_free_result()
+TEST_INIT__ D_04_DB_FreeResult()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_04_db_free_result()
+TEST__ D_04_DB_FreeResult()
 {
-    ASSERT(db_free_result(g_iFirstResultSet));
-    ASSERT(!db_free_result(g_iFirstResultSet));
+    ASSERT(DB_FreeResult(g_iFirstResultSet));
+    ASSERT(!DB_FreeResult(g_iFirstResultSet));
 }
 
-TEST_CLOSE__ D_04_db_free_result()
+TEST_CLOSE__ D_04_DB_FreeResult()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_05_db_num_rows()
+TEST_INIT__ D_05_DB_NumRows()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_05_db_num_rows()
+TEST__ D_05_DB_NumRows()
 {
-    ASSERT_EQ(db_num_rows(g_iFirstResultSet), 2);
+    ASSERT_EQ(DB_NumRows(g_iFirstResultSet), 2);
 }
 
-TEST_CLOSE__ D_05_db_num_rows()
+TEST_CLOSE__ D_05_DB_NumRows()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_06_db_next_row()
+TEST_INIT__ D_06_DB_NextRow()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_06_db_next_row()
+TEST__ D_06_DB_NextRow()
 {
-    ASSERT(db_next_row(g_iFirstResultSet));
-    ASSERT(!db_next_row(g_iFirstResultSet));
+    ASSERT(DB_NextRow(g_iFirstResultSet));
+    ASSERT(!DB_NextRow(g_iFirstResultSet));
 }
 
-TEST_CLOSE__ D_06_db_next_row()
+TEST_CLOSE__ D_06_DB_NextRow()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_07_db_num_fields()
+TEST_INIT__ D_07_DB_NumFields()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_07_db_num_fields()
+TEST__ D_07_DB_NumFields()
 {
-    ASSERT_EQ(db_num_fields(g_iFirstResultSet), 3);
+    ASSERT_EQ(DB_NumFields(g_iFirstResultSet), 3);
 }
 
-TEST_CLOSE__ D_07_db_num_fields()
+TEST_CLOSE__ D_07_DB_NumFields()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_08_db_field_name()
+TEST_INIT__ D_08_DB_FieldName()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_08_db_field_name()
+TEST__ D_08_DB_FieldName()
 {
     new field_name[64];
-    ASSERT(!db_field_name(g_iFirstResultSet, -1, field_name));
-    ASSERT(!db_field_name(g_iFirstResultSet, 4, field_name));
-    ASSERT(db_field_name(g_iFirstResultSet, 0, field_name));
+    ASSERT(!DB_FieldName(g_iFirstResultSet, -1, field_name));
+    ASSERT(!DB_FieldName(g_iFirstResultSet, 4, field_name));
+    ASSERT(DB_FieldName(g_iFirstResultSet, 0, field_name));
     ASSERT_SAME(field_name, "test_string");
 }
 
-TEST_CLOSE__ D_08_db_field_name()
+TEST_CLOSE__ D_08_DB_FieldName()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_09_db_get_field()
+TEST_INIT__ D_09_DB_GetField()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_09_db_get_field()
+TEST__ D_09_DB_GetField()
 {
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
     new field_string[64];
-    ASSERT(!db_get_field(g_iFirstResultSet, -1, field_string));
-    ASSERT(!db_get_field(g_iFirstResultSet, 4, field_string));
-    ASSERT(db_get_field(g_iFirstResultSet, 0, field_string));
+    ASSERT(!DB_GetField(g_iFirstResultSet, -1, field_string));
+    ASSERT(!DB_GetField(g_iFirstResultSet, 4, field_string));
+    ASSERT(DB_GetField(g_iFirstResultSet, 0, field_string));
     ASSERT_SAME(field_string, hello_world);
-    db_next_row(g_iFirstResultSet);
-    ASSERT(!db_get_field(g_iFirstResultSet, -1, field_string));
-    ASSERT(!db_get_field(g_iFirstResultSet, 4, field_string));
-    ASSERT(db_get_field(g_iFirstResultSet, 0, field_string));
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT(!DB_GetField(g_iFirstResultSet, -1, field_string));
+    ASSERT(!DB_GetField(g_iFirstResultSet, 4, field_string));
+    ASSERT(DB_GetField(g_iFirstResultSet, 0, field_string));
     ASSERT_SAME(field_string, another_test);
 }
 
-TEST_CLOSE__ D_09_db_get_field()
+TEST_CLOSE__ D_09_DB_GetField()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_10_db_get_field_assoc()
+TEST_INIT__ D_10_DB_GetFieldAssoc()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_10_db_get_field_assoc()
+TEST__ D_10_DB_GetFieldAssoc()
 {
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
     new field_string[64];
-    ASSERT(!db_get_field_assoc(g_iFirstResultSet, "missing", field_string));
-    ASSERT(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string));
+    ASSERT(!DB_GetFieldAssoc(g_iFirstResultSet, "missing", field_string));
+    ASSERT(DB_GetFieldAssoc(g_iFirstResultSet, "test_string", field_string));
     ASSERT_SAME(field_string, hello_world);
-    db_next_row(g_iFirstResultSet);
-    ASSERT(!db_get_field_assoc(g_iFirstResultSet, "missing", field_string));
-    ASSERT(db_get_field_assoc(g_iFirstResultSet, "test_string", field_string));
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT(!DB_GetFieldAssoc(g_iFirstResultSet, "missing", field_string));
+    ASSERT(DB_GetFieldAssoc(g_iFirstResultSet, "test_string", field_string));
     ASSERT_SAME(field_string, another_test);
 }
 
-TEST_CLOSE__ D_10_db_get_field_assoc()
+TEST_CLOSE__ D_10_DB_GetFieldAssoc()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_11_db_get_field_int()
+TEST_INIT__ D_11_DB_GetFieldInt()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_11_db_get_field_int()
+TEST__ D_11_DB_GetFieldInt()
 {
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, -1), 0);
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, 4), 0);
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, 1), 69);
-    db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, -1), 0);
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, 4), 0);
-    ASSERT_EQ(db_get_field_int(g_iFirstResultSet, 1), 1337);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, -1), 0);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, 4), 0);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, 1), 69);
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, -1), 0);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, 4), 0);
+    ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, 1), 1337);
 }
 
-TEST_CLOSE__ D_11_db_get_field_int()
+TEST_CLOSE__ D_11_DB_GetFieldInt()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_12_db_get_field_assoc_int()
+TEST_INIT__ D_12_DB_GetFieldAssocInt()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_12_db_get_field_assoc_int()
+TEST__ D_12_DB_GetFieldAssocInt()
 {
-    ASSERT_EQ(db_get_field_assoc_int(g_iFirstResultSet, "missing"), 0);
-    ASSERT_EQ(db_get_field_assoc_int(g_iFirstResultSet, "test_integer"), 69);
-    db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field_assoc_int(g_iFirstResultSet, "missing"), 0);
-    ASSERT_EQ(db_get_field_assoc_int(g_iFirstResultSet, "test_integer"), 1337);
+    ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "missing"), 0);
+    ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "test_integer"), 69);
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "missing"), 0);
+    ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "test_integer"), 1337);
 }
 
-TEST_CLOSE__ D_12_db_get_field_assoc_int()
+TEST_CLOSE__ D_12_DB_GetFieldAssocInt()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_13_db_get_field_float()
+TEST_INIT__ D_13_DB_GetFieldFloat()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_13_db_get_field_float()
+TEST__ D_13_DB_GetFieldFloat()
 {
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, -1), 0.0);
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, 4), 0.0);
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, 2), 420.69);
-    db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, -1), 0.0);
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, 4), 0.0);
-    ASSERT_EQ(db_get_field_float(g_iFirstResultSet, 2), 1.5);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, -1), 0.0);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, 4), 0.0);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, 2), 420.69);
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, -1), 0.0);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, 4), 0.0);
+    ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, 2), 1.5);
 }
 
-TEST_CLOSE__ D_13_db_get_field_float()
+TEST_CLOSE__ D_13_DB_GetFieldFloat()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_14_db_get_field_assoc_float()
+TEST_INIT__ D_14_DB_GetFieldAssocFloat()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_14_db_get_field_assoc_float()
+TEST__ D_14_DB_GetFieldAssocFloat()
 {
-    ASSERT_EQ(db_get_field_assoc_float(g_iFirstResultSet, "missing"), 0.0);
-    ASSERT_EQ(db_get_field_assoc_float(g_iFirstResultSet, "test_float"), 420.69);
-    db_next_row(g_iFirstResultSet);
-    ASSERT_EQ(db_get_field_assoc_float(g_iFirstResultSet, "missing"), 0.0);
-    ASSERT_EQ(db_get_field_assoc_float(g_iFirstResultSet, "test_float"), 1.5);
+    ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "missing"), 0.0);
+    ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "test_float"), 420.69);
+    DB_NextRow(g_iFirstResultSet);
+    ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "missing"), 0.0);
+    ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "test_float"), 1.5);
 }
 
-TEST_CLOSE__ D_14_db_get_field_assoc_float()
+TEST_CLOSE__ D_14_DB_GetFieldAssocFloat()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_15_db_get_mem_handle()
+TEST_INIT__ D_15_DB_GetMemHandle()
 {
     OpenDatabase();
 }
 
-TEST__ D_15_db_get_mem_handle()
+TEST__ D_15_DB_GetMemHandle()
 {
-    ASSERT_NE(db_get_mem_handle(g_iDatabaseConnection), 0);
+    ASSERT_NE(DB_GetMemHandle(g_iDatabaseConnection), 0);
 }
 
-TEST_CLOSE__ D_15_db_get_mem_handle()
+TEST_CLOSE__ D_15_DB_GetMemHandle()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_16_db_get_result_mem_handle()
+TEST_INIT__ D_16_DB_GetResultMemHandle()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_16_db_get_result_mem_handle()
+TEST__ D_16_DB_GetResultMemHandle()
 {
-    ASSERT_NE(db_get_result_mem_handle(g_iFirstResultSet), 0);
+    ASSERT_NE(DB_GetResultMemHandle(g_iFirstResultSet), 0);
 }
 
-TEST_CLOSE__ D_16_db_get_result_mem_handle()
+TEST_CLOSE__ D_16_DB_GetResultMemHandle()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_17_db_debug_openfiles()
+TEST_INIT__ D_17_DB_DebugOpenFiles()
 {
     OpenDatabase();
 }
 
-TEST__ D_17_db_debug_openfiles()
+TEST__ D_17_DB_DebugOpenFiles()
 {
-    ASSERT_EQ(db_debug_openfiles(), 1);
+    ASSERT_EQ(DB_DebugOpenFiles(), 1);
     CloseDatabase();
-    ASSERT_EQ(db_debug_openfiles(), 0);
+    ASSERT_EQ(DB_DebugOpenFiles(), 0);
 }
 
-TEST_CLOSE__ D_17_db_debug_openfiles()
+TEST_CLOSE__ D_17_DB_DebugOpenFiles()
 {
     CloseDatabase();
 }
 
-TEST_INIT__ D_18_db_debug_openresults()
+TEST_INIT__ D_18_DB_DebugOpenResults()
 {
     OpenAndSelectDatabase();
 }
 
-TEST__ D_18_db_debug_openresults()
+TEST__ D_18_DB_DebugOpenResults()
 {
-    ASSERT_EQ(db_debug_openresults(), 1);
+    ASSERT_EQ(DB_DebugOpenResults(), 1);
     CloseDatabase();
-    ASSERT_EQ(db_debug_openresults(), 0);
+    ASSERT_EQ(DB_DebugOpenResults(), 0);
 }
 
-TEST_CLOSE__ D_18_db_debug_openresults()
+TEST_CLOSE__ D_18_DB_DebugOpenResults()
 {
     CloseDatabase();
 }
