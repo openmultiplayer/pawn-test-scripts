@@ -6,14 +6,21 @@
 
 PTEST__ DG_03_ShowPlayerDialog(playerid)
 {
-    ShowPlayerDialog(playerid, 100, DIALOG_STYLE_MSGBOX, "hi", "hi", "hi", "hi");
+    ShowPlayerDialog(playerid, 100, DIALOG_STYLE_MSGBOX, "Title", "Caption - Hello World", "Button 1", "Button 2");
     ASK("Can you see the dialog (you may need to close it)?");
+}
+
+forward DG_04_HidePlayerDialog(playerid);
+
+public DG_04_HidePlayerDialog(playerid)
+{
+    HidePlayerDialog(playerid);
 }
 
 PTEST__ DG_04_HidePlayerDialog(playerid)
 {
-    ShowPlayerDialog(playerid, 101, DIALOG_STYLE_MSGBOX, "hi", "hi", "hi", "hi");
-    HidePlayerDialog(playerid);
-    ASK("Can you NOT see a dialog (you may need to close it)?");
+    ShowPlayerDialog(playerid, 101, DIALOG_STYLE_MSGBOX, "Hello", "World", "OK", "Cancel");
+	SetTimerEx("DG_04_HidePlayerDialog", 2000, false, "i", playerid);
+    ASK("Did you see a dialog vanish (otherwise you may need to close it)?");
 }
 
