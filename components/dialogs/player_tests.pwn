@@ -21,6 +21,6 @@ PTEST__ DG_04_HidePlayerDialog(playerid)
 {
     ShowPlayerDialog(playerid, 101, DIALOG_STYLE_MSGBOX, "Hello", "World", "OK", "Cancel");
 	SetTimerEx("DG_04_HidePlayerDialog", 2000, false, "i", playerid);
-    ASK("Did you see a dialog vanish (otherwise you may need to close it)?");
+    ASK("Does this dialog vanish after two seconds (otherwise you may need to close it)?");
 }
 
