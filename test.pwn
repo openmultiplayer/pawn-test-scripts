@@ -4,7 +4,7 @@
 // Run tests.
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-// #define JUST_TEST TestName
+#define JUST_TEST P_22_ApplyAnimation
 
 #include "test-header"
 #include <YSI_Coding\y_hooks>

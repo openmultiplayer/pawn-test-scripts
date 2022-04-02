@@ -243,6 +243,17 @@ PTEST__ P_21_SetTimerEx(playerid)
 }
 
 
+PTEST__ P_22_ApplyAnimation(playerid)
+{
+    ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 4.1, true, false, false, true, 1000);
+    ASK("Are you placing a bomb?");
+}
+PTEST_CLOSE__ P_22_ApplyAnimation(playerid)
+{
+    ClearAnimations(playerid);
+}
+
+
 public SendTestMessage()
 {
     //ASSERT_EQ(SendClientMessageToAll(-1, "Timer was processed"), 1);
