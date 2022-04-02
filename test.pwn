@@ -2,9 +2,10 @@
 //#pragma option -l
 
 // Run tests.
+#define YSI_TESTS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-#define JUST_TEST P_22_ApplyAnimation
+//#define JUST_TEST P_23_ClearAnimations
 
 #include "test-header"
 #include <YSI_Coding\y_hooks>

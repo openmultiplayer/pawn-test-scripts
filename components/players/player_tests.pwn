@@ -246,11 +246,25 @@ PTEST__ P_21_SetTimerEx(playerid)
 PTEST__ P_22_ApplyAnimation(playerid)
 {
     ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 4.1, true, false, false, true, 1000);
+    //ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 0.0, false, false, false, false, 0);
     ASK("Are you placing a bomb?");
 }
 PTEST_CLOSE__ P_22_ApplyAnimation(playerid)
 {
     ClearAnimations(playerid);
+}
+
+
+forward P_23_ClearAnimations(playerid);
+public P_23_ClearAnimations(playerid)
+{
+    ClearAnimations(playerid);
+}
+PTEST__ P_23_ClearAnimations(playerid)
+{
+    ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 4.1, true, false, false, true, 1000);
+    ASK("Does your animation stop after 3 seconds?");
+	SetTimerEx("P_23_ClearAnimations", 3000, false, "i", playerid);
 }
 
 
