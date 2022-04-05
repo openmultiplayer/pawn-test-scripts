@@ -1,7 +1,11 @@
 // Dialogs component player test suite
 
 #if !defined HidePlayerDialog
-	native HidePlayerDialog(playerid);
+	//native HidePlayerDialog(playerid);
+	stock HidePlayerDialog(playerid)
+	{
+		ShowPlayerDialog(playerid, -1, DIALOG_STYLE_MSGBOX, " ", " ", " ", " ");
+	}
 #endif
 
 PTEST__ DG_03_ShowPlayerDialog(playerid)
