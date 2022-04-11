@@ -8,18 +8,18 @@ forward SendTestMessage();
 
 PTEST__ P_01_SendClientMessage(playerid)
 {
-    ASSERT_EQ(SendClientMessage(playerid, -1, TEST_MESSAGE), 1);
-    ASSERT_EQ(SendClientMessage(playerid + 999, -1, TEST_MESSAGE), 0);
+    ASSERT_EQ(SendClientMessage(playerid, -1, TEST_MESSAGE), true);
+    ASSERT_EQ(SendClientMessage(playerid + 999, -1, TEST_MESSAGE), false);
     ASK("Can you see the client message " TEST_MESSAGE "?");
 }
 
 
 PTEST__ P_02_SetPlayerCameraPosLookAt(playerid)
 {
-    ASSERT_EQ(SetPlayerCameraPos(playerid, 10, -10, 2), 1);
-    ASSERT_EQ(SetPlayerCameraLookAt(playerid, 0, 0, 0), 1);
-    ASSERT_EQ(SetPlayerCameraPos(playerid + 999, 10, -10, 2), 0);
-    ASSERT_EQ(SetPlayerCameraLookAt(playerid + 999, 0, 0, 0), 0);
+    ASSERT_EQ(SetPlayerCameraPos(playerid, 10, -10, 2), true);
+    ASSERT_EQ(SetPlayerCameraLookAt(playerid, 0, 0, 0), true);
+    ASSERT_EQ(SetPlayerCameraPos(playerid + 999, 10, -10, 2), false);
+    ASSERT_EQ(SetPlayerCameraLookAt(playerid + 999, 0, 0, 0), false);
     ASK("Are you looking at the middle of Blueberry Farm?");
 }
 PTEST_CLOSE__ P_02_SetPlayerCameraPosLookAt(playerid)

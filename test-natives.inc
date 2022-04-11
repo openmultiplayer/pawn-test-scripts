@@ -125,7 +125,7 @@ public TestAllNatives()
 	SetObjectMaterialText(0, "");
 	SetPlayerObjectMaterialText(0, 0, "");
 	SetObjectsDefaultCameraCol(false);
-	SetSpawnInfo(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	SetSpawnInfo(0, 0, 0, 0.0, 0.0, 0.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
 	SpawnPlayer(0);
 	SetPlayerPos(0, 0.0, 0.0, 0.0);
 	SetPlayerPosFindZ(0, 0.0, 0.0, 0.0);
@@ -332,8 +332,8 @@ public TestAllNatives()
 	#pragma unused server_vartype
 	SetGameModeText("");
 	SetTeamCount(0);
-	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-	AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
+	AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
 	AddStaticVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0);
 	AddStaticVehicleEx(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
 	AddStaticPickup(0, 0, 0.0, 0.0, 0.0);
@@ -623,16 +623,6 @@ public OnPlayerSpawn(playerid)
 }
 
 public OnPlayerText(playerid, text[])
-{
-	return 1;
-}
-
-public OnPlayerCommandText(playerid, cmdtext[])
-{
-	return 1;
-}
-
-public OnPlayerRequestClass(playerid, classid)
 {
 	return 1;
 }

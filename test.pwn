@@ -1,16 +1,20 @@
 #pragma warning disable 200
+#pragma option -d3
+#pragma option -O0
 //#pragma option -l
+//#pragma option -a
 
 // Run tests.
 #define YSI_TESTS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-#define JUST_TEST Timers
+#define JUST_TEST A_15_ApplyActorAnimation
 
 #include "test-header"
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>
+#include <YSI_Visual\y_commands>
 #include "test-natives"
 
 forward Timers1(a, b, c);
@@ -43,6 +47,16 @@ public Timers3(const arr[], size, a)
 	}
 }
 
+forward Timers4();
+
+public Timers4()
+{
+	printf("Maybe crash?");
+	new arr[5];
+	new idx = random(10);
+	printf("No: %d", arr[idx]);
+}
+
 TEST__ Timers()
 {
 	for (new i = 0; i != 1000; ++i)
@@ -68,6 +82,7 @@ TEST__ Timers()
 		str[3] = a * 4;
 		SetTimerEx("Timers3", 1, false, "aii", str, sizeof (str), a * 10);
 	}
+	//SetTimer("Timers4", 10, true);
 }
 
 // Test suites
@@ -83,12 +98,17 @@ TEST__ Timers()
 
 main()
 {
-    print("Loading test Pawn scripts");
+	print("Loading test Pawn scripts");
+	for ( ; ; )
+	{
+		sleep 1000;
+		print("Looping `main()`");
+	}
 }
 
 hook OnGameModeInit()
 {
-    AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, 0, 0, 0);
+    AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
     CreateVehicle(562, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, false);
     return 1;
 }
@@ -97,6 +117,24 @@ hook OnPlayerConnect(playerid)
 {
     SendClientMessage(playerid, 0xFF0000FF, "Welcome to your test open.mp server.");
     return 1;
+}
+
+public OnPlayerRequestClass(playerid, classid)
+{
+	SetPlayerPos(playerid, 376.0939, 850.4130, 33.3843);
+	SetPlayerFacingAngle(playerid, 94.3991);
+	SetPlayerCameraPos(playerid, 369.9781, 849.8905, 40.0);
+	SetPlayerCameraLookAt(playerid, 376.0939, 850.4130, 33.3843);
+	ApplyAnimation(playerid, "WOP", "DANCE_G9", 4.0, true, false, false, false, 0);
+	return 1;
+}
+
+YCMD:v(playerid, params[], help)
+{
+	new Float:x, Float:y, Float:z;
+	GetPlayerPos(playerid, x, y, z);
+	CreateVehicle(strval(params), x, y, z, 0.0, -1, -1, 0, false);
+	return 1;
 }
 
 // vim: se ft=cpp:
