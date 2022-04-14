@@ -784,6 +784,7 @@ public TestYSFNatives()
 	GetWeaponSlot(0);
 	SendRPC(0, 0);
 	SendData(0);
+	SetPlayerSyncPosition(0, 0.0, 0.0, 0.0);
 }
 
 public OnTrailerUpdate(playerid, vehicleid)

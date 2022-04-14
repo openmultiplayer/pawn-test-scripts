@@ -11,8 +11,13 @@
 // Uncomment (and edit) to run a single test case
 //#define JUST_TEST A_15_ApplyActorAnimation
 
+#define frename YSF_frename
 #include "test-header"
+#undef frename
 #include "YSF"
+#if !defined SetPlayerSyncPosition
+	native SetPlayerSyncPosition(playerid, Float:x, Float:y, Float:z);
+#endif
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>

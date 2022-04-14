@@ -44,7 +44,7 @@ native execute(const command[], saveoutput=0, index=0);
 
 // File functions
 native ffind(const pattern[], filename[], len, &idx);
-//native frename(const oldname[], const newname[]);
+native frename(const oldname[], const newname[]);
 
 // Directory functions
 native dfind(const pattern[], filename[], len, &idx);
