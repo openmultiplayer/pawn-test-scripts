@@ -1,20 +1,23 @@
 #pragma warning disable 200
-#pragma option -d3
+#pragma option -d2
 #pragma option -O0
 //#pragma option -l
 //#pragma option -a
 
 // Run tests.
 #define YSI_TESTS
+//#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-#define JUST_TEST A_15_ApplyActorAnimation
+//#define JUST_TEST A_15_ApplyActorAnimation
 
 #include "test-header"
+#include "YSF"
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>
 #include <YSI_Visual\y_commands>
+#include <YSI_Server\y_files>
 #include "test-natives"
 
 forward Timers1(a, b, c);
@@ -99,11 +102,11 @@ TEST__ Timers()
 main()
 {
 	print("Loading test Pawn scripts");
-	for ( ; ; )
+	/*for ( ; ; )
 	{
 		sleep 1000;
 		print("Looping `main()`");
-	}
+	}*/
 }
 
 hook OnGameModeInit()

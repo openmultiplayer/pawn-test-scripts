@@ -1,3 +1,4 @@
+
 forward TestAllNatives();
 
 public TestAllNatives()
@@ -442,6 +443,349 @@ public TestAllNatives()
 	GPCI(0, svar);
 }
 
+forward TestYSFNatives();
+
+public TestYSFNatives()
+{
+	// This just tests that the natives compile and load.  It doesn't test that
+	// they work.
+	new Float:fvar, ivar, svar[32];
+	execute("", _, _);
+	ffind("", svar, 0, ivar);
+	frename("", "");
+	dfind("", svar, 0, ivar);
+	dcreate("");
+	drename("", "");
+	SetModeRestartTime(0.0);
+	GetModeRestartTime();
+	SetMaxPlayers(0);
+	SetMaxNPCs(0);
+	LoadFilterScript("");
+	UnLoadFilterScript("");
+	GetFilterScriptCount();
+	GetFilterScriptName(0, svar, _);
+	AddServerRule("", "", _);
+	SetServerRule("", "");
+	IsValidServerRule("");
+	SetServerRuleFlags("", E_SERVER_RULE_FLAGS:0);
+	GetServerRuleFlags("");
+	ToggleChatTextReplacement(false);
+	ChatTextReplacementToggled();
+	GetServerSettings(ivar, _, _, _, _, _, _, _, _, _, _, _, _, _);
+	GetNPCCommandLine(0, svar, _);
+	GetSyncBounds(fvar, _, _, _);
+	SetSyncBounds(0.0, 0.0, 0.0, 0.0);
+	GetRCONCommandName("", svar, _);
+	ChangeRCONCommandName("", svar);
+	CallFunctionInScript("", "", "");
+	EnableConsoleMSGsForPlayer(0, 0);
+	DisableConsoleMSGsForPlayer(0);
+	HasPlayerConsoleMessages(0, _);
+	YSF_SetTickRate(0);
+	YSF_GetTickRate();
+	YSF_EnableNightVisionFix(false);
+	YSF_IsNightVisionFixEnabled();
+	YSF_ToggleOnServerMessage(false);
+	YSF_IsOnServerMessageEnabled();
+	YSF_SetExtendedNetStatsEnabled(false);
+	YSF_IsExtendedNetStatsEnabled();
+	YSF_SetAFKAccuracy(0);
+	YSF_GetAFKAccuracy();
+	SetRecordingDirectory("");
+	GetRecordingDirectory(svar, _);
+	IsValidNickName("");
+	AllowNickNameCharacter(0, false);
+	IsNickNameCharacterAllowed(0);
+	GetAvailableClasses();
+	GetPlayerClass(0, ivar, _, _, _, _, _, _, _, _, _, _, _);
+	EditPlayerClass(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+	GetRunningTimers();
+	SetPlayerGravity(0, 0.0);
+	GetPlayerGravity(0);
+	SetPlayerAdmin(0, false);
+	SetPlayerTeamForPlayer(0, 0, 0);
+	GetPlayerTeamForPlayer(0, 0);
+	SetPlayerSkinForPlayer(0, 0, 0);
+	GetPlayerSkinForPlayer(0, 0);
+	SetPlayerNameForPlayer(0, 0, "");
+	GetPlayerNameForPlayer(0, 0, svar, _);
+	SetPlayerFightStyleForPlayer(0, 0, 0);
+	GetPlayerFightStyleForPlayer(0, 0);
+	SetPlayerPosForPlayer(0, 0, 0.0, 0.0, 0.0, _);
+	SetPlayerRotationQuatForPlayer(0, 0, 0.0, 0.0, 0.0, 0.0, _);
+	ApplyAnimationForPlayer(0, 0, "", "", 0.0, 0, 0, 0, 0, 0);
+	GetPlayerWeather(0);
+	TogglePlayerWidescreen(0, false);
+	IsPlayerWidescreenToggled(0);
+	GetSpawnInfo(0, ivar, _, _, _, _, _, _, _, _, _, _, _);
+	GetPlayerSkillLevel(0, 0);
+	IsPlayerCheckpointActive(0);
+	GetPlayerCheckpoint(0, fvar, _, _, _);
+	IsPlayerRaceCheckpointActive(0);
+	GetPlayerRaceCheckpoint(0, fvar, _, _, _, _, _, _);
+	GetPlayerWorldBounds(0, fvar, _, _, _);
+	IsPlayerInModShop(0);
+	GetPlayerSirenState(0);
+	GetPlayerLandingGearState(0);
+	GetPlayerHydraReactorAngle(0);
+	GetPlayerTrainSpeed(0);
+	GetPlayerZAim(0);
+	GetPlayerSurfingOffsets(0, fvar, _, _);
+	GetPlayerRotationQuat(0, fvar, _, _, _);
+	GetPlayerDialogID(0);
+	GetPlayerSpectateID(0);
+	GetPlayerSpectateType(0);
+	GetPlayerLastSyncedVehicleID(0);
+	GetPlayerLastSyncedTrailerID(0);
+	GetPlayerRawIp(0);
+	SendBulletData(0, _, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+	ShowPlayerForPlayer(0, 0, _);
+	HidePlayerForPlayer(0, 0);
+	AddPlayerForPlayer(0, 0, _);
+	RemovePlayerForPlayer(0, 0);
+	SetPlayerChatBubbleForPlayer(0, 0, "", 0, 0.0, 0);
+	ResetPlayerMarkerForPlayer(0, 0);
+	SetPlayerVersion(0, "");
+	IsPlayerSpawned(0);
+	IsPlayerControllable(0);
+	SpawnForWorld(0);
+	BroadcastDeath(0);
+	IsPlayerCameraTargetEnabled(0);
+	SetPlayerDisabledKeysSync(0, 0, _, _);
+	GetPlayerDisabledKeysSync(0, ivar, _, _);
+	GetPlayerBuildingsRemoved(0);
+	IsBuildingRemovedForPlayer(0, 0, 0.0, 0.0, 0.0, 0.0);
+	TogglePlayerGhostMode(0, false);
+	GetPlayerGhostMode(0);
+	SetPlayerSyncKeys(0, 0, 0, 0);
+	SetPlayerSyncPos(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncVelocity(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncRotationQuat(0, 0.0, 0.0, 0.0, 0.0);
+	SetPlayerSyncCameraFrontVector(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncCameraPos(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncCameraMode(0, 0);
+	SetPlayerSyncWeapon(0, 0);
+	GetPlayerSyncWeapon(0);
+	SetPlayerSyncWeaponState(0, 0);
+	SetPlayerSyncSpecialAction(0, 0);
+	SetPlayerSyncHealth(0, 0.0);
+	SetPlayerSyncArmour(0, 0.0);
+	SetPlayerSyncVehicleId(0, 0, _);
+	SetPlayerSyncVehicleSeat(0, 0);
+	SetPlayerSyncVehiclePosition(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncVehicleVelocity(0, 0.0, 0.0, 0.0);
+	SetPlayerSyncVehicleRotQuat(0, 0.0, 0.0, 0.0, 0.0);
+	SetPlayerSyncVehicleHealth(0, 0.0);
+	SetPlayerSyncTrainSpeed(0, 0.0);
+	SendPlayerDeath(0, _);
+	UpdatePlayerSyncData(0, _, _);
+	SendPlayerClientGameInit(0, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, "");
+	SetPlayerConnectMode(0, E_PLAYER_CONNECT_MODE:0);
+	GetPlayerConnectMode(0);
+	GetActorSpawnInfo(0, ivar, _, _, _, _);
+	GetActorSkin(0);
+	GetActorAnimation(0, svar, _, svar, _, fvar, _, _, _, _, _);
+	TogglePlayerScoresPingsUpdate(0, false);
+	TogglePlayerFakePing(0, false);
+	SetPlayerFakePing(0, 0);
+	SetPlayerNameInServerQuery(0, "");
+	GetPlayerNameInServerQuery(0, svar, _);
+	ResetPlayerNameInServerQuery(0);
+	IsPlayerPaused(0);
+	GetPlayerPausedTime(0);
+	HideObjectForPlayer(0, 0);
+	ShowObjectForPlayer(0, 0);
+	HideNewObjectsForPlayer(0, false);
+	IsObjectHiddenForPlayer(0, 0);
+	NewObjectsHiddenForPlayer(0);
+	GetObjectDrawDistance(0);
+	SetObjectMoveSpeed(0, 0.0);
+	GetObjectMoveSpeed(0);
+	GetObjectTarget(0, fvar, _, _);
+	GetObjectAttachedData(0, ivar, _, _);
+	GetObjectAttachedOffset(0, fvar, _, _, _, _, _);
+	GetObjectSyncRotation(0);
+	IsObjectMaterialSlotUsed(0, 0);
+	GetObjectMaterial(0, 0, ivar, svar, _, svar, _, _);
+	GetObjectMaterialText(0, 0, svar, _, ivar, svar, _, _, _, _, _, _);
+	IsObjectNoCameraCol(0);
+	GetPlayerObjectDrawDistance(0, 0);
+	SetPlayerObjectMoveSpeed(0, 0, 0.0);
+	GetPlayerObjectMoveSpeed(0, 0);
+	GetPlayerObjectTarget(0, 0, fvar, _, _);
+	GetPlayerObjectAttachedData(0, 0, ivar, _, _);
+	GetPlayerObjectAttachedOffset(0, 0, fvar, _, _, _, _, _);
+	GetPlayerObjectSyncRotation(0, 0);
+	IsPlayerObjectMaterialSlotUsed(0, 0, 0);
+	GetPlayerObjectMaterial(0, 0, 0, ivar, svar, _, svar, _, _);
+	GetPlayerObjectMaterialText(0, 0, 0, svar, _, ivar, svar, _, _, _, _, _, _);
+	IsPlayerObjectNoCameraCol(0, 0);
+	GetPlayerSurfingPlayerObjectID(0);
+	GetPlayerCameraTargetPlayerObj(0);
+	GetObjectType(0, 0);
+	GetPlayerAttachedObject(0, 0, ivar, _, _, _, _, _, _, _, _, _, _, _, _);
+	AttachPlayerObjectToObject(0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, _);
+	ClearBanList();
+	IsBanned("");
+	SetTimeoutTime(0, 0);
+	GetLocalIP(0, svar, _);
+	SetExclusiveBroadcast(0);
+	BroadcastToPlayer(0, _);
+	ToggleCloseConnectionFix(false);
+	GetVehicleSpawnInfo(0, fvar, _, _, _, _, _);
+	SetVehicleSpawnInfo(0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, _, _);
+	GetVehicleColor(0, ivar, _);
+	GetVehiclePaintjob(0);
+	GetVehicleInterior(0);
+	GetVehicleNumberPlate(0, svar, _);
+	SetVehicleRespawnDelay(0, 0);
+	GetVehicleRespawnDelay(0);
+	SetVehicleOccupiedTick(0, 0);
+	GetVehicleOccupiedTick(0);
+	SetVehicleRespawnTick(0, 0);
+	GetVehicleRespawnTick(0);
+	GetVehicleLastDriver(0);
+	GetVehicleCab(0);
+	HasVehicleBeenOccupied(0);
+	SetVehicleBeenOccupied(0, false);
+	IsVehicleOccupied(0);
+	IsVehicleDead(0);
+	SetVehicleDead(0, false);
+	SetVehicleParamsSirenState(0, 0);
+	ToggleVehicleSirenEnabled(0, 0);
+	IsVehicleSirenEnabled(0);
+	GetVehicleMatrix(0, fvar, _, _, _, _, _, _, _, _);
+	GetVehicleModelCount(0);
+	GetVehicleModelsUsed();
+	HideVehicle(0);
+	ShowVehicle(0);
+	IsVehicleHidden(0);
+	IsValidGangZone(0);
+	IsPlayerInGangZone(0, 0);
+	IsGangZoneVisibleForPlayer(0, 0);
+	GangZoneGetColorForPlayer(0, 0);
+	GangZoneGetFlashColorForPlayer(0, 0);
+	IsGangZoneFlashingForPlayer(0, 0);
+	GangZoneGetPos(0, fvar, _, _, _);
+	CreatePlayerGangZone(0, 0.0, 0.0, 0.0, 0.0);
+	PlayerGangZoneDestroy(0, 0);
+	PlayerGangZoneShow(0, 0, 0);
+	PlayerGangZoneHide(0, 0);
+	PlayerGangZoneFlash(0, 0, 0);
+	PlayerGangZoneStopFlash(0, 0);
+	IsValidPlayerGangZone(0, 0);
+	IsPlayerInPlayerGangZone(0, 0);
+	IsPlayerGangZoneVisible(0, 0);
+	PlayerGangZoneGetColor(0, 0);
+	PlayerGangZoneGetFlashColor(0, 0);
+	IsPlayerGangZoneFlashing(0, 0);
+	PlayerGangZoneGetPos(0, 0, fvar, _, _, _);
+	IsValidTextDraw(Text:0);
+	IsTextDrawVisibleForPlayer(0, Text:0);
+	TextDrawGetString(Text:0, svar, _);
+	TextDrawSetPos(Text:0, 0.0, 0.0);
+	TextDrawGetLetterSize(Text:0, fvar, _);
+	TextDrawGetTextSize(Text:0, fvar, _);
+	TextDrawGetPos(Text:0, fvar, _);
+	TextDrawGetColor(Text:0);
+	TextDrawGetBoxColor(Text:0);
+	TextDrawGetBackgroundColor(Text:0);
+	TextDrawGetShadow(Text:0);
+	TextDrawGetOutline(Text:0);
+	TextDrawGetFont(Text:0);
+	TextDrawIsBox(Text:0);
+	TextDrawIsProportional(Text:0);
+	TextDrawIsSelectable(Text:0);
+	TextDrawGetAlignment(Text:0);
+	TextDrawGetPreviewModel(Text:0);
+	TextDrawGetPreviewRot(Text:0, fvar, _, _, _);
+	TextDrawGetPreviewVehCol(Text:0, ivar, _);
+	TextDrawSetStringForPlayer(Text:0, 0, "");
+	IsValidPlayerTextDraw(0, PlayerText:0);
+	IsPlayerTextDrawVisible(0, PlayerText:0);
+	PlayerTextDrawGetString(0, PlayerText:0, svar, _);
+	PlayerTextDrawSetPos(0, PlayerText:0, 0.0, 0.0);
+	PlayerTextDrawGetLetterSize(0, PlayerText:0, fvar, _);
+	PlayerTextDrawGetTextSize(0, PlayerText:0, fvar, _);
+	PlayerTextDrawGetPos(0, PlayerText:0, fvar, _);
+	PlayerTextDrawGetColor(0, PlayerText:0);
+	PlayerTextDrawGetBoxColor(0, PlayerText:0);
+	PlayerTextDrawGetBackgroundCol(0, PlayerText:0);
+	PlayerTextDrawGetShadow(0, PlayerText:0);
+	PlayerTextDrawGetOutline(0, PlayerText:0);
+	PlayerTextDrawGetFont(0, PlayerText:0);
+	PlayerTextDrawIsBox(0, PlayerText:0);
+	PlayerTextDrawIsProportional(0, PlayerText:0);
+	PlayerTextDrawIsSelectable(0, PlayerText:0);
+	PlayerTextDrawGetAlignment(0, PlayerText:0);
+	PlayerTextDrawGetPreviewModel(0, PlayerText:0);
+	PlayerTextDrawGetPreviewRot(0, PlayerText:0, fvar, _, _, _);
+	PlayerTextDrawGetPreviewVehCol(0, PlayerText:0, ivar, _);
+	IsValid3DTextLabel(Text3D:0);
+	Is3DTextLabelStreamedIn(0, Text3D:0);
+	Get3DTextLabelText(Text3D:0, svar, _);
+	Get3DTextLabelColor(Text3D:0);
+	Get3DTextLabelPos(Text3D:0, fvar, _, _);
+	Get3DTextLabelDrawDistance(Text3D:0);
+	Get3DTextLabelLOS(Text3D:0);
+	Get3DTextLabelVirtualWorld(Text3D:0);
+	Get3DTextLabelAttachedData(Text3D:0, ivar, _);
+	IsValidPlayer3DTextLabel(0, PlayerText3D:0);
+	GetPlayer3DTextLabelText(0, PlayerText3D:0, svar, _);
+	GetPlayer3DTextLabelColor(0, PlayerText3D:0);
+	GetPlayer3DTextLabelPos(0, PlayerText3D:0, fvar, _, _);
+	GetPlayer3DTextLabelDrawDist(0, PlayerText3D:0);
+	GetPlayer3DTextLabelLOS(0, PlayerText3D:0);
+	GetPlayer3DTextLabelVirtualW(0, PlayerText3D:0);
+	GetPlayer3DTextLabelAttached(0, PlayerText3D:0, ivar, _);
+	IsMenuDisabled(Menu:0);
+	IsMenuRowDisabled(Menu:0, 0);
+	GetMenuColumns(Menu:0);
+	GetMenuItems(Menu:0, 0);
+	GetMenuPos(Menu:0, fvar, _);
+	GetMenuColumnWidth(Menu:0, fvar, _);
+	GetMenuColumnHeader(Menu:0, 0, svar, _);
+	GetMenuItem(Menu:0, 0, 0, svar, _);
+	IsValidPickup(0);
+	IsPickupStreamedIn(0, 0);
+	GetPickupPos(0, fvar, _, _);
+	GetPickupModel(0);
+	GetPickupType(0);
+	GetPickupVirtualWorld(0);
+	SetPickupPos(0, 0.0, 0.0, 0.0, _);
+	SetPickupModel(0, 0, _);
+	SetPickupType(0, 0, _);
+	SetPickupVirtualWorld(0, 0);
+	ShowPickupForPlayer(0, 0);
+	HidePickupForPlayer(0, 0);
+	SetPickupForPlayer(0, 0, 0, 0, 0.0, 0.0, 0.0);
+	/*
+	CreatePlayerPickup(0, 0, 0, 0.0, 0.0, 0.0, _);
+	DestroyPlayerPickup(0, 0);
+	IsValidPlayerPickup(0, 0);
+	IsPlayerPickupStreamedIn(0, 0);
+	GetPlayerPickupPos(0, 0, fvar, _, _);
+	GetPlayerPickupModel(0, 0);
+	GetPlayerPickupType(0, 0);
+	GetPlayerPickupVirtualWorld(0, 0);
+	*/
+	GetColCount();
+	GetColSphereRadius(0);
+	GetColSphereOffset(0, fvar, _, _);
+	SendClientMessagef(0, 0, "");
+	SendClientMessageToAllf(0, "");
+	GameTextForPlayerf(0, 0, 0, "");
+	GameTextForAllf(0, 0, "");
+	SendPlayerMessageToPlayerf(0, 0, "");
+	SendPlayerMessageToAllf(0, "");
+	SendRconCommandf("");
+	IsValidVehicle(0);
+	GetGravity();
+	GetWeaponSlot(0);
+	SendRPC(0, 0);
+	SendData(0);
+}
+
 public OnTrailerUpdate(playerid, vehicleid)
 {
 	return 1;
@@ -740,5 +1084,65 @@ public OnClientCheckResponse(playerid, actionid, memaddr, retndata)
 public OnScriptCash(playerid, amount, source)
 {
 	return 1;
+}
+
+public OnPlayerEnterGangZone(playerid, zoneid)
+{
+}
+
+public OnPlayerLeaveGangZone(playerid, zoneid)
+{
+}
+
+public OnPlayerEnterPlayerGangZone(playerid, zoneid)
+{
+}
+
+public OnPlayerLeavePlayerGangZone(playerid, zoneid)
+{
+}
+
+public OnPlayerPickUpPlayerPickup(playerid, pickupid)
+{
+}
+
+public OnPlayerPauseStateChange(playerid, pausestate)
+{
+}
+
+public OnPlayerStatsAndWeaponsUpdate(playerid)
+{
+}
+
+public OnRemoteRCONPacket(const ipaddr[], port, const password[], success, const command[])
+{
+}
+
+public OnServerMessage(const msg[])
+{
+}
+
+public OnPlayerClientGameInit(playerid, &usecjwalk, &limitglobalchat, &Float:globalchatradius, &Float:nametagdistance, &disableenterexits, &nametaglos, &manualvehengineandlights, &spawnsavailable, &shownametags, &showplayermarkers, &onfoot_rate, &incar_rate, &weapon_rate, &lagcompmode, &vehiclefriendlyfire)
+{
+}
+
+public OnOutcomeScmEvent(playerid, issuerid, E_SCM_EVENT_TYPE:eventid, vehicleid, arg1, arg2)
+{
+}
+
+public OnServerQueryInfo(const ipaddr[], hostname[51], gamemode[31], language[31])
+{
+}
+
+public OnSystemCommandExecute(const line_output[], retval, index, success, line_current, line_total)
+{
+}
+
+public OnPickupStreamIn(pickupid, forplayerid)
+{
+}
+
+public OnPickupStreamOut(pickupid, forplayerid)
+{
 }
 
