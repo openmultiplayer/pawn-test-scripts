@@ -107,3 +107,48 @@ PTEST_CLOSE__ GZ_10_GangZoneStopFlashForAll(playerid)
 {
     GangZoneDestroy(g_iGangZone);
 }
+
+
+PTEST__ GZ_11_PlayerGangZoneCreate(playerid)
+{
+    for (new i; i < MAX_GANG_ZONES; i++)
+        ASSERT_EQ(GangZoneCreate(0.0, 0.0, 0.0, 0.0), i);
+
+    for (new i; i < MAX_GANG_ZONES; i++)
+        ASSERT_EQ(CreatePlayerGangZone(playerid, 0.0, 0.0, 0.0, 0.0), i);
+
+    ASSERT_EQ(GangZoneCreate(0.0, 0.0, 0.0, 0.0), -1);
+    ASSERT_EQ(CreatePlayerGangZone(playerid, 0.0, 0.0, 0.0, 0.0), -1);
+}
+PTEST_CLOSE__ GZ_11_PlayerGangZoneCreate(playerid)
+{
+    for (new i; i < MAX_GANG_ZONES; i++)
+        GangZoneDestroy(i);
+
+    for (new i; i < MAX_GANG_ZONES; i++)
+        PlayerGangZoneDestroy(playerid, i);
+}
+
+
+PTEST__ GZ_12_PlayerGangZoneDestroy(playerid)
+{
+    new gangzone = CreatePlayerGangZone(playerid, 0.0, 0.0, 0.0, 0.0);
+    ASSERT_EQ(PlayerGangZoneDestroy(playerid, gangzone), 1);
+    ASSERT_EQ(PlayerGangZoneDestroy(playerid, gangzone), 0);
+    ASSERT_EQ(PlayerGangZoneDestroy(playerid, INVALID_GANG_ZONE), 0);
+}
+
+
+PTEST__ GZ_13_PlayerGangZoneShow(playerid)
+{
+    g_iGangZone = CreatePlayerGangZone(playerid, 955.0, 955.0, 1045.0, 1045.0);
+    ASSERT_EQ(PlayerGangZoneShow(playerid, INVALID_GANG_ZONE, -1), 0);
+    ASSERT_EQ(PlayerGangZoneShow(INVALID_PLAYER_ID, g_iGangZone, -1), 0);
+    ASSERT_EQ(PlayerGangZoneShow(playerid, g_iGangZone, -1), 1);
+    ASK("Can you see the white gangzone near 1000.0 1000.0 50.0?");
+}
+PTEST_CLOSE__ GZ_13_PlayerGangZoneShow(playerid)
+{
+    PlayerGangZoneDestroy(playerid, g_iGangZone);
+}
+

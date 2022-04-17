@@ -9,7 +9,7 @@
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-//#define JUST_TEST A_15_ApplyActorAnimation
+//#define JUST_TEST GZ_13_PlayerGangZoneShow
 
 #define frename YSF_frename
 #include "test-header"
@@ -23,7 +23,9 @@
 #include <YSI_Coding\y_timers>
 #include <YSI_Visual\y_commands>
 #include <YSI_Server\y_files>
-#include "test-natives"
+
+// Comment this out to skip native port status.
+//#include "test-natives"
 
 forward Timers1(a, b, c);
 
