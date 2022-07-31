@@ -105,6 +105,7 @@ TEST__ Timers()
 #include "components/menus/main.pwn"
 #include "components/players/main.pwn"
 #include "components/vehicles/main.pwn"
+#include "components/pawn/main.pwn"
 
 main()
 {
