@@ -5,7 +5,7 @@ public TestAllNatives()
 {
 	// This just tests that the natives compile and load.  It doesn't test that
 	// they work.
-	new Float:fvar, ivar, svar[32];
+	new Float:fvar, ivar, svar[32], bool:bvar;
 	CreateVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0);
 	DestroyVehicle(0);
 	IsVehicleStreamedIn(0, 0);
@@ -15,15 +15,15 @@ public TestAllNatives()
 	GetVehicleRotationQuat(0, fvar, fvar, fvar, fvar);
 	GetVehicleDistanceFromPoint(0, 0.0, 0.0, 0.0);
 	SetVehicleZAngle(0, 0.0);
-	SetVehicleParamsForPlayer(0, 0, 0, 0);
+	SetVehicleParamsForPlayer(0, false, false, false);
 	ManualVehicleEngineAndLights();
 	SetVehicleParamsEx(0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0);
 	GetVehicleParamsEx(0, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar, VEHICLE_PARAMS:ivar);
 	GetVehicleParamsSirenState(0);
-	SetVehicleParamsCarDoors(0, 0, 0, 0, 0);
-	GetVehicleParamsCarDoors(0, ivar, ivar, ivar, ivar);
-	SetVehicleParamsCarWindows(0, 0, 0, 0, 0);
-	GetVehicleParamsCarWindows(0, ivar, ivar, ivar, ivar);
+	SetVehicleParamsCarDoors(0, false, false, false, false);
+	GetVehicleParamsCarDoors(0, bvar, bvar, bvar, bvar);
+	SetVehicleParamsCarWindows(0, false, false, false, false);
+	GetVehicleParamsCarWindows(0, bvar, bvar, bvar, bvar);
 	SetVehicleToRespawn(0);
 	LinkVehicleToInterior(0, 0);
 	AddVehicleComponent(0, 0);
@@ -45,8 +45,8 @@ public TestAllNatives()
 	GetVehicleVelocity(0, fvar, fvar, fvar);
 	SetVehicleVelocity(0, 0.0, 0.0, 0.0);
 	SetVehicleAngularVelocity(0, 0.0, 0.0, 0.0);
-	GetVehicleDamageStatus(0, ivar, ivar, ivar, ivar);
-	UpdateVehicleDamageStatus(0, 0, 0, 0, 0);
+	GetVehicleDamageStatus(0, VEHICLE_PANEL_STATUS:ivar, VEHICLE_DOOR_STATUS:ivar, VEHICLE_LIGHT_STATUS:ivar, VEHICLE_TYRE_STATUS:ivar);
+	UpdateVehicleDamageStatus(0, VEHICLE_PANEL_STATUS:0, VEHICLE_DOOR_STATUS:0, VEHICLE_LIGHT_STATUS:0, VEHICLE_TYRE_STATUS:0);
 	GetVehicleModelInfo(0, VEHICLE_MODEL_INFO:0, fvar, fvar, fvar);
 	SetVehicleVirtualWorld(0, 0);
 	GetVehicleVirtualWorld(0);
@@ -158,7 +158,7 @@ public TestAllNatives()
 	GetPlayerColor(0);
 	SetPlayerSkin(0, 0);
 	GetPlayerSkin(0);
-	GetPlayerCustomSkin(0);
+	//GetPlayerCustomSkin(0);
 	GivePlayerWeapon(0, WEAPON:0, 0);
 	ResetPlayerWeapons(0);
 	SetPlayerArmedWeapon(0, WEAPON:0);
@@ -286,8 +286,8 @@ public TestAllNatives()
 	TogglePlayerSpectating(0, false);
 	PlayerSpectatePlayer(0, 0);
 	PlayerSpectateVehicle(0, 0);
-	StartRecordingPlayerData(0, PLAYER_RECORDING_TYPE:0, "");
-	StopRecordingPlayerData(0);
+	//StartRecordingPlayerData(0, PLAYER_RECORDING_TYPE:0, "");
+	//StopRecordingPlayerData(0);
 	SelectTextDraw(0, 0);
 	CancelSelectTextDraw(0);
 	CreateExplosionForPlayer(0, 0.0, 0.0, 0.0, 0, 0.0);
@@ -332,7 +332,7 @@ public TestAllNatives()
 	new SERVER_VARTYPE:server_vartype = GetSVarType("");
 	#pragma unused server_vartype
 	SetGameModeText("");
-	SetTeamCount(0);
+	//SetTeamCount(0);
 	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
 	AddPlayerClassEx(0, 0, 0.0, 0.0, 0.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
 	AddStaticVehicle(0, 0.0, 0.0, 0.0, 0.0, 0, 0);
@@ -350,7 +350,7 @@ public TestAllNatives()
 	GetGravity();
 	SetGravity(0.0);
 	CreateExplosion(0.0, 0.0, 0.0, 0, 0.0);
-	EnableZoneNames(false);
+	//EnableZoneNames(false);
 	UsePlayerPedAnims();
 	DisableInteriorEnterExits();
 	SetNameTagDrawDistance(0.0);
@@ -359,12 +359,12 @@ public TestAllNatives()
 	LimitPlayerMarkerRadius(0.0);
 	ConnectNPC("", "");
 	IsPlayerNPC(0);
-	AddCharModel(0, 0, "", "");
-	AddSimpleModel(0, 0, 0, "", "");
-	AddSimpleModelTimed(0, 0, 0, "", "", 0, 0);
-	FindModelFileNameFromCRC(0, svar);
-	FindTextureFileNameFromCRC(0, svar);
-	RedirectDownload(0, "");
+	//AddCharModel(0, 0, "", "");
+	//AddSimpleModel(0, 0, 0, "", "");
+	//AddSimpleModelTimed(0, 0, 0, "", "", 0, 0);
+	//FindModelFileNameFromCRC(0, svar);
+	//FindTextureFileNameFromCRC(0, svar);
+	//RedirectDownload(0, "");
 	IsPlayerAdmin(0);
 	Kick(0);
 	Ban(0);
@@ -464,11 +464,11 @@ public TestYSFNatives()
 	UnLoadFilterScript("");
 	GetFilterScriptCount();
 	GetFilterScriptName(0, svar, _);
-	AddServerRule("", "", _);
+	AddServerRule("", "");
 	SetServerRule("", "");
 	IsValidServerRule("");
-	SetServerRuleFlags("", E_SERVER_RULE_FLAGS:0);
-	GetServerRuleFlags("");
+	//SetServerRuleFlags("", E_SERVER_RULE_FLAGS:0);
+	//GetServerRuleFlags("");
 	ToggleChatTextReplacement(false);
 	ChatTextReplacementToggled();
 	GetServerSettings(ivar, _, _, _, _, _, _, _, _, _, _, _, _, _);
@@ -654,7 +654,7 @@ public TestYSFNatives()
 	SetVehicleParamsSirenState(0, 0);
 	ToggleVehicleSirenEnabled(0, 0);
 	IsVehicleSirenEnabled(0);
-	GetVehicleMatrix(0, fvar, _, _, _, _, _, _, _, _);
+	GetVehicleMatrix(0, fvar, fvar, fvar, fvar, fvar, fvar, fvar, fvar, fvar);
 	GetVehicleModelCount(0);
 	GetVehicleModelsUsed();
 	HideVehicle(0);
@@ -733,11 +733,15 @@ public TestYSFNatives()
 	IsValidPlayer3DTextLabel(0, PlayerText3D:0);
 	GetPlayer3DTextLabelText(0, PlayerText3D:0, svar, _);
 	GetPlayer3DTextLabelColor(0, PlayerText3D:0);
-	GetPlayer3DTextLabelPos(0, PlayerText3D:0, fvar, _, _);
+	GetPlayer3DTextLabelPos(0, PlayerText3D:0, fvar, fvar, fvar);
 	GetPlayer3DTextLabelDrawDist(0, PlayerText3D:0);
+	GetPlayer3DTextLabelDrawDistance(0, PlayerText3D:0);
 	GetPlayer3DTextLabelLOS(0, PlayerText3D:0);
 	GetPlayer3DTextLabelVirtualW(0, PlayerText3D:0);
-	GetPlayer3DTextLabelAttached(0, PlayerText3D:0, ivar, _);
+	GetPlayer3DTextLabelVirtualWorld(0, PlayerText3D:0);
+	GetPlayer3DTextLabelAttached(0, PlayerText3D:0, ivar, ivar);
+	GetPlayer3DTextLabelAttachedData(0, PlayerText3D:0, ivar, ivar);
+	SetPlayer3DTextLabelLOS(0, PlayerText3D:0, false);
 	IsMenuDisabled(Menu:0);
 	IsMenuRowDisabled(Menu:0, 0);
 	GetMenuColumns(Menu:0);
@@ -785,6 +789,26 @@ public TestYSFNatives()
 	SendRPC(0, 0);
 	SendData(0);
 	SetPlayerSyncPosition(0, 0.0, 0.0, 0.0);
+	RemovePlayerWeapon(0, WEAPON_FIST);
+	UseGangZoneCheck(0, false);
+	UsePlayerGangZoneCheck(0, 0, true);
+	GetObjectMovingTargetPos(0, fvar, fvar, fvar);
+	GetObjectMovingTargetRot(0, fvar, fvar, fvar);
+	IsPickupHiddenForPlayer(0, 0);
+	Set3DTextLabelDrawDistance(Text3D:0, 0.0);
+	Get3DTextLabelLOS(Text3D:0);
+	Set3DTextLabelLOS(Text3D:0, false);
+	Set3DTextLabelVirtualWorld(Text3D:0, 0);
+	SetPlayer3DTextLabelDrawDist(0, PlayerText3D:0, 0.0);
+	SetPlayer3DTextLabelDrawDistance(0, PlayerText3D:0, 0.0);
+	GetVehicleTower(0);
+	GetVehicleSirenState(0);
+	GetVehicleLandingGearState(0);
+	GetVehicleLandingGearState(0);
+	GetVehicleHydraReactorAngle(0);
+	GetVehicleTrainSpeed(0);
+	SetActorSkin(0, 0);
+	RemoveServerRule("");
 }
 
 public OnTrailerUpdate(playerid, vehicleid)
@@ -1095,11 +1119,19 @@ public OnPlayerLeaveGangZone(playerid, zoneid)
 {
 }
 
+public OnPlayerClickGangZone(playerid, zoneid)
+{
+}
+
 public OnPlayerEnterPlayerGangZone(playerid, zoneid)
 {
 }
 
 public OnPlayerLeavePlayerGangZone(playerid, zoneid)
+{
+}
+
+public OnPlayerClickPlayerGangZone(playerid, zoneid)
 {
 }
 
