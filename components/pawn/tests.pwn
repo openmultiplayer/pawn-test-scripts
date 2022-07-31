@@ -95,7 +95,7 @@ TestFileFuncs()
 	{
 		printf("dfind: %d, %s", index, buf);
 	}
-	for (new index = 0; (buf[0] = EOS, fmatch(buf, "scan-test-*", index)); ++index)
+	for (new index = 0; (buf[0] = EOS, fmatch(buf, "scan-test-*", index++)); )
 	{
 		printf("fmatch: %d, %s", index, buf);
 	}
