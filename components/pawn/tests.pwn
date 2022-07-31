@@ -99,6 +99,13 @@ TestFileFuncs()
 	{
 		printf("fmatch: %d, %s", index, buf);
 	}
+	//sleep(1000);
+	for (new i = 0; i != 100; ++i)
+	{
+		for (new j = 0; j != 1000000; ++j)
+		{
+		}
+	}
 	ftouch("file_test.txt");
 	printf("fstat: %d", fstat("file_test.txt", size, timestamp, attrib, inode));
 	printf("fstat: %08x %08x %08x %08x", size, timestamp, attrib, inode);
