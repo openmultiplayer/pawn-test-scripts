@@ -13,7 +13,7 @@ TEST__ CV01_StringOldD()
 	// This should give a warning, but there's no way to test that in the current test suite.
 	printf("Running GetServerVarAsString(\"gamemode\", buffer);");
 	GetServerVarAsString("gamemode", buffer);
-	ASSERT_SAME(buffer, "unit-tests");
+	ASSERT_SAME(buffer, "test");
 }
 
 TEST__ CV02_StringOld()
@@ -21,7 +21,7 @@ TEST__ CV02_StringOld()
 	new buffer[32] = "init";
 	printf("Running GetConsoleVarAsString(\"version\", buffer);");
 	GetConsoleVarAsString("version", buffer);
-	ASSERT_SAME(buffer, "open.mp 0.0.0");
+	ASSERT_SAME(buffer, "open.mp 0.0.9");
 }
 
 // Test for new (open.mp) script vars.
