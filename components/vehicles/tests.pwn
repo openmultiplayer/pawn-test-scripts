@@ -133,15 +133,15 @@ TEST_CLOSE__ V__SetVehicleZAngle()
 }
 
 
-TEST_INIT__ V__SetVehicleParamsForPlayer()
+PTEST_INIT__ V__SetVehicleParamsForPlayer(playerid)
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleParamsForPlayer()
+PTEST__ V__SetVehicleParamsForPlayer(playerid)
 {
-	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, 0, 0, 0));
+	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, playerid, 0, 0));
 }
-TEST_CLOSE__ V__SetVehicleParamsForPlayer()
+PTEST_CLOSE__ V__SetVehicleParamsForPlayer(playerid)
 {
 	DestroyVehicle(g_iVehicle);
 	g_iVehicle = INVALID_VEHICLE_ID;
