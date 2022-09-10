@@ -1,7 +1,8 @@
 #define STRONG_TAGS
 
-#tryinclude <samp-stdlib\a_samp>
-#tryinclude <a_samp>
+#tryinclude <open.mp>
+//#tryinclude <samp-stdlib\a_samp>
+//#tryinclude <a_samp>
 
 #if !defined _samp_included
 	#error Could not include <a_samp>

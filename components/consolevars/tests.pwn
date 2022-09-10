@@ -28,16 +28,16 @@ TEST__ CV02_StringOld()
 TEST__ CV03_StringNewD()
 {
 	new buffer[32] = "init";
-	printf("Running GetServerVarAsString(\"map_name\", buffer);");
-	GetServerVarAsString("map_name", buffer);
+	printf("Running GetServerVarAsString(\"game.map\", buffer);");
+	GetServerVarAsString("game.map", buffer);
 	ASSERT_SAME(buffer, "Tester City");
 }
 
 TEST__ CV04_StringNew()
 {
 	new buffer[32] = "init";
-	printf("Running GetConsoleVarAsString(\"server_name\", buffer);");
-	GetConsoleVarAsString("server_name", buffer);
+	printf("Running GetConsoleVarAsString(\"name\", buffer);");
+	GetConsoleVarAsString("name", buffer);
 	ASSERT_SAME(buffer, "OMP Test Server");
 }
 
@@ -70,9 +70,9 @@ TEST__ CV11_StringDefaultD()
 TEST__ CV12_StringDefault()
 {
 	new buffer[32] = "init";
-	printf("Running GetConsoleVarAsString(\"logging_timestamp_format\", buffer);");
-	GetConsoleVarAsString("logging_timestamp_format", buffer);
-	ASSERT_SAME(buffer, "[%Y-%m-%dT%H:%M:%SZ]");
+	printf("Running GetConsoleVarAsString(\"logging.timestamp_format\", buffer);");
+	GetConsoleVarAsString("logging.timestamp_format", buffer);
+	ASSERT_SAME(buffer, "[%Y-%m-%dT%H:%M:%S%z]");
 }
 
 // Test for script vars that aren't pre-defined.

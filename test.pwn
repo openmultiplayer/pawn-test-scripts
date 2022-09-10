@@ -5,15 +5,15 @@
 //#pragma option -a
 
 // Run tests.
-#define YSI_TESTS
+//#define YSI_TESTS
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
 //#define JUST_TEST GZ_13_PlayerGangZoneShow
 
-#define frename YSF_frename
+//#define frename YSF_frename
 #include "test-header"
-#undef frename
+//#undef frename
 #include "YSF"
 #if !defined SetPlayerSyncPosition
 	native SetPlayerSyncPosition(playerid, Float:x, Float:y, Float:z);
