@@ -16,7 +16,7 @@ TEST_CLOSE__ A_01_CreateActor()
 
 TEST__ A_02_GetActorPoolSize()
 {
-    ASSERT_EQ(GetActorPoolSize(), 0);
+    ASSERT_EQ(GetActorPoolSize(), -1);
 
     for (new i; i < 5; i++)
         CreateActor(0, 0.0, 0.0, 0.0, 0.0);
@@ -30,7 +30,7 @@ TEST_CLOSE__ A_02_GetActorPoolSize()
 {
     for (new i; i < 5; i++)
         DestroyActor(i);
-    ASSERT_EQ(GetActorPoolSize(), 0);
+    ASSERT_EQ(GetActorPoolSize(), -1);
 }
 
 TEST__ A_03_GetAndSetActorVW()

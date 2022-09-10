@@ -1,6 +1,8 @@
 #pragma warning disable 200
 #pragma option -d2
 #pragma option -O0
+
+#define CGEN_MEMORY 20000
 //#pragma option -l
 //#pragma option -a
 
