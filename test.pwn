@@ -2,16 +2,17 @@
 #pragma option -d2
 #pragma option -O0
 
-#define CGEN_MEMORY 20000
+#define CGEN_MEMORY 70000
 //#pragma option -l
 //#pragma option -a
 
 // Run tests.
-//#define YSI_TESTS
+#define YSI_TESTS
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-//#define JUST_TEST GZ_13_PlayerGangZoneShow
+#define JUST_TEST A_15_ApplyActorAnimation
+//#define JUST_TEST_GROUP "actors"
 
 //#define frename YSF_frename
 #include "test-header"
@@ -108,6 +109,7 @@ TEST__ Timers()
 #include "components/players/main.pwn"
 #include "components/vehicles/main.pwn"
 #include "components/pawn/main.pwn"
+#include "components/pickups/main.pwn"
 
 main()
 {
