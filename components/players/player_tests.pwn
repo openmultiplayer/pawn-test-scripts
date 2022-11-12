@@ -63,7 +63,7 @@ PTEST__ P_06_SetPlayerInteriorAndPos(playerid)
 PTEST_CLOSE__ P_06_SetPlayerInteriorAndPos(playerid)
 {
     SetPlayerInterior(playerid, 0);
-    SetPlayerPos(playerid, 1010.0, 1010.0, 50.0);
+    SetPlayerPos(playerid, 1002.0, 1002.0, 50.0);
 }
 
 
@@ -117,7 +117,7 @@ PTEST__ P_10_SetPlayerShopName(playerid)
 PTEST_CLOSE__ P_10_SetPlayerShopName(playerid)
 {
     SetPlayerInterior(playerid, 0);
-    SetPlayerPos(playerid, 1000.0, 1000.0, 50.0);
+    SetPlayerPos(playerid, 1002.0, 1002.0, 50.0);
 }
 
 
@@ -140,7 +140,7 @@ PTEST__ P_12_GetPlayerPos(playerid)
     ASSERT_EQ(GetPlayerPos(playerid + 999, x, y, z), 0);
     format(ret, sizeof(ret), "Your pos is: %f %f %f", x, y, z);
     SendClientMessage(playerid, -1, ret);
-    ASK("Does your position in a client message look nearly correct? (expected 1000 1000 50)");
+    ASK("Does your position in a client message look nearly correct? (expected 1002 1002 50)");
 }
 
 
@@ -276,6 +276,109 @@ public SendTestMessage()
 public SendTestMessagePID(playerid)
 {
     SendClientMessage(playerid, -1, "Timer was processed");
+}
+
+
+native void:AllowInteriorWeapons_CBA_to_declare(bool:allow) = AllowInteriorWeapons;
+native void:AllowPlayerWeapons_CBA_to_declare(playerid, bool:allow) = AllowPlayerWeapons;
+native void:AllowPlayerTeleport_CBA_to_declare(playerid, bool:allow) = AllowPlayerTeleport;
+PTEST_INIT__ P_24_AllowInteriorWeapons(playerid)
+{
+    GivePlayerWeapon(playerid, WEAPON_DEAGLE, 30);
+    SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
+    SetPlayerInterior(playerid, 5);
+    SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
+	AllowInteriorWeapons_CBA_to_declare(false);
+}
+PTEST__ P_24_AllowInteriorWeapons(playerid)
+{
+	ASK("Are you unarmed?");
+}
+PTEST_CLOSE__ P_24_AllowInteriorWeapons(playerid)
+{
+    SetPlayerInterior(playerid, 0);
+    SetPlayerPos(playerid, 1002.0, 1002.0, 50.0);
+	AllowInteriorWeapons_CBA_to_declare(true);
+}
+
+
+PTEST_INIT__ P_25_AllowInteriorWeapons(playerid)
+{
+    GivePlayerWeapon(playerid, WEAPON_DEAGLE, 30);
+    SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
+    SetPlayerInterior(playerid, 5);
+    SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
+	AllowInteriorWeapons_CBA_to_declare(true);
+}
+PTEST__ P_25_AllowInteriorWeapons(playerid)
+{
+	ASK("Are you armed?");
+}
+PTEST_CLOSE__ P_25_AllowInteriorWeapons(playerid)
+{
+    SetPlayerInterior(playerid, 0);
+    SetPlayerPos(playerid, 1002.0, 1002.0, 50.0);
+	AllowInteriorWeapons_CBA_to_declare(true);
+}
+
+
+PTEST_INIT__ P_26_AllowPlayerWeapons(playerid)
+{
+    GivePlayerWeapon(playerid, WEAPON_DEAGLE, 30);
+    SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
+	AllowPlayerWeapons_CBA_to_declare(playerid, false);
+}
+PTEST__ P_26_AllowPlayerWeapons(playerid)
+{
+	ASK("Are you unarmed?");
+}
+PTEST_CLOSE__ P_26_AllowPlayerWeapons(playerid)
+{
+	AllowPlayerWeapons_CBA_to_declare(playerid, true);
+}
+
+
+PTEST_INIT__ P_27_AllowPlayerWeapons(playerid)
+{
+    GivePlayerWeapon(playerid, WEAPON_DEAGLE, 30);
+    SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
+	AllowPlayerWeapons_CBA_to_declare(playerid, true);
+}
+PTEST__ P_27_AllowPlayerWeapons(playerid)
+{
+	ASK("Are you armed?");
+}
+PTEST_CLOSE__ P_27_AllowPlayerWeapons(playerid)
+{
+	AllowPlayerWeapons_CBA_to_declare(playerid, true);
+}
+
+
+PTEST_INIT__ P_28_AllowPlayerTeleport(playerid)
+{
+    AllowPlayerTeleport_CBA_to_declare(playerid, true);
+}
+PTEST__ P_28_AllowPlayerTeleport(playerid)
+{
+	ASK("Can you teleport via the map?");
+}
+PTEST_CLOSE__ P_28_AllowPlayerTeleport(playerid)
+{
+	AllowPlayerTeleport_CBA_to_declare(playerid, false);
+}
+
+
+PTEST_INIT__ P_29_AllowPlayerTeleport(playerid)
+{
+    AllowPlayerTeleport_CBA_to_declare(playerid, false);
+}
+PTEST__ P_29_AllowPlayerTeleport(playerid)
+{
+	ASK("Are you prevented from teleporting via the map?");
+}
+PTEST_CLOSE__ P_29_AllowPlayerTeleport(playerid)
+{
+	AllowPlayerTeleport_CBA_to_declare(playerid, false);
 }
 
 // vim: se ft=cpp:

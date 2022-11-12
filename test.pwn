@@ -7,12 +7,29 @@
 //#pragma option -a
 
 // Run tests.
-#define YSI_TESTS
+//#define YSI_TESTS
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-#define JUST_TEST A_15_ApplyActorAnimation
+#define JUST_TEST V__AttachTrailerToVehicle
 //#define JUST_TEST_GROUP "actors"
+
+// Currently failing tests:
+
+// V__IsVehicleStreamedIn (1)
+// V__GetVehicleTrailer (1)
+// V__GetVehicleModelInfo (1)
+// V__AttachTrailerToVehicle (1)
+// CV12_StringDefault (1)
+// CV12_StringCustom (1)
+// CV11_StringCustomD (1)
+// CV10_IntNew (1)
+// CV09_IntNewD (1)
+// CV08_IntOld (1)
+// CV07_IntOldD (1)
+// CV04_StringNew (1)
+// CV03_StringNewD (1)
+// CV02_StringOld (1)
 
 //#define frename YSF_frename
 #include "test-header"
@@ -123,7 +140,7 @@ main()
 
 hook OnGameModeInit()
 {
-    AddPlayerClass(0, 1000.0, 1000.0, 50.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
+    AddPlayerClass(0, 1002.0, 1002.0, 50.0, 0.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
     CreateVehicle(562, 1000.0, 1000.0, 50.0, 0.0, 0, 0, 0, false);
     return 1;
 }

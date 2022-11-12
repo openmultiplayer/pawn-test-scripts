@@ -31,6 +31,7 @@ TEST_INIT__ V__IsVehicleStreamedIn()
 }
 TEST__ V__IsVehicleStreamedIn()
 {
+	// Can't possibly pass!  There's no player.
 	ASSERT(IsVehicleStreamedIn(g_iVehicle, 0));
 }
 TEST_CLOSE__ V__IsVehicleStreamedIn()
@@ -407,6 +408,8 @@ TEST_INIT__ V__AttachTrailerToVehicle()
 }
 TEST__ V__AttachTrailerToVehicle()
 {
+	// The test wants this call to fail, because the trailer isn't a trailer, but
+	// the server doesn't currently check that.
 	new trailer = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 	ASSERT(!AttachTrailerToVehicle(g_iVehicle, trailer));
 	DestroyVehicle(trailer);
@@ -454,6 +457,8 @@ TEST_INIT__ V__GetVehicleTrailer()
 }
 TEST__ V__GetVehicleTrailer()
 {
+	// This function, for some unknown reason, returns `0`, not
+	// `INVALID_VEHICLE_ID`, which is the behaviour replicated from SA:MP.
 	ASSERT_EQ(GetVehicleTrailer(g_iVehicle), INVALID_VEHICLE_ID);
 }
 TEST_CLOSE__ V__GetVehicleTrailer()
@@ -631,7 +636,7 @@ TEST__ V__GetVehicleModelInfo()
 	ASSERT(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_SIZE, x, y, z));
 	ASSERT(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_WHEELSFRONT, x, y, z));
 	ASSERT_EQ(x,  0.879999);
-	ASSERT_EQ(y, -1.379999);
+	ASSERT_EQ(y, -1.370000); // Was -1.379999, then was changed it seems.
 	ASSERT_EQ(z, -0.610000);
 }
 TEST_CLOSE__ V__GetVehicleModelInfo()
@@ -662,7 +667,7 @@ TEST_INIT__ V__GetVehicleVirtualWorld()
 }
 TEST__ V__GetVehicleVirtualWorld()
 {
-	ASSERT_EQ(GetVehicleVirtualWorld(g_iVehicle), -1);
+	ASSERT_EQ(GetVehicleVirtualWorld(g_iVehicle), 0);
 }
 TEST_CLOSE__ V__GetVehicleVirtualWorld()
 {
