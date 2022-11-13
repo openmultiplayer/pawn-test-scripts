@@ -35,7 +35,7 @@ CloseDatabase()
     g_iDatabaseConnection = DB:0;
 }
 
-TEST__ D_01_DB_Open()
+@test(.group = "databases") D_01_DB_Open()
 {
     g_iDatabaseConnection = DB_Open(databaseFilePath);
     ASSERT_EQ(g_iDatabaseConnection, DB:1);
@@ -51,7 +51,7 @@ TEST_INIT__ D_02_DB_Close()
     OpenDatabase();
 }
 
-TEST__ D_02_DB_Close()
+@test(.group = "databases") D_02_DB_Close()
 {
     ASSERT(DB_Close(g_iDatabaseConnection));
     ASSERT(!DB_Close(g_iDatabaseConnection));
@@ -62,7 +62,7 @@ TEST_INIT__ D_03_DB_Query()
     OpenDatabase();
 }
 
-TEST__ D_03_DB_Query()
+@test(.group = "databases") D_03_DB_Query()
 {
     g_iFirstResultSet = DB_Query(g_iDatabaseConnection, "SELECT * FROM `test`;");
     ASSERT_EQ(g_iFirstResultSet, DBResult:1);
@@ -80,7 +80,7 @@ TEST_INIT__ D_04_DB_FreeResult()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_04_DB_FreeResult()
+@test(.group = "databases") D_04_DB_FreeResult()
 {
     ASSERT(DB_FreeResult(g_iFirstResultSet));
     ASSERT(!DB_FreeResult(g_iFirstResultSet));
@@ -96,7 +96,7 @@ TEST_INIT__ D_05_DB_NumRows()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_05_DB_NumRows()
+@test(.group = "databases") D_05_DB_NumRows()
 {
     ASSERT_EQ(DB_NumRows(g_iFirstResultSet), 2);
 }
@@ -111,7 +111,7 @@ TEST_INIT__ D_06_DB_NextRow()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_06_DB_NextRow()
+@test(.group = "databases") D_06_DB_NextRow()
 {
     ASSERT(DB_NextRow(g_iFirstResultSet));
     ASSERT(!DB_NextRow(g_iFirstResultSet));
@@ -127,7 +127,7 @@ TEST_INIT__ D_07_DB_NumFields()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_07_DB_NumFields()
+@test(.group = "databases") D_07_DB_NumFields()
 {
     ASSERT_EQ(DB_NumFields(g_iFirstResultSet), 3);
 }
@@ -142,7 +142,7 @@ TEST_INIT__ D_08_DB_FieldName()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_08_DB_FieldName()
+@test(.group = "databases") D_08_DB_FieldName()
 {
     new field_name[64];
     ASSERT(!DB_FieldName(g_iFirstResultSet, -1, field_name));
@@ -161,7 +161,7 @@ TEST_INIT__ D_09_DB_GetField()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_09_DB_GetField()
+@test(.group = "databases") D_09_DB_GetField()
 {
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
@@ -187,7 +187,7 @@ TEST_INIT__ D_10_DB_GetFieldAssoc()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_10_DB_GetFieldAssoc()
+@test(.group = "databases") D_10_DB_GetFieldAssoc()
 {
     static const hello_world[] = "Hello world!";
     static const another_test[] = "Another test!";
@@ -211,7 +211,7 @@ TEST_INIT__ D_11_DB_GetFieldInt()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_11_DB_GetFieldInt()
+@test(.group = "databases") D_11_DB_GetFieldInt()
 {
     ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, -1), 0);
     ASSERT_EQ(DB_GetFieldInt(g_iFirstResultSet, 4), 0);
@@ -232,7 +232,7 @@ TEST_INIT__ D_12_DB_GetFieldAssocInt()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_12_DB_GetFieldAssocInt()
+@test(.group = "databases") D_12_DB_GetFieldAssocInt()
 {
     ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "missing"), 0);
     ASSERT_EQ(DB_GetFieldAssocInt(g_iFirstResultSet, "test_integer"), 69);
@@ -251,7 +251,7 @@ TEST_INIT__ D_13_DB_GetFieldFloat()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_13_DB_GetFieldFloat()
+@test(.group = "databases") D_13_DB_GetFieldFloat()
 {
     ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, -1), 0.0);
     ASSERT_EQ(DB_GetFieldFloat(g_iFirstResultSet, 4), 0.0);
@@ -272,7 +272,7 @@ TEST_INIT__ D_14_DB_GetFieldAssocFloat()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_14_DB_GetFieldAssocFloat()
+@test(.group = "databases") D_14_DB_GetFieldAssocFloat()
 {
     ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "missing"), 0.0);
     ASSERT_EQ(DB_GetFieldAssocFloat(g_iFirstResultSet, "test_float"), 420.69);
@@ -291,7 +291,7 @@ TEST_INIT__ D_15_DB_GetMemHandle()
     OpenDatabase();
 }
 
-TEST__ D_15_DB_GetMemHandle()
+@test(.group = "databases") D_15_DB_GetMemHandle()
 {
     ASSERT_NE(DB_GetMemHandle(g_iDatabaseConnection), 0);
 }
@@ -306,7 +306,7 @@ TEST_INIT__ D_16_DB_GetResultMemHandle()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_16_DB_GetResultMemHandle()
+@test(.group = "databases") D_16_DB_GetResultMemHandle()
 {
     ASSERT_NE(DB_GetResultMemHandle(g_iFirstResultSet), 0);
 }
@@ -321,7 +321,7 @@ TEST_INIT__ D_17_DB_DebugOpenFiles()
     OpenDatabase();
 }
 
-TEST__ D_17_DB_DebugOpenFiles()
+@test(.group = "databases") D_17_DB_DebugOpenFiles()
 {
     ASSERT_EQ(DB_DebugOpenFiles(), 1);
     CloseDatabase();
@@ -338,7 +338,7 @@ TEST_INIT__ D_18_DB_DebugOpenResults()
     OpenAndSelectDatabase();
 }
 
-TEST__ D_18_DB_DebugOpenResults()
+@test(.group = "databases") D_18_DB_DebugOpenResults()
 {
     ASSERT_EQ(DB_DebugOpenResults(), 1);
     CloseDatabase();

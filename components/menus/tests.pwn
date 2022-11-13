@@ -1,6 +1,6 @@
 // Menus component test suite
 
-TEST__ M_01_CreateMenu()
+@test(.group = "menus") M_01_CreateMenu()
 {
     for (new i = 1; i < _:MAX_MENUS; i++)
         ASSERT_EQ(CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0), Menu:i);
@@ -14,7 +14,7 @@ TEST_CLOSE__ M_01_CreateMenu()
         DestroyMenu(Menu:i);
 }
 
-TEST__ M_02_IsValidMenu()
+@test(.group = "menus") M_02_IsValidMenu()
 {
     new Menu:menu;
     ASSERT(!IsValidMenu(menu));
@@ -26,7 +26,7 @@ TEST__ M_02_IsValidMenu()
     ASSERT(!IsValidMenu(INVALID_MENU));
 }
 
-TEST__ M_03_DestroyMenu()
+@test(.group = "menus") M_03_DestroyMenu()
 {
     new Menu:menu = CreateMenu("Menu", 0, 200.0, 100.0, 150.0, 150.0);
     ASSERT(DestroyMenu(menu));

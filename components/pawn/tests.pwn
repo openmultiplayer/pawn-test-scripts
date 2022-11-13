@@ -1,6 +1,6 @@
 // file.inc test files
 
-TEST__ F_01_FileFunctions()
+@test(.group = "pawn") F_01_FileFunctions()
 {
 	new File:f, buf[64];
 	fremove("file_test.txt");

@@ -4,7 +4,7 @@ PTEST_INIT__ M_04_ShowMenuForPlayer(playerid)
 {
     g_iMenu = CreateMenu("Simple menu test", 0, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_04_ShowMenuForPlayer(playerid)
+@test(.group = "menus") M_04_ShowMenuForPlayer(playerid)
 {
     ASSERT(ShowMenuForPlayer(g_iMenu, playerid));
     ASK("Can you see the menu on your screen?");
@@ -21,7 +21,7 @@ PTEST_INIT__ M_05_HideMenuForPlayer(playerid)
 {
     g_iMenu = CreateMenu("Simple menu test", 0, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_05_HideMenuForPlayer(playerid)
+@test(.group = "menus") M_05_HideMenuForPlayer(playerid)
 {
     ASSERT(HideMenuForPlayer(g_iMenu, playerid));
     ASK("Is the menu hidden?");
@@ -38,7 +38,7 @@ PTEST_INIT__ M_06_GetPlayerMenu(playerid)
 {
     g_iMenu = CreateMenu("Get menu test", 0, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_06_GetPlayerMenu(playerid)
+@test(.group = "menus") M_06_GetPlayerMenu(playerid)
 {
     ASSERT_EQ(GetPlayerMenu(INVALID_PLAYER_ID), INVALID_MENU);
     ShowMenuForPlayer(g_iMenu, playerid);
@@ -56,7 +56,7 @@ PTEST_INIT__ M_07_SetMenuColumnHeader(playerid)
 {
     g_iMenu = CreateMenu("Column headers test", 2, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_07_SetMenuColumnHeader(playerid)
+@test(.group = "menus") M_07_SetMenuColumnHeader(playerid)
 {
     // TODO: Add open.mp assertions for SetMenuColumnHeader
     ASSERT(SetMenuColumnHeader(g_iMenu, 0, "Col 0"));
@@ -75,7 +75,7 @@ PTEST_INIT__ M_08_AddMenuItem(playerid)
 {
     g_iMenu = CreateMenu("Menu items test", 2, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_08_AddMenuItem(playerid)
+@test(.group = "menus") M_08_AddMenuItem(playerid)
 {
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");
@@ -100,7 +100,7 @@ PTEST_INIT__ M_09_DisableMenuRow(playerid)
 {
     g_iMenu = CreateMenu("Disable rows test", 2, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_09_DisableMenuRow(playerid)
+@test(.group = "menus") M_09_DisableMenuRow(playerid)
 {
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");
@@ -127,7 +127,7 @@ PTEST_INIT__ M_10_DisableMenu(playerid)
 {
     g_iMenu = CreateMenu("Disable menu test", 2, 200.0, 100.0, 150.0, 150.0);
 }
-PTEST__ M_10_DisableMenu(playerid)
+@test(.group = "menus") M_10_DisableMenu(playerid)
 {
     SetMenuColumnHeader(g_iMenu, 0, "Col 0");
     SetMenuColumnHeader(g_iMenu, 1, "Col 1");

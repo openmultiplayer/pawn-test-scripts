@@ -6,7 +6,7 @@ forward SendTestMessagePID(playerid);
 forward SendTestMessage();
 
 
-PTEST__ P_01_SendClientMessage(playerid)
+@test(.group = "players") P_01_SendClientMessage(playerid)
 {
     ASSERT_EQ(SendClientMessage(playerid, -1, TEST_MESSAGE), true);
     ASSERT_EQ(SendClientMessage(playerid + 999, -1, TEST_MESSAGE), false);
@@ -14,7 +14,7 @@ PTEST__ P_01_SendClientMessage(playerid)
 }
 
 
-PTEST__ P_02_SetPlayerCameraPosLookAt(playerid)
+@test(.group = "players") P_02_SetPlayerCameraPosLookAt(playerid)
 {
     ASSERT_EQ(SetPlayerCameraPos(playerid, 10, -10, 2), true);
     ASSERT_EQ(SetPlayerCameraLookAt(playerid, 0, 0, 0), true);
@@ -28,7 +28,7 @@ PTEST_CLOSE__ P_02_SetPlayerCameraPosLookAt(playerid)
 }
 
 
-PTEST__ P_03_SetCameraBehindPlayer(playerid)
+@test(.group = "players") P_03_SetCameraBehindPlayer(playerid)
 {
     ASSERT_EQ(SetCameraBehindPlayer(playerid), 1);
     ASSERT_EQ(SetCameraBehindPlayer(playerid + 999), 0);
@@ -36,7 +36,7 @@ PTEST__ P_03_SetCameraBehindPlayer(playerid)
 }
 
 
-PTEST__ P_04_SetPlayerDrunkLevel(playerid)
+@test(.group = "players") P_04_SetPlayerDrunkLevel(playerid)
 {
     ASSERT_EQ(SetPlayerDrunkLevel(playerid, 50000), 1);
     ASSERT_EQ(SetPlayerDrunkLevel(playerid + 999, 50000), 0);
@@ -44,7 +44,7 @@ PTEST__ P_04_SetPlayerDrunkLevel(playerid)
 }
 
 
-PTEST__ P_05_SetPlayerDrunkLevelToZero(playerid)
+@test(.group = "players") P_05_SetPlayerDrunkLevelToZero(playerid)
 {
     ASSERT_EQ(SetPlayerDrunkLevel(playerid, 0), 1);
     ASSERT_EQ(SetPlayerDrunkLevel(playerid + 999, 0), 0);
@@ -52,7 +52,7 @@ PTEST__ P_05_SetPlayerDrunkLevelToZero(playerid)
 }
 
 
-PTEST__ P_06_SetPlayerInteriorAndPos(playerid)
+@test(.group = "players") P_06_SetPlayerInteriorAndPos(playerid)
 {
     ASSERT_EQ(SetPlayerInterior(playerid, 17), 1);
     ASSERT_EQ(SetPlayerPos(playerid, -25.7220, -187.8216, 1003.5469), 1);
@@ -67,7 +67,7 @@ PTEST_CLOSE__ P_06_SetPlayerInteriorAndPos(playerid)
 }
 
 
-PTEST__ P_07_SetPlayerWantedLevel(playerid)
+@test(.group = "players") P_07_SetPlayerWantedLevel(playerid)
 {
     ASSERT_EQ(SetPlayerWantedLevel(playerid, 6), 1);
     ASSERT_EQ(SetPlayerWantedLevel(playerid + 999, 6), 0);
@@ -79,7 +79,7 @@ PTEST_CLOSE__ P_07_SetPlayerWantedLevel(playerid)
 }
 
 
-PTEST__ P_08_SetPlayerWeather(playerid)
+@test(.group = "players") P_08_SetPlayerWeather(playerid)
 {
     ASSERT_EQ(SetPlayerWeather(playerid, 16), 1);
     ASSERT_EQ(SetPlayerWeather(playerid + 999, 16), 0);
@@ -91,7 +91,7 @@ PTEST_CLOSE__ P_08_SetPlayerWeather(playerid)
 }
 
 
-PTEST__ P_09_SetPlayerSkin(playerid)
+@test(.group = "players") P_09_SetPlayerSkin(playerid)
 {
     ASSERT_EQ(SetPlayerSkin(playerid, 1), 1);
     ASSERT_EQ(SetPlayerSkin(playerid + 999, 1), 0);
@@ -108,7 +108,7 @@ PTEST_INIT__ P_10_SetPlayerShopName(playerid)
     SetPlayerInterior(playerid, 5);
     SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
 }
-PTEST__ P_10_SetPlayerShopName(playerid)
+@test(.group = "players") P_10_SetPlayerShopName(playerid)
 {
     ASSERT_EQ(SetPlayerShopName(playerid, "FDPIZA"), 1);
     ASSERT_EQ(SetPlayerShopName(playerid + 999, "FDPIZA"), 0);
@@ -121,7 +121,7 @@ PTEST_CLOSE__ P_10_SetPlayerShopName(playerid)
 }
 
 
-PTEST__ P_11_GivePlayerMoney(playerid)
+@test(.group = "players") P_11_GivePlayerMoney(playerid)
 {
     ASSERT_EQ(GivePlayerMoney(playerid, 1000000), 1);
     ASSERT_EQ(GivePlayerMoney(playerid + 999, 1000000), 0);
@@ -133,7 +133,7 @@ PTEST_CLOSE__ P_11_GivePlayerMoney(playerid)
 }
 
 
-PTEST__ P_12_GetPlayerPos(playerid)
+@test(.group = "players") P_12_GetPlayerPos(playerid)
 {
     new Float:x, Float:y, Float:z, ret[128];
     ASSERT_EQ(GetPlayerPos(playerid, x, y, z), 1);
@@ -144,7 +144,7 @@ PTEST__ P_12_GetPlayerPos(playerid)
 }
 
 
-PTEST__ P_13_CreateExplosion(playerid)
+@test(.group = "players") P_13_CreateExplosion(playerid)
 {
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
@@ -154,7 +154,7 @@ PTEST__ P_13_CreateExplosion(playerid)
 }
 
 
-PTEST__ P_14_GetPlayerName(playerid)
+@test(.group = "players") P_14_GetPlayerName(playerid)
 {
     new name[MAX_PLAYER_NAME + 1], ret[128];
     ASSERT_EQ(GetPlayerName(playerid, name, sizeof(name)), 1);
@@ -165,7 +165,7 @@ PTEST__ P_14_GetPlayerName(playerid)
 }
 
 
-PTEST__ P_15_SendDeathMessage(playerid)
+@test(.group = "players") P_15_SendDeathMessage(playerid)
 {
     ASSERT_EQ(SendDeathMessage(INVALID_PLAYER_ID, playerid, 10), 1);
     ASSERT_EQ(SendDeathMessage(playerid, playerid + 999, 5), 0);
@@ -173,7 +173,7 @@ PTEST__ P_15_SendDeathMessage(playerid)
 }
 
 
-PTEST__ P_16_PlayAudioStreamForPlayer(playerid)
+@test(.group = "players") P_16_PlayAudioStreamForPlayer(playerid)
 {
     ASSERT_EQ(PlayAudioStreamForPlayer(playerid, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true), 1);
     ASSERT_EQ(PlayAudioStreamForPlayer(playerid + 999, "http://tms-server.com/radio.mp3", 0, 0, 0, 100, true), 0);
@@ -185,7 +185,7 @@ PTEST_CLOSE__ P_16_PlayAudioStreamForPlayer(playerid)
 }
 
 
-PTEST__ P_17_SetPlayerHealth(playerid)
+@test(.group = "players") P_17_SetPlayerHealth(playerid)
 {
     ASSERT_EQ(SetPlayerHealth(playerid, 50.0), 1);
     ASSERT_EQ(SetPlayerHealth(playerid + 999, 50.0), 0);
@@ -197,7 +197,7 @@ PTEST_CLOSE__ P_17_SetPlayerHealth(playerid)
 }
 
 
-PTEST__ P_18_GetPlayerHealth(playerid)
+@test(.group = "players") P_18_GetPlayerHealth(playerid)
 {
     new ret[128], Float:hp;
     ASSERT_EQ(GetPlayerHealth(playerid, hp), 1);
@@ -212,7 +212,7 @@ PTEST_INIT__ P_19_EnableVehicleFriendlyFire(playerid)
 {
     // TODO: Set players (playerid and +1) team, give them a weapon
 }
-PTEST__ P_19_EnableVehicleFriendlyFire(playerid)
+@test(.group = "players") P_19_EnableVehicleFriendlyFire(playerid)
 {
     // XXX: Does not work yet
     ASSERT_EQ(EnableVehicleFriendlyFire(), 1);
@@ -225,7 +225,7 @@ PTEST_CLOSE__ P_19_EnableVehicleFriendlyFire(playerid)
 }
 
 
-PTEST__ P_20_SetTimer(playerid)
+@test(.group = "players") P_20_SetTimer(playerid)
 {
     // XXX: Does not work yet
     //ASSERT_EQ(SetTimer("SendTestMessage", 5000, false), 1);
@@ -234,7 +234,7 @@ PTEST__ P_20_SetTimer(playerid)
 }
 
 
-PTEST__ P_21_SetTimerEx(playerid)
+@test(.group = "players") P_21_SetTimerEx(playerid)
 {
     // XXX: Does not work yet
     //ASSERT_EQ(SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid), 1);
@@ -243,7 +243,7 @@ PTEST__ P_21_SetTimerEx(playerid)
 }
 
 
-PTEST__ P_22_ApplyAnimation(playerid)
+@test(.group = "players") P_22_ApplyAnimation(playerid)
 {
     ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 4.1, true, false, false, true, 1000);
     //ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 0.0, false, false, false, false, 0);
@@ -260,7 +260,7 @@ public P_23_ClearAnimations(playerid)
 {
     ClearAnimations(playerid);
 }
-PTEST__ P_23_ClearAnimations(playerid)
+@test(.group = "players") P_23_ClearAnimations(playerid)
 {
     ApplyAnimation(playerid, "BOMBER", "BOM_Plant", 4.1, true, false, false, true, 1000);
     ASK("Does your animation stop after 3 seconds?");
@@ -290,7 +290,7 @@ PTEST_INIT__ P_24_AllowInteriorWeapons(playerid)
     SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
 	AllowInteriorWeapons_CBA_to_declare(false);
 }
-PTEST__ P_24_AllowInteriorWeapons(playerid)
+@test(.group = "players") P_24_AllowInteriorWeapons(playerid)
 {
 	ASK("Are you unarmed?");
 }
@@ -310,7 +310,7 @@ PTEST_INIT__ P_25_AllowInteriorWeapons(playerid)
     SetPlayerPos(playerid, 372.5565, -131.3607, 1001.4922);
 	AllowInteriorWeapons_CBA_to_declare(true);
 }
-PTEST__ P_25_AllowInteriorWeapons(playerid)
+@test(.group = "players") P_25_AllowInteriorWeapons(playerid)
 {
 	ASK("Are you armed?");
 }
@@ -328,7 +328,7 @@ PTEST_INIT__ P_26_AllowPlayerWeapons(playerid)
     SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
 	AllowPlayerWeapons_CBA_to_declare(playerid, false);
 }
-PTEST__ P_26_AllowPlayerWeapons(playerid)
+@test(.group = "players") P_26_AllowPlayerWeapons(playerid)
 {
 	ASK("Are you unarmed?");
 }
@@ -344,7 +344,7 @@ PTEST_INIT__ P_27_AllowPlayerWeapons(playerid)
     SetPlayerArmedWeapon(playerid, WEAPON_DEAGLE);
 	AllowPlayerWeapons_CBA_to_declare(playerid, true);
 }
-PTEST__ P_27_AllowPlayerWeapons(playerid)
+@test(.group = "players") P_27_AllowPlayerWeapons(playerid)
 {
 	ASK("Are you armed?");
 }
@@ -358,7 +358,7 @@ PTEST_INIT__ P_28_AllowPlayerTeleport(playerid)
 {
     AllowPlayerTeleport_CBA_to_declare(playerid, true);
 }
-PTEST__ P_28_AllowPlayerTeleport(playerid)
+@test(.group = "players") P_28_AllowPlayerTeleport(playerid)
 {
 	ASK("Can you teleport via the map?");
 }
@@ -372,7 +372,7 @@ PTEST_INIT__ P_29_AllowPlayerTeleport(playerid)
 {
     AllowPlayerTeleport_CBA_to_declare(playerid, false);
 }
-PTEST__ P_29_AllowPlayerTeleport(playerid)
+@test(.group = "players") P_29_AllowPlayerTeleport(playerid)
 {
 	ASK("Are you prevented from teleporting via the map?");
 }

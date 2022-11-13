@@ -1,4 +1,4 @@
-TEST__ V_01_CreateVehicle()
+@test(.group = "vehicles") V_01_CreateVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 	ASSERT_NE(g_iVehicle, INVALID_VEHICLE_ID);
@@ -14,7 +14,7 @@ TEST_INIT__ V__DestroyVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__DestroyVehicle()
+@test(.group = "vehicles") V__DestroyVehicle()
 {
 	ASSERT(DestroyVehicle(g_iVehicle));
 }
@@ -29,7 +29,7 @@ TEST_INIT__ V__IsVehicleStreamedIn()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__IsVehicleStreamedIn()
+@test(.group = "vehicles") V__IsVehicleStreamedIn()
 {
 	// Can't possibly pass!  There's no player.
 	ASSERT(IsVehicleStreamedIn(g_iVehicle, 0));
@@ -45,7 +45,7 @@ TEST_INIT__ V__GetVehiclePos()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehiclePos()
+@test(.group = "vehicles") V__GetVehiclePos()
 {
 	new Float:x, Float:y, Float:z;
 	ASSERT(GetVehiclePos(g_iVehicle, x, y, z));
@@ -61,7 +61,7 @@ TEST_INIT__ V__SetVehiclePos()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehiclePos()
+@test(.group = "vehicles") V__SetVehiclePos()
 {
 	ASSERT(SetVehiclePos(g_iVehicle, 0.0, 0.0, 0.0));
 }
@@ -76,7 +76,7 @@ TEST_INIT__ V__GetVehicleZAngle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleZAngle()
+@test(.group = "vehicles") V__GetVehicleZAngle()
 {
 	new Float:a;
 	ASSERT(GetVehicleZAngle(g_iVehicle, a));
@@ -92,7 +92,7 @@ TEST_INIT__ V__GetVehicleRotationQuat()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleRotationQuat()
+@test(.group = "vehicles") V__GetVehicleRotationQuat()
 {
 	new Float:x, Float:y, Float:z, Float:w;
 	ASSERT(GetVehicleRotationQuat(g_iVehicle, x, y, z, w));
@@ -108,7 +108,7 @@ TEST_INIT__ V__GetVehicleDistanceFromPoint()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleDistanceFromPoint()
+@test(.group = "vehicles") V__GetVehicleDistanceFromPoint()
 {
 	ASSERT_EQ(GetVehicleDistanceFromPoint(g_iVehicle, 0.0, 0.0, 0.0), 4.0);
 }
@@ -123,7 +123,7 @@ TEST_INIT__ V__SetVehicleZAngle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleZAngle()
+@test(.group = "vehicles") V__SetVehicleZAngle()
 {
 	ASSERT(SetVehicleZAngle(g_iVehicle, 0.0));
 }
@@ -138,7 +138,7 @@ PTEST_INIT__ V__SetVehicleParamsForPlayer(playerid)
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-PTEST__ V__SetVehicleParamsForPlayer(playerid)
+@test(.group = "vehicles") V__SetVehicleParamsForPlayer(playerid)
 {
 	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, playerid, 0, 0));
 }
@@ -153,7 +153,7 @@ TEST_INIT__ V__ManualVehicleEngineAndLights()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__ManualVehicleEngineAndLights()
+@test(.group = "vehicles") V__ManualVehicleEngineAndLights()
 {
 	ASSERT_EQ(ManualVehicleEngineAndLights(), 1);
 }
@@ -168,7 +168,7 @@ TEST_INIT__ V__SetVehicleParamsEx()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleParamsEx()
+@test(.group = "vehicles") V__SetVehicleParamsEx()
 {
 	ASSERT(SetVehicleParamsEx(g_iVehicle, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0, VEHICLE_PARAMS:0));
 }
@@ -183,7 +183,7 @@ TEST_INIT__ V__GetVehicleParamsEx()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleParamsEx()
+@test(.group = "vehicles") V__GetVehicleParamsEx()
 {
 	new VEHICLE_PARAMS:a, VEHICLE_PARAMS:b, VEHICLE_PARAMS:c, VEHICLE_PARAMS:d, VEHICLE_PARAMS:e, VEHICLE_PARAMS:f, VEHICLE_PARAMS:g;
 	ASSERT(GetVehicleParamsEx(g_iVehicle, a, b, c, d, e, f, g));
@@ -199,7 +199,7 @@ TEST_INIT__ V__GetVehicleParamsSirenState()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleParamsSirenState()
+@test(.group = "vehicles") V__GetVehicleParamsSirenState()
 {
 	ASSERT_EQ(GetVehicleParamsSirenState(g_iVehicle), VEHICLE_PARAMS_UNSET);
 }
@@ -214,7 +214,7 @@ TEST_INIT__ V__SetVehicleParamsCarDoors()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleParamsCarDoors()
+@test(.group = "vehicles") V__SetVehicleParamsCarDoors()
 {
 	ASSERT(SetVehicleParamsCarDoors(g_iVehicle, 0, 0, 0, 0));
 }
@@ -229,7 +229,7 @@ TEST_INIT__ V__GetVehicleParamsCarDoors()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleParamsCarDoors()
+@test(.group = "vehicles") V__GetVehicleParamsCarDoors()
 {
 	new a = 0, b = 0, c = 0, d = 0;
 	ASSERT(GetVehicleParamsCarDoors(g_iVehicle, a, b, c, d));
@@ -249,7 +249,7 @@ TEST_INIT__ V__SetVehicleParamsCarWindows()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleParamsCarWindows()
+@test(.group = "vehicles") V__SetVehicleParamsCarWindows()
 {
 	ASSERT(SetVehicleParamsCarWindows(g_iVehicle, 0, 0, 0, 0));
 }
@@ -264,7 +264,7 @@ TEST_INIT__ V__GetVehicleParamsCarWindows()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleParamsCarWindows()
+@test(.group = "vehicles") V__GetVehicleParamsCarWindows()
 {
 	new a = 0, b = 0, c = 0, d = 0;
 	ASSERT(GetVehicleParamsCarWindows(g_iVehicle, a, b, c, d));
@@ -284,7 +284,7 @@ TEST_INIT__ V__SetVehicleToRespawn()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleToRespawn()
+@test(.group = "vehicles") V__SetVehicleToRespawn()
 {
 	ASSERT(SetVehicleToRespawn(g_iVehicle));
 }
@@ -299,7 +299,7 @@ TEST_INIT__ V__LinkVehicleToInterior()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__LinkVehicleToInterior()
+@test(.group = "vehicles") V__LinkVehicleToInterior()
 {
 	ASSERT(LinkVehicleToInterior(g_iVehicle, 0));
 }
@@ -314,7 +314,7 @@ TEST_INIT__ V__AddVehicleComponent()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__AddVehicleComponent()
+@test(.group = "vehicles") V__AddVehicleComponent()
 {
 	ASSERT(AddVehicleComponent(g_iVehicle, 0));
 }
@@ -329,7 +329,7 @@ TEST_INIT__ V__RemoveVehicleComponent()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__RemoveVehicleComponent()
+@test(.group = "vehicles") V__RemoveVehicleComponent()
 {
 	ASSERT(RemoveVehicleComponent(g_iVehicle, 0));
 }
@@ -344,7 +344,7 @@ TEST_INIT__ V__ChangeVehicleColor()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__ChangeVehicleColor()
+@test(.group = "vehicles") V__ChangeVehicleColor()
 {
 	ASSERT(ChangeVehicleColor(g_iVehicle, 0, 0));
 }
@@ -359,7 +359,7 @@ TEST_INIT__ V__ChangeVehiclePaintjob()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__ChangeVehiclePaintjob()
+@test(.group = "vehicles") V__ChangeVehiclePaintjob()
 {
 	ASSERT(ChangeVehiclePaintjob(g_iVehicle, 0));
 }
@@ -374,7 +374,7 @@ TEST_INIT__ V__SetVehicleHealth()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleHealth()
+@test(.group = "vehicles") V__SetVehicleHealth()
 {
 	ASSERT(SetVehicleHealth(g_iVehicle, 0.0));
 }
@@ -389,7 +389,7 @@ TEST_INIT__ V__GetVehicleHealth()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleHealth()
+@test(.group = "vehicles") V__GetVehicleHealth()
 {
 	new Float:h;
 	ASSERT(GetVehicleHealth(g_iVehicle, h));
@@ -406,7 +406,7 @@ TEST_INIT__ V__AttachTrailerToVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__AttachTrailerToVehicle()
+@test(.group = "vehicles") V__AttachTrailerToVehicle()
 {
 	// The test wants this call to fail, because the trailer isn't a trailer, but
 	// the server doesn't currently check that.
@@ -425,7 +425,7 @@ TEST_INIT__ V__DetachTrailerFromVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__DetachTrailerFromVehicle()
+@test(.group = "vehicles") V__DetachTrailerFromVehicle()
 {
 	ASSERT(DetachTrailerFromVehicle(g_iVehicle));
 }
@@ -440,7 +440,7 @@ TEST_INIT__ V__IsTrailerAttachedToVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__IsTrailerAttachedToVehicle()
+@test(.group = "vehicles") V__IsTrailerAttachedToVehicle()
 {
 	ASSERT(!IsTrailerAttachedToVehicle(g_iVehicle));
 }
@@ -455,7 +455,7 @@ TEST_INIT__ V__GetVehicleTrailer()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleTrailer()
+@test(.group = "vehicles") V__GetVehicleTrailer()
 {
 	// This function, for some unknown reason, returns `0`, not
 	// `INVALID_VEHICLE_ID`, which is the behaviour replicated from SA:MP.
@@ -472,7 +472,7 @@ TEST_INIT__ V__SetVehicleNumberPlate()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleNumberPlate()
+@test(.group = "vehicles") V__SetVehicleNumberPlate()
 {
 	ASSERT(SetVehicleNumberPlate(g_iVehicle, ""));
 }
@@ -487,7 +487,7 @@ TEST_INIT__ V__GetVehicleModel()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleModel()
+@test(.group = "vehicles") V__GetVehicleModel()
 {
 	ASSERT_EQ(GetVehicleModel(g_iVehicle), 400);
 }
@@ -502,7 +502,7 @@ TEST_INIT__ V__GetVehicleComponentInSlot()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleComponentInSlot()
+@test(.group = "vehicles") V__GetVehicleComponentInSlot()
 {
 	ASSERT_EQ(GetVehicleComponentInSlot(g_iVehicle, CARMODTYPE:0), 0);
 }
@@ -517,7 +517,7 @@ TEST_INIT__ V__GetVehicleComponentType()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleComponentType()
+@test(.group = "vehicles") V__GetVehicleComponentType()
 {
 	new CARMODTYPE:carmodtype = GetVehicleComponentType(g_iVehicle);
 	ASSERT_EQ(carmodtype, CARMODTYPE_NONE);
@@ -534,7 +534,7 @@ TEST_INIT__ V__RepairVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__RepairVehicle()
+@test(.group = "vehicles") V__RepairVehicle()
 {
 	ASSERT(RepairVehicle(g_iVehicle));
 }
@@ -549,7 +549,7 @@ TEST_INIT__ V__GetVehicleVelocity()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleVelocity()
+@test(.group = "vehicles") V__GetVehicleVelocity()
 {
 	new Float:x, Float:y, Float:z;
 	ASSERT(GetVehicleVelocity(g_iVehicle, x, y, z));
@@ -565,7 +565,7 @@ TEST_INIT__ V__SetVehicleVelocity()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleVelocity()
+@test(.group = "vehicles") V__SetVehicleVelocity()
 {
 	ASSERT(SetVehicleVelocity(g_iVehicle, 0.0, 0.0, 0.0));
 }
@@ -580,7 +580,7 @@ TEST_INIT__ V__SetVehicleAngularVelocity()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleAngularVelocity()
+@test(.group = "vehicles") V__SetVehicleAngularVelocity()
 {
 	ASSERT(SetVehicleAngularVelocity(g_iVehicle, 0.0, 0.0, 0.0));
 }
@@ -595,7 +595,7 @@ TEST_INIT__ V__GetVehicleDamageStatus()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleDamageStatus()
+@test(.group = "vehicles") V__GetVehicleDamageStatus()
 {
 	new a = -1, b = -1, c = -1, d = -1;
 	ASSERT(GetVehicleDamageStatus(g_iVehicle, a, b, c, d));
@@ -615,7 +615,7 @@ TEST_INIT__ V__UpdateVehicleDamageStatus()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__UpdateVehicleDamageStatus()
+@test(.group = "vehicles") V__UpdateVehicleDamageStatus()
 {
 	ASSERT(UpdateVehicleDamageStatus(g_iVehicle, 0, 0, 0, 0));
 }
@@ -630,7 +630,7 @@ TEST_INIT__ V__GetVehicleModelInfo()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleModelInfo()
+@test(.group = "vehicles") V__GetVehicleModelInfo()
 {
 	new Float:x, Float:y, Float:z;
 	ASSERT(GetVehicleModelInfo(400, VEHICLE_MODEL_INFO_SIZE, x, y, z));
@@ -650,7 +650,7 @@ TEST_INIT__ V__SetVehicleVirtualWorld()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__SetVehicleVirtualWorld()
+@test(.group = "vehicles") V__SetVehicleVirtualWorld()
 {
 	ASSERT(SetVehicleVirtualWorld(g_iVehicle, 0));
 }
@@ -665,7 +665,7 @@ TEST_INIT__ V__GetVehicleVirtualWorld()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__GetVehicleVirtualWorld()
+@test(.group = "vehicles") V__GetVehicleVirtualWorld()
 {
 	ASSERT_EQ(GetVehicleVirtualWorld(g_iVehicle), 0);
 }
@@ -680,7 +680,7 @@ TEST_INIT__ V__IsValidVehicle()
 {
 	g_iVehicle = CreateVehicle(400, 0.0, 0.0, 4.0, 90.0, -1, -1, 0);
 }
-TEST__ V__IsValidVehicle()
+@test(.group = "vehicles") V__IsValidVehicle()
 {
 	ASSERT(IsValidVehicle(g_iVehicle));
 	ASSERT(!IsValidVehicle(1000));
