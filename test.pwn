@@ -11,8 +11,8 @@
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-#define JUST_TEST V__AttachTrailerToVehicle
-//#define JUST_TEST_GROUP "actors"
+//#define JUST_TEST GT_04_GameTextForPlayer
+//#define JUST_TEST_GROUP "gametexts"
 
 // Currently failing tests:
 
@@ -38,6 +38,27 @@
 #if !defined SetPlayerSyncPosition
 	native SetPlayerSyncPosition(playerid, Float:x, Float:y, Float:z);
 #endif
+
+public OnPlayerSpawn(playerid) //(Player:playerid)
+{
+	printf("player connected %d %d %d", playerid, 42, IsPlayerNPC(playerid));
+	#if defined Mode_OnPlayerSpawn
+		return Mode_OnPlayerSpawn(playerid);
+	#else
+		return 1;
+	#endif
+}
+
+#if defined _ALS_OnPlayerSpawn
+	#undef OnPlayerSpawn
+#else
+	#define _ALS_OnPlayerSpawn
+#endif
+#define OnPlayerSpawn Mode_OnPlayerSpawn
+#if defined Mode_OnPlayerSpawn
+	forward Mode_OnPlayerSpawn(playerid);
+#endif
+
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>
@@ -122,6 +143,7 @@ TEST__ Timers()
 #include "components/databases/main.pwn"
 #include "components/dialogs/main.pwn"
 #include "components/gangzones/main.pwn"
+#include "components/gametexts/main.pwn"
 #include "components/menus/main.pwn"
 #include "components/players/main.pwn"
 #include "components/vehicles/main.pwn"
@@ -147,12 +169,14 @@ hook OnGameModeInit()
 
 hook OnPlayerConnect(playerid)
 {
+	printf("OnPlayerConnect");
     SendClientMessage(playerid, 0xFF0000FF, "Welcome to your test open.mp server.");
     return 1;
 }
 
 public OnPlayerRequestClass(playerid, classid)
 {
+	printf("OnPlayerRequestClass");
 	SetPlayerPos(playerid, 376.0939, 850.4130, 33.3843);
 	SetPlayerFacingAngle(playerid, 94.3991);
 	SetPlayerCameraPos(playerid, 369.9781, 849.8905, 40.0);
@@ -160,6 +184,13 @@ public OnPlayerRequestClass(playerid, classid)
 	ApplyAnimation(playerid, "WOP", "DANCE_G9", 4.0, true, false, false, false, 0);
 	return 1;
 }
+
+public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
+{
+	printf("OnPlayerEnterVehicle");
+	return 1;
+}
+
 
 YCMD:v(playerid, params[], help)
 {
@@ -170,3 +201,19 @@ YCMD:v(playerid, params[], help)
 }
 
 // vim: se ft=cpp:
+
+/*PTEST__ AAA(playerid)
+{
+	ASK("AAA?");
+}
+
+@test() BBB(playerid)
+{
+	ASK("BBB?");
+}
+
+@test(.group = "h") CCC(playerid)
+{
+	ASK("CCC?");
+}*/
+
