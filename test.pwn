@@ -1,4 +1,3 @@
-#pragma warning disable 200
 #pragma option -d2
 #pragma option -O0
 
@@ -7,7 +6,7 @@
 //#pragma option -a
 
 // Run tests.
-//#define YSI_TESTS
+#define YSI_TESTS
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
@@ -59,11 +58,26 @@ public OnPlayerSpawn(playerid) //(Player:playerid)
 	forward Mode_OnPlayerSpawn(playerid);
 #endif
 
+// YSI tests have a lot of warnings, on purpose (to test warnings).  But they
+// aren't the focus of this mode, so disable them.
+#pragma warning push
+#pragma warning disable 213
+#pragma warning disable 234
+#pragma warning disable 204
+#pragma warning disable 219
+#pragma warning disable 200
+#pragma warning disable 237
+#pragma warning disable 239
+#pragma warning disable 214
+//#pragma warning disable 203
+
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>
 #include <YSI_Visual\y_commands>
 #include <YSI_Server\y_files>
+
+#pragma warning pop
 
 // Comment this out to skip native port status.
 //#include "test-natives"

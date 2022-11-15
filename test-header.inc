@@ -45,7 +45,20 @@
 #define FOREACH_NO_ACTORS
 #define FOREACH_NO_STREAMED
 
-#define CUSTOM_TAG_TYPES DB,Menu,DBResult,E_CARMODTYPE,E_VEHICLE_PARAMS
+#define CUSTOM_TAG_TYPES DB, Menu, DBResult, T_CARMODTYPE, T_VEHICLE_PANEL_STATUS, T_VEHICLE_DOOR_STATUS, T_VEHICLE_TYRE_STATUS, T_VEHICLE_LIGHT_STATUS
+
+#pragma warning push
+#pragma warning disable 213
+#pragma warning disable 234
+#pragma warning disable 204
+#pragma warning disable 219
+#pragma warning disable 200
+#pragma warning disable 237
+#pragma warning disable 239
+#pragma warning disable 214
+//#pragma warning disable 203
 
 #include <YSI_Core\y_testing>
+
+#pragma warning pop
 

@@ -140,7 +140,7 @@ PTEST_INIT__ V__SetVehicleParamsForPlayer(playerid)
 }
 PTEST__ V__SetVehicleParamsForPlayer(playerid)
 {
-	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, playerid, 0, 0));
+	ASSERT(SetVehicleParamsForPlayer(g_iVehicle, playerid, false, false));
 }
 PTEST_CLOSE__ V__SetVehicleParamsForPlayer(playerid)
 {
@@ -155,7 +155,7 @@ TEST_INIT__ V__ManualVehicleEngineAndLights()
 }
 TEST__ V__ManualVehicleEngineAndLights()
 {
-	ASSERT_EQ(ManualVehicleEngineAndLights(), 1);
+	ASSERT_EQ(ManualVehicleEngineAndLights(), true);
 }
 TEST_CLOSE__ V__ManualVehicleEngineAndLights()
 {
@@ -216,7 +216,7 @@ TEST_INIT__ V__SetVehicleParamsCarDoors()
 }
 TEST__ V__SetVehicleParamsCarDoors()
 {
-	ASSERT(SetVehicleParamsCarDoors(g_iVehicle, 0, 0, 0, 0));
+	ASSERT(SetVehicleParamsCarDoors(g_iVehicle, false, false, false, false));
 }
 TEST_CLOSE__ V__SetVehicleParamsCarDoors()
 {
@@ -231,12 +231,12 @@ TEST_INIT__ V__GetVehicleParamsCarDoors()
 }
 TEST__ V__GetVehicleParamsCarDoors()
 {
-	new a = 0, b = 0, c = 0, d = 0;
+	new bool:a = false, bool:b = false, bool:c = false, bool:d = false;
 	ASSERT(GetVehicleParamsCarDoors(g_iVehicle, a, b, c, d));
-	ASSERT_EQ(a, -1);
-	ASSERT_EQ(b, -1);
-	ASSERT_EQ(c, -1);
-	ASSERT_EQ(d, -1);
+	ASSERT_EQ(a, undefined);
+	ASSERT_EQ(b, undefined);
+	ASSERT_EQ(c, undefined);
+	ASSERT_EQ(d, undefined);
 }
 TEST_CLOSE__ V__GetVehicleParamsCarDoors()
 {
@@ -251,7 +251,7 @@ TEST_INIT__ V__SetVehicleParamsCarWindows()
 }
 TEST__ V__SetVehicleParamsCarWindows()
 {
-	ASSERT(SetVehicleParamsCarWindows(g_iVehicle, 0, 0, 0, 0));
+	ASSERT(SetVehicleParamsCarWindows(g_iVehicle, false, false, false, false));
 }
 TEST_CLOSE__ V__SetVehicleParamsCarWindows()
 {
@@ -266,12 +266,12 @@ TEST_INIT__ V__GetVehicleParamsCarWindows()
 }
 TEST__ V__GetVehicleParamsCarWindows()
 {
-	new a = 0, b = 0, c = 0, d = 0;
+	new bool:a = false, bool:b = false, bool:c = false, bool:d = false;
 	ASSERT(GetVehicleParamsCarWindows(g_iVehicle, a, b, c, d));
-	ASSERT_EQ(a, -1);
-	ASSERT_EQ(b, -1);
-	ASSERT_EQ(c, -1);
-	ASSERT_EQ(d, -1);
+	ASSERT_EQ(a, undefined);
+	ASSERT_EQ(b, undefined);
+	ASSERT_EQ(c, undefined);
+	ASSERT_EQ(d, undefined);
 }
 TEST_CLOSE__ V__GetVehicleParamsCarWindows()
 {
@@ -597,12 +597,12 @@ TEST_INIT__ V__GetVehicleDamageStatus()
 }
 TEST__ V__GetVehicleDamageStatus()
 {
-	new a = -1, b = -1, c = -1, d = -1;
+	new VEHICLE_PANEL_STATUS:a = VEHICLE_PANEL_STATUS_NONE, VEHICLE_DOOR_STATUS:b = VEHICLE_DOOR_STATUS_NONE, VEHICLE_LIGHT_STATUS:c = VEHICLE_LIGHT_STATUS_NONE, VEHICLE_TYRE_STATUS:d = VEHICLE_TYRE_STATUS_NONE;
 	ASSERT(GetVehicleDamageStatus(g_iVehicle, a, b, c, d));
-	ASSERT_EQ(a, 0);
-	ASSERT_EQ(b, 0);
-	ASSERT_EQ(c, 0);
-	ASSERT_EQ(d, 0);
+	ASSERT_EQ(a, VEHICLE_PANEL_STATUS_NONE);
+	ASSERT_EQ(b, VEHICLE_DOOR_STATUS_NONE);
+	ASSERT_EQ(c, VEHICLE_LIGHT_STATUS_NONE);
+	ASSERT_EQ(d, VEHICLE_TYRE_STATUS_NONE);
 }
 TEST_CLOSE__ V__GetVehicleDamageStatus()
 {
@@ -617,7 +617,7 @@ TEST_INIT__ V__UpdateVehicleDamageStatus()
 }
 TEST__ V__UpdateVehicleDamageStatus()
 {
-	ASSERT(UpdateVehicleDamageStatus(g_iVehicle, 0, 0, 0, 0));
+	ASSERT(UpdateVehicleDamageStatus(g_iVehicle, VEHICLE_PANEL_STATUS_NONE, VEHICLE_DOOR_STATUS_NONE, VEHICLE_LIGHT_STATUS_NONE, VEHICLE_TYRE_STATUS_NONE));
 }
 TEST_CLOSE__ V__UpdateVehicleDamageStatus()
 {

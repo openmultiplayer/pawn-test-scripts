@@ -12,6 +12,7 @@ static bool:show = false;
 
 @timer(1000) FlashPickups(playerid)
 {
+	#pragma unused playerid
 	if (show)
 	{
 	    for (new i; i < MAX_PICKUPS; i++)
