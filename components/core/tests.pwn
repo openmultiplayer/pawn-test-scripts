@@ -124,21 +124,22 @@
 
 @test(.group = "gametext") GT_999(playerid)
 {
-	GameTextForPlayer(playerid, "Style 0", 50000, 0);
-	GameTextForPlayer(playerid, "Style 1", 50000, 1);
-	GameTextForPlayer(playerid, "Style 2", 50000, 2);
-	GameTextForPlayer(playerid, "Style 3", 50000, 3);
-	GameTextForPlayer(playerid, "Style 4", 50000, 4);
-	GameTextForPlayer(playerid, "Style 5", 50000, 5);
-	GameTextForPlayer(playerid, "Style 6", 50000, 6);
-	GameTextForPlayer(playerid, "Style 7", 50000, 7);
-	GameTextForPlayer(playerid, "Style 8", 50000, 8);
-	GameTextForPlayer(playerid, "Style 9", 50000, 9);
-	GameTextForPlayer(playerid, "Style 10", 50000, 10);
-	GameTextForPlayer(playerid, "Style 11", 50000, 11);
-	GameTextForPlayer(playerid, "Style 12", 50000, 12);
-	GameTextForPlayer(playerid, "Style 13", 50000, 13);
-	GameTextForPlayer(playerid, "Style 14", 50000, 14);
-	GameTextForPlayer(playerid, "Style 15", 50000, 15);
+	GameTextForPlayer(playerid, "Style 0", 5000, 0);
+	GameTextForPlayer(playerid, "Style 1", 5000, 1);
+	GameTextForPlayer(playerid, "Style 2", 5000, 2);
+	GameTextForPlayer(playerid, "Style 3", 5000, 3);
+	GameTextForPlayer(playerid, "Style 4", 5000, 4);
+	GameTextForPlayer(playerid, "Style 5", 5000, 5);
+	GameTextForPlayer(playerid, "Style 6", 5000, 6);
+	GameTextForPlayer(playerid, "Style 7", 5000, 7);
+	GameTextForPlayer(playerid, "Style 8", 5000, 8);
+	GameTextForPlayer(playerid, "Style 9", 5000, 9);
+	GameTextForPlayer(playerid, "Style 10", 5000, 10);
+	GameTextForPlayer(playerid, "Style 11", 5000, 11);
+	GameTextForPlayer(playerid, "Style 12", 5000, 12);
+	GameTextForPlayer(playerid, "Style 13", 5000, 13);
+	GameTextForPlayer(playerid, "Style 14", 5000, 14);
+	GameTextForPlayer(playerid, "Style 15", 5000, 15);
+	ASK("Does every game text appear and disappear after five seconds?");
 }
 

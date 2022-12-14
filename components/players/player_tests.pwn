@@ -227,8 +227,7 @@ PTEST_CLOSE__ P_19_EnableVehicleFriendlyFire(playerid)
 
 @test(.group = "players") P_20_SetTimer(playerid)
 {
-    // XXX: Does not work yet
-    //ASSERT_EQ(SetTimer("SendTestMessage", 5000, false), 1);
+    ASSERT_EQ(SetTimer("SendTestMessage", 5000, false), 1);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }
@@ -236,8 +235,7 @@ PTEST_CLOSE__ P_19_EnableVehicleFriendlyFire(playerid)
 
 @test(.group = "players") P_21_SetTimerEx(playerid)
 {
-    // XXX: Does not work yet
-    //ASSERT_EQ(SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid), 1);
+    ASSERT_EQ(SetTimerEx("SendTestMessagePID", 5000, false, "i", playerid), 1);
     SendClientMessage(playerid, -1, "Timer is set");
     ASK("Is the client message \"Timer was processed\" appearing after 5 seconds?");
 }

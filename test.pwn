@@ -3,6 +3,7 @@
 
 #define CGEN_MEMORY 70000
 //#pragma option -l
+//#pragma option -r
 //#pragma option -a
 
 // Run tests.
@@ -10,8 +11,8 @@
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-//#define JUST_TEST GT_04_GameTextForPlayer
-//#define JUST_TEST_GROUP "gametexts"
+//#define JUST_TEST GT_03_GameTextForPlayer
+//#define JUST_TEST_GROUP "y_commands"
 
 // Currently failing tests:
 
@@ -29,7 +30,7 @@
 // CV04_StringNew (1)
 // CV03_StringNewD (1)
 // CV02_StringOld (1)
-
+\
 //#define frename YSF_frename
 #include "test-header"
 //#undef frename
@@ -40,6 +41,8 @@
 
 public OnPlayerSpawn(playerid) //(Player:playerid)
 {
+	//new alts[][] = { "first", "second", "third" };
+	//_Command_Decorator(.altcount = sizeof (alts), .alts = ref(alts));
 	printf("player connected %d %d %d", playerid, 42, IsPlayerNPC(playerid));
 	#if defined Mode_OnPlayerSpawn
 		return Mode_OnPlayerSpawn(playerid);
@@ -71,6 +74,7 @@ public OnPlayerSpawn(playerid) //(Player:playerid)
 #pragma warning disable 214
 //#pragma warning disable 203
 
+#include <YSI_Players\y_groups>
 #include <YSI_Coding\y_hooks>
 #include <YSI_Coding\y_inline>
 #include <YSI_Coding\y_timers>
@@ -78,6 +82,22 @@ public OnPlayerSpawn(playerid) //(Player:playerid)
 #include <YSI_Server\y_files>
 
 #pragma warning pop
+
+/*@cmd() Hello1(playerid, params[], help)
+{
+}
+
+@cmd(.name = "hello") Hello2(playerid, params[], help)
+{
+}
+
+@cmd(.group = gAdmin, .alts = { "hi", "yo", "ciao" }, .disabled = true) Hello3(playerid, params[], help)
+{
+}
+
+@cmd(.hidden = true, .prefx = '!') Hello4(playerid, params[], help)
+{
+}*/
 
 // Comment this out to skip native port status.
 //#include "test-natives"
@@ -230,4 +250,25 @@ YCMD:v(playerid, params[], help)
 {
 	ASK("CCC?");
 }*/
+
+new Iterator:canBeAnything<30>;
+
+@test() WiredForeach()
+{
+    new unusedIndex = Iter_Alloc(canBeAnything); // allocate free index
+    Iter_Add(canBeAnything, unusedIndex + 5); // 0 + 5 i guess
+	printf("%d %d %d", unusedIndex, Iter_Contains(canBeAnything, unusedIndex), Iter_Contains(canBeAnything, unusedIndex + 5));
+
+    if (Iter_Contains(canBeAnything, unusedIndex + 5))
+    {
+        printf("Wow index %d is exists!", unusedIndex + 5);
+    }
+
+	printf("%d %d %d", unusedIndex, Iter_Contains(canBeAnything, unusedIndex), Iter_Contains(canBeAnything, unusedIndex + 5));
+	printf("%d %d %d", Iter_First(canBeAnything), Iter_Next(canBeAnything, unusedIndex), Iter_Last(canBeAnything));
+    foreach (new idx : canBeAnything)
+    {
+        printf("We are currently at index %d", idx);
+    }
+}
 
