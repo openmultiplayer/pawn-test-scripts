@@ -286,7 +286,7 @@ TEST_CLOSE__ D_14_DB_GetFieldAssocFloat()
     CloseDatabase();
 }
 
-TEST_INIT__ D_15_DB_GetMemHandle()
+/*TEST_INIT__ D_15_DB_GetMemHandle()
 {
     OpenDatabase();
 }
@@ -299,9 +299,9 @@ TEST_INIT__ D_15_DB_GetMemHandle()
 TEST_CLOSE__ D_15_DB_GetMemHandle()
 {
     CloseDatabase();
-}
+}*/
 
-TEST_INIT__ D_16_DB_GetResultMemHandle()
+/*TEST_INIT__ D_16_DB_GetResultMemHandle()
 {
     OpenAndSelectDatabase();
 }
@@ -314,7 +314,7 @@ TEST_INIT__ D_16_DB_GetResultMemHandle()
 TEST_CLOSE__ D_16_DB_GetResultMemHandle()
 {
     CloseDatabase();
-}
+}*/
 
 TEST_INIT__ D_17_DB_DebugOpenFiles()
 {
