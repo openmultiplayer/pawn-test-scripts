@@ -1,4 +1,4 @@
-#pragma option -d2
+#pragma option -d3
 #pragma option -O0
 
 #define CGEN_MEMORY 70000
@@ -6,12 +6,16 @@
 //#pragma option -r
 //#pragma option -a
 
+#define STRONG_TAGS
+
+#include <open.mp>
+
 // Run tests.
 #define YSI_TESTS
 //#define YSI_PROFILINGS
 #define RUN_TESTS
 // Uncomment (and edit) to run a single test case
-//#define JUST_TEST GT_03_GameTextForPlayer
+//#define JUST_TEST sscanf_test
 //#define JUST_TEST_GROUP "y_commands"
 
 // Currently failing tests:
@@ -30,7 +34,7 @@
 // CV04_StringNew (1)
 // CV03_StringNewD (1)
 // CV02_StringOld (1)
-\
+
 //#define frename YSF_frename
 #include "test-header"
 //#undef frename
@@ -39,8 +43,39 @@
 	native SetPlayerSyncPosition(playerid, Float:x, Float:y, Float:z);
 #endif
 
+#include <sscanf2>
+
+@test() sscanf_test()
+{
+	new a, b, Float:c, d, e;
+	sscanf("5 100 2.2", "iI(4)fI(*)I(99)", a, b, c, 77, d, e);
+	ASSERT_EQ(a, 5);
+	ASSERT_EQ(b, 100);
+	ASSERT_EQ(c, 2.2);
+	ASSERT_EQ(d, 77);
+	ASSERT_EQ(e, 99);
+	new f[6];
+	sscanf("5 100 5 6 7", "A<i>(99)[*]", sizeof (f), f);
+	ASSERT_EQ(f[0], 5);
+	ASSERT_EQ(f[1], 100);
+	ASSERT_EQ(f[2], 5);
+	ASSERT_EQ(f[3], 6);
+	ASSERT_EQ(f[4], 7);
+	ASSERT_EQ(f[5], 99);
+	sscanf("hi", "S()[*]", sizeof (f), f);
+	ASSERT_EQ(f[0], 5);
+	ASSERT_EQ(f[1], 100);
+	ASSERT_EQ(f[2], 5);
+	ASSERT_EQ(f[3], 6);
+	ASSERT_EQ(f[4], 7);
+	ASSERT_EQ(f[5], 99);
+}
+
 public OnPlayerSpawn(playerid) //(Player:playerid)
 {
+	for (new WEAPON_SLOT:i; i != MAX_WEAPON_SLOTS; ++i)
+	{
+	}
 	//new alts[][] = { "first", "second", "third" };
 	//_Command_Decorator(.altcount = sizeof (alts), .alts = ref(alts));
 	printf("player connected %d %d %d", playerid, 42, IsPlayerNPC(playerid));
@@ -80,6 +115,64 @@ public OnPlayerSpawn(playerid) //(Player:playerid)
 #include <YSI_Coding\y_timers>
 #include <YSI_Visual\y_commands>
 #include <YSI_Server\y_files>
+
+#include <YSI_Core\y_als>
+#include <YSI_Core\y_debug>
+#include <YSI_Core\y_testing>
+#include <YSI_Core\y_utils>
+#include <YSI_Coding\y_va>
+#include <YSI_Core\y_cell>
+#include <YSI_Core\y_master>
+#include <YSI_Core\y_profiling>
+
+#include <YSI_Coding\y_hooks>
+#include <YSI_Coding\y_inline>
+#include <YSI_Coding\y_malloc>
+#include <YSI_Coding\y_remote>
+#include <YSI_Coding\y_stringhash>
+#include <YSI_Coding\y_timers>
+#include <YSI_Coding\y_ctrl>
+#include <YSI_Coding\y_functional>
+
+#include <YSI_Data\y_bintree>
+#include <YSI_Data\y_circular>
+#include <YSI_Data\y_bit>
+#include <YSI_Data\y_hashmap>
+#include <YSI_Data\y_iterate>
+#include <YSI_Data\y_jaggedarray>
+#include <YSI_Data\y_playerarray>
+#include <YSI_Data\y_playerset>
+
+
+/*#include <YSI_Players\y_languages>
+//#include <YSI_Players\y_text>
+//#include <YSI_Players\y_users>
+
+#include <YSI_Server\y_colours>
+#include <YSI_Server\y_flooding>
+#include <YSI_Server\y_punycode>
+#include <YSI_Server\y_scriptinit>
+#include <YSI_Server\y_td>*/
+
+#include <YSI_Storage\y_amx>
+////#include <YSI_Storage\y_bitmap>
+#include <YSI_Storage\y_ini>
+//#include <YSI_Storage\y_php>
+//#include <YSI_Storage\y_svar>
+//#include <YSI_Storage\y_uvar>
+#include <YSI_Storage\y_xml>
+#include <YSI_Storage\y_dumpamx>
+
+//#include <YSI_Visual\y_areas>
+//#include <YSI_Visual\y_classes>
+#include <YSI_Visual\y_commands>
+#include <YSI_Visual\y_dialog>
+//#include <YSI_Visual\y_properties>
+//#include <YSI_Visual\y_races>
+//#include <YSI_Visual\y_zonenames>
+#include <YSI_Visual\y_zonepulse>
+
+#include <YSI_Players\y_groups>
 
 #pragma warning pop
 
@@ -186,6 +279,9 @@ TEST__ Timers()
 
 main()
 {
+	new a, b, c;
+	printf("sscanf: %d", sscanf("5, 6, 7", "p<,>iii", a, b, c));
+	printf("after: %d, %d, %d", a, b, c);
 	print("Loading test Pawn scripts");
 	/*for ( ; ; )
 	{
